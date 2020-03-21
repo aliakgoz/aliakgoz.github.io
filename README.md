@@ -51,6 +51,14 @@
     <br>
   </p>
 
+<p><span style="font-family: Tahoma, Geneva, sans-serif; font-size: 19px;">To see the results of the study please click to link below to go an interactive notebook hosted by Binder :</span></p>
+<p>
+  <a href="https://mybinder.org/v2/gh/aliakgoz/ai_vs30_prediction.git/master?urlpath=%2Fapps%2Ffinal_graphs_slider.ipynb"><span style="font-family: Tahoma, Geneva, sans-serif; font-size: 19px;">https://mybinder.org/v2/gh/aliakgoz/ai_vs30_prediction.git/master?urlpath=%2Fapps%2Ffinal_graphs_slider.ipynb</span></a>
+</p>
+
+
+
+
 <p style="text-align: justify;"><span style="font-size: 19px; font-family: Tahoma, Geneva, sans-serif;">This study done by&nbsp;</span><span style="font-size: 19px; font-family: Tahoma, Geneva, sans-serif;">Ali AKGÖZ (</span>
   <a href="mailto:aliakgoz@gmail.com"><span style="font-size: 19px; font-family: Tahoma, Geneva, sans-serif;">aliakgoz@gmail.com</span></a><span style="font-size: 19px; font-family: Tahoma, Geneva, sans-serif;">)</span><span style="font-size: 19px; font-family: Tahoma, Geneva, sans-serif;">&nbsp;as a term project for 
     <a href="https://web.cs.hacettepe.edu.tr/~onderefe/bil684/" rel="noopener noreferrer" target="_blank">CMP684 - Neural Networks Course</a> (Hacettepe University - Computer Engineering) under supervision of the instructor of the course 
