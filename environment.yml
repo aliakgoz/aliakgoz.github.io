@@ -1,0 +1,13 @@
+channels:
+  - conda-forge
+dependencies:
+  - appmode
+  - proj
+  - scipy
+  - numpy
+  - QtPy
+  - pandas
+  - matplotlib
+  - Cartopy
+  - seaborn
+  - markdown
