@@ -42,6 +42,16 @@
     <script src="./js/plotly.js"></script>
     <script src="./js/kriging.js"></script>
     <script src="./js/proj4.js"></script>
+    <script src="./js/fontawesome.js"></script>
+    <script type="text/javascript" src="./o3dv/o3dv.min.js"></script>
+    <script type="text/javascript">
+        // Set the external libraries location to the
+        // folder where the library is.
+        OV.SetExternalLibLocation ('./o3dv/libs');
+
+        // Init all the 3d viewer elements.
+        OV.Init3DViewerElements ();
+    </script>
 
     <!-- <script src="./js/hexbin.js"></script>     -->
     <!-- Load d3.js -->
@@ -49,6 +59,7 @@
     <!-- <script src="https://d3js.org/d3.v6.js"></script> -->
     <script src="https://d3js.org/d3-hexbin.v0.2.min.js"></script>
     <script src="./js/leaflet-d3.js"></script>
+
     <link rel="stylesheet" href="./css/resizable-style.css" />
     <link rel="stylesheet" href="./css/leaflet.css" />
     <link rel="stylesheet" href="./css/bootstrap.min.css" />
@@ -67,9 +78,9 @@
     <style>
         #map_16d19f0c4cb02d0360d2d91f78fb101a {
             display: flex;
-            position: absolute;
-            width: 100.0%;
-            height: 100.0%;
+            position: relative;
+            width: 50.0%;
+            height: 50.0%;
             left: 0.0%;
             top: 0.0%;
 
@@ -177,19 +188,205 @@
             margin: 0;
             overflow: auto;
         }
+
+        .profile-container {
+            padding: 30px;
+            background: rgba(0, 0, 0, 0.2);
+            text-align: center;
+            color: #fff
+        }
+
+        .resizable-left {
+            padding: 30px;
+            /* background: rgba(0,0,0,0.2); */
+
+            text-align: center;
+            color: #fff;
+            height: 100vh;
+            overflow: auto;
+        }
+
+        .resizable-left::-webkit-scrollbar {
+            display: none;
+            /* Safari and Chrome */
+        }
+
+        .resizable-right {
+            padding: 30px;
+            /* background: rgba(0,0,0,0.2); */
+
+            text-align: start;
+            background-color: #fff;
+            height: 100vh;
+            overflow: auto;
+        }
+
+        .resizable-right::-webkit-scrollbar {
+            display: none;
+            /* Safari and Chrome */
+        }
+
+        .nav-item :hover {
+            background: rgba(0, 0, 0, 0.2);
+
+        }
+
+        .profile-container .tagline {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 16px;
+            font-weight: 300;
+            margin-top: 0;
+            margin-bottom: 0
+        }
+
+        .education-container .item {
+            margin-bottom: 15px
+        }
+
+        .education-container .item:last-child {
+            margin-bottom: 0
+        }
+
+        .education-container .meta {
+            color: rgba(255, 255, 255, 0.6);
+            font-weight: 400;
+            margin-bottom: 0px;
+            margin-top: 0
+        }
+
+        .education-container .time {
+            color: rgba(255, 255, 255, 0.6);
+            font-weight: 400;
+            margin-bottom: 0px
+        }
+
+        .languages-container .lang-desc {
+            color: rgba(255, 255, 255, 0.6)
+        }
+
+        .languages-list {
+            margin-bottom: 0
+        }
+
+        .languages-list li {
+            margin-bottom: 10px
+        }
+
+        .languages-list li:last-child {
+            margin-bottom: 0
+        }
+
+        .project-title {
+            font-size: 16px;
+            font-weight: 400;
+            margin-top: 0;
+            margin-bottom: 5px;
+            color: #2d7788
+        }
+
+        .projects-section .intro {
+            margin-bottom: 30px
+        }
+
+        .projects-section .item {
+            margin-bottom: 15px
+        }
+
+        .section-title {
+            text-transform: uppercase;
+            font-size: 20px;
+            font-weight: 500;
+            color: #2d7788;
+            position: relative;
+            margin-top: 0;
+            margin-bottom: 0px
+        }
     </style>
 
 
 </head>
 
 <body>
-    <div id="main">
-        <div class="resizable-left" id="win1">
-            <div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark"
-                style="display: flex; min-width: 250px; height: 20vh; ">
+    <div id="main" style="max-height: 100vh; overflow-y: auto; overflow-x: hidden;">
+        <div class="resizable-left" id="win1" style="max-height: 100vh; overflow: scroll; overflow-y: scroll;">
+            <div class="d-flex flex-column flex-shrink-0 p-3 text-white "
+                style="display: flex; min-width: 200px; background: #35869A; ">
+
+                <div class="profile-container" style="border-radius: 10px 10px 10px 10px; ">
+                    <img class="avatar" src="./img/Resim1.png" alt="profile picture"
+                        style="background-position:center; border-radius: 50px 50px 50px 50px; ">
+                    <h1 class="name">Ali AKGÖZ</h1>
+                    <h5 class="tagline">Developer / Data Scientist</h5>
+                </div>
+                <hr>
+                <ul class="nav nav-pills flex-column mb-auto " style="text-align: start;">
+                    <li class="nav-item">
+                        <a href="mailto:aliakgoz@gmail.com" class="nav-link text-white ">
+                            <i class="fa-solid fa-at"></i>
+                            <sub> aliakgoz@gmail.com</sub>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="https://github.com/aliakgoz" class="nav-link text-white">
+                            <i class="fa-brands fa-github"></i>
+                            <sub> github.com/aliakgoz</sub>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="https://www.linkedin.com/in/ali-akg%C3%B6z-53370619b/" class="nav-link text-white">
+                            <i class="fa-brands fa-linkedin"></i>
+                            <sub> linkedin.com/in/ali-akgöz-53370619b</sub>
+                        </a>
+                    </li>
 
 
 
+                    <li class="nav-item">
+                        <a href="./myfiles/ALI_AKGOZ_CV_v0.3.pdf" class="nav-link text-white">
+                            <i class="fa-solid fa-file-pdf"></i>
+                            <sub> PDF Resume</sub>
+                        </a>
+                    </li>
+
+                </ul>
+
+                <hr>
+
+                <div class="education-container container-block" style="text-align: start;">
+                    <h4 class="container-block-title">
+                        Education
+                    </h4>
+                    <div class="item">
+                        <h5 class="degree">MSc in Civil Engineering</h5>
+                        <h6 class="meta">Hacettepe University</h6>
+                        <div class="time">2021 - 2023</div>
+                    </div>
+                    <div class="item">
+                        <h5 class="degree">BSc in Civil Engineering</h5>
+                        <h6 class="meta">Middle East Technical University</h6>
+                        <div class="time">2006 - 2011</div>
+                    </div>
+                </div>
+
+                <hr>
+
+                <div class="languages-container container-block" style="text-align: start;">
+                    <h4 class="container-block-title">
+                        Languages
+                    </h4>
+                    <ul class="list-unstyled interests-list">
+                        <li>
+                            Turkish
+                            <span class="lang-desc">(Native)</span>
+                        </li>
+                        <li>
+                            English
+                            <span class="lang-desc">(Professional)</span>
+                        </li>
+
+                    </ul>
+                </div>
                 <div class="tabs">
 
                     <div role="tablist" aria-labelledby="tablist-1" class="automatic">
@@ -579,6 +776,60 @@
 
         </div>
         <div class="resizable-right" id="win2">
+
+            <section class="section projects-section">
+                <h2 class="section-title">
+                    Radiation Detector Project & Radioactivity Monitoring from UAV Project (2019 - ...)
+                </h2>
+                <sub>Turkish Energy, Nuclear and Mineral Research Agency - Nuclear Energy Research Institute</sub>
+                <div class="intro">
+                    <p>Currently, in a R&D team, I am working as a developer / data scientist / data visualization
+                        expert in
+                        government funded projects of developing a in-house Hand-held Radiation Detector and
+                        Radioactivity Monitoring using UAV.
+
+                    </p>
+                </div>
+                <div class="item">
+                    <span class="project-title">
+                        <a href="#hook" target="_blank">Velocity</a>
+                    </span>
+                    - <span class="project-tagline">A responsive website template designed to help startups promote,
+                        market and sell their products.</span>
+                </div>
+                <div class="item">
+                    <span class="project-title">
+                        <a href="#" target="_blank">DevStudio</a>
+                    </span>
+                    - <span class="project-tagline">A responsive website template designed to help web
+                        developers/designers market their services.</span>
+                </div>
+                <div class="item">
+                    <span class="project-title">
+                        <a href="#" target="_blank">Tempo</a>
+                    </span>
+                    - <span class="project-tagline">A responsive website template designed to help startups promote
+                        their products or services and to attract users &amp; investors</span>
+                </div>
+                <div class="item">
+                    <span class="project-title">
+                        <a href="#" target="_blank">Atom</a>
+                    </span>
+                    - <span class="project-tagline">A comprehensive website template solution for startups/developers to
+                        market their mobile apps.</span>
+                </div>
+                <div class="item">
+                    <span class="project-title">
+                        <a href="#" target="_blank">Delta</a>
+                    </span>
+                    - <span class="project-tagline">A responsive Bootstrap one page theme designed to help app
+                        developers promote their mobile apps</span>
+                </div>
+            </section>
+
+            <div class="online_3d_viewer" style="width: 800px; height: 600px;" model="./models/tenmak3.gltf">
+            </div>
+
             <div class="folium-map" id="map_16d19f0c4cb02d0360d2d91f78fb101a">
             </div>
 
@@ -601,6 +852,9 @@
      */
 
     'use strict';
+
+
+    
 
     class TabsAutomatic {
         constructor(groupNode) {
@@ -732,9 +986,11 @@
         //...
         document.getElementById("main").style.width = window.innerWidth + "px";
         document.getElementById("main").style.height = window.innerHeight + "px";
+        document.getElementById("win1").style.height = "100 vh";
+        document.getElementById("win1").style.maxHeight = "100 vh";
 
         var sizes = {
-            "win1": 0.35,
+            "win1": 0.25,
             "win3": 0.75,
             "win4": 0.5,
             "win6": 0.4,
@@ -760,12 +1016,12 @@
 
     var map_16d19f0c4cb02d0360d2d91f78fb101a = L.map(
         "map_16d19f0c4cb02d0360d2d91f78fb101a", {
-        center: [40.059774, 32.60246],
-        crs: L.CRS.EPSG3857,
-        zoom: 18,
-        zoomControl: true,
-        preferCanvas: false,
-    }
+            center: [40.059774, 32.60246],
+            crs: L.CRS.EPSG3857,
+            zoom: 18,
+            zoomControl: true,
+            preferCanvas: false,
+        }
     );
 
 
@@ -895,7 +1151,7 @@
                         break;
                     }
                     if ((value.slice(0, 2) == 'g ' && value.split(" ").length == 13) || (value.slice(0,
-                        2) == 'p ' && value.split(" ").length == 4) || (value.slice(0, 2) == 'l ' &&
+                            2) == 'p ' && value.split(" ").length == 4) || (value.slice(0, 2) == 'l ' &&
                             value.split(" ").length == 4)) {
 
                         // if (alltext == "") {
@@ -912,10 +1168,11 @@
 
                         document.getElementById("gelenveriTextarea1").innerHTML = document
                             .getElementById("gelenveriTextarea1").innerHTML + new Date()
-                                .toLocaleTimeString() + "." + new Date().getMilliseconds() + " " + value
-                                    .toString() + "\n";
+                            .toLocaleTimeString() + "." + new Date().getMilliseconds() + " " + value
+                            .toString() + "\n";
 
-                        gelenveri = gelenveri + new Date().toLocaleTimeString() + "." + new Date().getMilliseconds() + " " + value + "\n";
+                        gelenveri = gelenveri + new Date().toLocaleTimeString() + "." + new Date()
+                            .getMilliseconds() + " " + value + "\n";
 
                         // ÖRNEK lantan , plastik ve gps datası
                         //p 205819 206660 296
@@ -924,7 +1181,8 @@
 
                         let cihaz = value.split(" ")[0];
                         if (cihaz == "g") {
-                            if (((1 - Math.abs(lastlat / parseFloat(value.split(" ")[5]))) > 0.1) || ilksefer) {
+                            if (((1 - Math.abs(lastlat / parseFloat(value.split(" ")[5]))) > 0.1) ||
+                                ilksefer) {
                                 map_16d19f0c4cb02d0360d2d91f78fb101a.panTo(new L.LatLng(parseFloat(value
                                     .split(" ")[5]), parseFloat(value.split(" ")[6])));
                                 ilksefer = false;
@@ -977,8 +1235,7 @@
                             } else if (document.getElementById('markersetselect').value == "carpim") {
                                 mymaxcount = max_carpim_count.value;
                                 mycount = carpim_count;
-                            }
-                            else if (document.getElementById('markersetselect').value == "expcarpim") {
+                            } else if (document.getElementById('markersetselect').value == "expcarpim") {
                                 mymaxcount = max_expcarpim_count.value;
                                 mycount = expcarpim_count;
                             } else if (document.getElementById('markersetselect').value == "lantan") {
@@ -1033,9 +1290,10 @@
             } catch (error) {
                 document.getElementById("gelenveriTextarea1").innerHTML = document
                     .getElementById("gelenveriTextarea1").innerHTML + new Date()
-                        .toLocaleTimeString() + "." + new Date().getMilliseconds() + " " + error.toString() +
+                    .toLocaleTimeString() + "." + new Date().getMilliseconds() + " " + error.toString() +
                     "\n";
-                gelenveri = gelenveri + new Date().toLocaleTimeString() + "." + new Date().getMilliseconds() + " " + error.toString() + "\n";
+                gelenveri = gelenveri + new Date().toLocaleTimeString() + "." + new Date()
+                    .getMilliseconds() + " " + error.toString() + "\n";
                 // continue;
                 // TODO: Handle non-fatal read error.
                 continue;
@@ -1122,13 +1380,13 @@
                         let cm_total_count = (1 - carpan) * parseFloat(cm_lantan_count * 2) +
                             carpan * parseFloat(cm_plastik_count * 2);
                         let cm_max_total_count = (1 - carpan) * parseFloat(max_lantan_count.value *
-                            2) +
+                                2) +
                             carpan * parseFloat(max_plastik_count.value * 2);
 
                         obj['color'] = 'rgb(' + myColormap(cm_total_count / parseFloat(
                             cm_max_total_count))[0] + ',' + myColormap(cm_total_count /
-                                parseFloat(cm_max_total_count))[1] + ',' + myColormap(
-                                    cm_total_count / parseFloat(cm_max_total_count))[2] + ')';
+                            parseFloat(cm_max_total_count))[1] + ',' + myColormap(
+                            cm_total_count / parseFloat(cm_max_total_count))[2] + ')';
 
                         mymarker.setStyle(obj);
                         // mymarker.options.fillOpacity = document.getElementById('opacityRange').value/100;
@@ -1170,26 +1428,26 @@
                             max_count.value)[2] + ')';
                 } else if (markerset == 'carpim') {
                     obj['color'] = 'rgb(' + myColormap(cm_carpim_count / max_carpim_count.value)[
-                        0] +
+                            0] +
                         ',' + myColormap(cm_carpim_count / max_carpim_count.value)[1] + ',' +
                         myColormap(cm_carpim_count / max_carpim_count.value)[2] + ')';
                 } else if (markerset == "expcarpim") {
                     obj['color'] = 'rgb(' + myColormap(cm_expcarpim_count / max_expcarpim_count
-                        .value)[
-                        0] + ',' +
+                            .value)[
+                            0] + ',' +
                         myColormap(cm_expcarpim_count / max_expcarpim_count.value)[1] + ',' +
                         myColormap(
                             cm_expcarpim_count / max_expcarpim_count.value)[2] + ')';
                 } else if (markerset == "lantan") {
                     obj['color'] = 'rgb(' + myColormap(cm_lantan_count / max_lantan_count.value)[
-                        0] +
+                            0] +
                         ',' +
                         myColormap(cm_lantan_count / max_lantan_count.value)[1] + ',' + myColormap(
                             cm_lantan_count /
                             max_lantan_count.value)[2] + ')';
                 } else if (markerset == "plastik") {
                     obj['color'] = 'rgb(' + myColormap(cm_plastik_count / max_plastik_count.value)[
-                        0] +
+                            0] +
                         ',' +
                         myColormap(cm_plastik_count / max_plastik_count.value)[1] + ',' +
                         myColormap(
@@ -1247,7 +1505,7 @@
                     let cm_carpim_count = Math.max(cm_lantan_count, 1.0) * cm_plastik_count;
 
                     obj['color'] = 'rgb(' + myColormap(cm_carpim_count / max_carpim_count.value)[
-                        0] +
+                            0] +
                         ',' + myColormap(cm_carpim_count / max_carpim_count.value)[1] + ',' +
                         myColormap(cm_carpim_count / max_carpim_count.value)[2] + ')';
 
@@ -1275,8 +1533,8 @@
                         cm_plastik_count ** myexp);
                     // console.log(cm_expcarpim_count);
                     obj['color'] = 'rgb(' + myColormap(cm_expcarpim_count / max_expcarpim_count
-                        .value)[
-                        0] + ',' +
+                            .value)[
+                            0] + ',' +
                         myColormap(cm_expcarpim_count / max_expcarpim_count.value)[1] + ',' +
                         myColormap(
                             cm_expcarpim_count / max_expcarpim_count.value)[2] + ')';
@@ -1296,7 +1554,7 @@
                     let value = mymarker.options.className;
                     let cm_lantan_count = parseFloat(value.split(" ")[0]);
                     obj['color'] = 'rgb(' + myColormap(cm_lantan_count / max_lantan_count.value)[
-                        0] +
+                            0] +
                         ',' +
                         myColormap(cm_lantan_count / max_lantan_count.value)[1] + ',' + myColormap(
                             cm_lantan_count /
@@ -1318,7 +1576,7 @@
                     let value = mymarker.options.className;
                     let cm_plastik_count = parseFloat(value.split(" ")[1]);
                     obj['color'] = 'rgb(' + myColormap(cm_plastik_count / max_plastik_count.value)[
-                        0] +
+                            0] +
                         ',' +
                         myColormap(cm_plastik_count / max_plastik_count.value)[1] + ',' +
                         myColormap(
@@ -1339,7 +1597,8 @@
     max_count.getOnChange = function () {
         // console.log("total max:" + max_count.value.toString());
         if (document.getElementById('markersetselect').value == "toplam") {
-            console.log("max_count   ###########################################################" + max_count.value.toString());
+            console.log("max_count   ###########################################################" + max_count.value
+                .toString());
             myColormap = partial(document.getElementById('colormapselect').value);
 
             mymarkers.forEach(mymarker => {
@@ -1349,10 +1608,13 @@
                     let value = mymarker.options.className;
                     let cm_lantan_count = parseFloat(value.split(" ")[0]);
                     let cm_plastik_count = parseFloat(value.split(" ")[1]);
-                    let cm_total_count = carpan * (cm_lantan_count * 2) + (1 - carpan) * (cm_plastik_count * 2);
+                    let cm_total_count = carpan * (cm_lantan_count * 2) + (1 - carpan) * (cm_plastik_count *
+                        2);
 
 
-                    obj['color'] = 'rgb(' + myColormap(cm_total_count / max_count.value)[0] + ',' + myColormap(cm_total_count / max_count.value)[1] + ',' + myColormap(cm_total_count / max_count.value)[2] + ')';
+                    obj['color'] = 'rgb(' + myColormap(cm_total_count / max_count.value)[0] + ',' +
+                        myColormap(cm_total_count / max_count.value)[1] + ',' + myColormap(cm_total_count /
+                            max_count.value)[2] + ')';
 
 
                     mymarker.setStyle(obj);
@@ -1370,7 +1632,8 @@
 
     max_lantan_count.getOnChange = function () {
         if (document.getElementById('markersetselect').value == "lantan") {
-            console.log("max_lantan_count   ###########################################################" + max_lantan_count.value.toString());
+            console.log("max_lantan_count   ###########################################################" +
+                max_lantan_count.value.toString());
             // console.log("lantan max: " + max_lantan_count.value.toString());
             myColormap = partial(document.getElementById('colormapselect').value);
             mymarkers.forEach(mymarker => {
@@ -1397,7 +1660,8 @@
 
     max_plastik_count.getOnChange = function () {
         if (document.getElementById('markersetselect').value == "plastik") {
-            console.log("max_plastik_count   ###########################################################" + max_plastik_count.value.toString());
+            console.log("max_plastik_count   ###########################################################" +
+                max_plastik_count.value.toString());
             // console.log("plastik max: " + max_plastik_count.value.toString());
             myColormap = partial(document.getElementById('colormapselect').value);
             mymarkers.forEach(mymarker => {
@@ -1405,7 +1669,8 @@
                     let obj = {};
                     let value = mymarker.options.className;
                     let cm_plastik_count = parseFloat(value.split(" ")[1]);
-                    obj['color'] = 'rgb(' + myColormap(cm_plastik_count / max_plastik_count.value)[0] + ',' +
+                    obj['color'] = 'rgb(' + myColormap(cm_plastik_count / max_plastik_count.value)[0] +
+                        ',' +
                         myColormap(cm_plastik_count / max_plastik_count.value)[1] + ',' + myColormap(
                             cm_plastik_count / max_plastik_count.value)[2] + ')';
 
@@ -1423,7 +1688,8 @@
 
     max_carpim_count.getOnChange = function () {
         if (document.getElementById('markersetselect').value == "carpim") {
-            console.log("max_carpim_count   ###########################################################" + max_carpim_count.value.toString());
+            console.log("max_carpim_count   ###########################################################" +
+                max_carpim_count.value.toString());
             // console.log("plastik max: " + max_plastik_count.value.toString());
             myColormap = partial(document.getElementById('colormapselect').value);
             mymarkers.forEach(mymarker => {
@@ -1453,7 +1719,8 @@
 
     max_expcarpim_count.getOnChange = function () {
         if (document.getElementById('markersetselect').value == "expcarpim") {
-            console.log("max_expcarpim_count   ###########################################################" + max_expcarpim_count.value.toString());
+            console.log("max_expcarpim_count   ###########################################################" +
+                max_expcarpim_count.value.toString());
             // console.log("plastik max: " + max_plastik_count.value.toString());
             myColormap = partial(document.getElementById('colormapselect').value);
             mymarkers.forEach(mymarker => {
@@ -1462,7 +1729,8 @@
                     let value = mymarker.options.className;
                     let cm_lantan_count = parseFloat(value.split(" ")[0]);
                     let cm_plastik_count = parseFloat(value.split(" ")[1]);
-                    let cm_expcarpim_count = (Math.max(cm_lantan_count, 1.0) ** myexp) * (cm_plastik_count **
+                    let cm_expcarpim_count = (Math.max(cm_lantan_count, 1.0) ** myexp) * (
+                        cm_plastik_count **
                         myexp);
 
                     obj['color'] = 'rgb(' + myColormap(cm_expcarpim_count / max_expcarpim_count.value)[0] +
@@ -1593,12 +1861,12 @@
                     obj['color'] = 'rgb(' + myColormap(parseFloat(item) / maxdose)[0] + ',' +
                         myColormap(
                             parseFloat(item) / maxdose)[1] + ',' + myColormap(parseFloat(item) /
-                                maxdose)[2] + ')';
+                            maxdose)[2] + ')';
                     obj['weight'] = '0';
 
                     let mydataMarker = L.circleMarker([parseFloat(latarr[index]), parseFloat(lonarr[
                         index])], obj).addTo(
-                            map_16d19f0c4cb02d0360d2d91f78fb101a);
+                        map_16d19f0c4cb02d0360d2d91f78fb101a);
                     mydataMarker.bindPopup(item.toString());
                     if (item == maxdose) {
                         mydataMarker.openPopup();
@@ -1671,16 +1939,16 @@
 
     var tile_layer_ec0c677b6367df196a132fd6fb0127a1 = L.tileLayer(
         "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}", {
-        "attribution": "Tiles \u0026copy; Esri \u0026mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community - TENMAK NÜKEN 2022",
-        "detectRetina": false,
-        "maxNativeZoom": 18,
-        "maxZoom": 22,
-        "minZoom": 0,
-        "noWrap": false,
-        "opacity": 1,
-        "subdomains": "abc",
-        "tms": false
-    }
+            "attribution": "Tiles \u0026copy; Esri \u0026mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community - TENMAK NÜKEN 2022",
+            "detectRetina": false,
+            "maxNativeZoom": 18,
+            "maxZoom": 22,
+            "minZoom": 0,
+            "noWrap": false,
+            "opacity": 1,
+            "subdomains": "abc",
+            "tms": false
+        }
     ).addTo(map_16d19f0c4cb02d0360d2d91f78fb101a);
 
     let fileHandle_log;
@@ -1718,7 +1986,8 @@
             const fileHandle = await self.showSaveFilePicker({
 
 
-                suggestedName: 'Tenmak_iha_log_' + new Date().toLocaleDateString() + '_' + new Date()
+                suggestedName: 'Tenmak_iha_log_' + new Date().toLocaleDateString() + '_' +
+                    new Date()
                     .toLocaleTimeString() + '.txt',
                 types: [{
                     description: 'Text documents',
@@ -1761,15 +2030,16 @@
             try {
                 document.getElementById("gelenveriTextarea1").innerHTML = document
                     .getElementById("gelenveriTextarea1").innerHTML + value
-                        .toString() + "\n";
+                    .toString() + "\n";
 
-                value = value.split(" ").slice(1,).join(" ");
+                value = value.split(" ").slice(1, ).join(" ");
                 console.log(value);
 
 
                 let cihaz = value.split(" ")[0];
                 if (cihaz == "g") {
-                    if (((1 - Math.abs(lastlat / parseFloat(value.split(" ")[5]))) > 0.1) || ilksefer) {
+                    if (((1 - Math.abs(lastlat / parseFloat(value.split(" ")[5]))) > 0.1) ||
+                        ilksefer) {
                         map_16d19f0c4cb02d0360d2d91f78fb101a.panTo(new L.LatLng(parseFloat(value
                             .split(" ")[5]), parseFloat(value.split(" ")[6])));
                         ilksefer = false;
@@ -1822,8 +2092,7 @@
                     } else if (document.getElementById('markersetselect').value == "carpim") {
                         mymaxcount = max_carpim_count.value;
                         mycount = carpim_count;
-                    }
-                    else if (document.getElementById('markersetselect').value == "expcarpim") {
+                    } else if (document.getElementById('markersetselect').value == "expcarpim") {
                         mymaxcount = max_expcarpim_count.value;
                         mycount = expcarpim_count;
                     } else if (document.getElementById('markersetselect').value == "lantan") {
@@ -1835,7 +2104,8 @@
                     };
 
                     let mypopup = "total: " + total_count.toString() + " l: " + lantan_count
-                        .toString() + " p: " + plastik_count.toString() + " max: " + max_count.value + " id: " + mymarkers.length;
+                        .toString() + " p: " + plastik_count.toString() + " max: " + max_count
+                        .value + " id: " + mymarkers.length;
                     lantan_geldi = false;
                     plastik_geldi = false;
                     obj['className'] = lantan_count.toString() + " " + plastik_count.toString();
@@ -1867,8 +2137,8 @@
             } catch (error) {
                 document.getElementById("gelenveriTextarea1").innerHTML = document
                     .getElementById("gelenveriTextarea1").innerHTML + new Date()
-                        .toLocaleTimeString() + "." + new Date().getMilliseconds() + " " + error
-                            .toString() +
+                    .toLocaleTimeString() + "." + new Date().getMilliseconds() + " " + error
+                    .toString() +
                     "\n";
                 // continue;
                 // TODO: Handle non-fatal read error.
@@ -1894,44 +2164,260 @@
         var myjsondata = {
             "type": "FeatureCollection",
             "name": "oz2",
-            "crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
-            "features": [
-                { "type": "Feature", "properties": { "id": 1, "Sozlesme": "T12-ASD-FG", "Kiraci": "Oguzhan Ak", "Bolge": 2, "AcıkAlan": 20, "KapalıAlan": 10, "KiraBedel": 500, "KullanımA": "Berber", "AdaParsel": "100/1", "il": "Ankara", "ilce": "Altındag", "YerT_T": "2017-06-01", "Sozlesme_t": "2017-06-01", "Sozlesme_b": "2022-11-16", "Tahakkuk": "2022-06-14", "Odeme": "2022-06-30", "Parsel_d": 1 }, "geometry": { "type": "MultiPolygon", "coordinates": [[[[32.843433625716969, 39.936347636391929], [32.843529021994293, 39.936294439378109], [32.843489996244486, 39.936249000229381], [32.843388818374585, 39.93629998073564], [32.843433625716969, 39.936347636391929]]]] } },
-                { "type": "Feature", "properties": { "id": 2, "Sozlesme": "tr-12-123213", "Kiraci": "Altındag B", "Bolge": 2, "AcıkAlan": 15, "KapalıAlan": 200, "KiraBedel": 500, "KullanımA": "otopark", "AdaParsel": "100/2", "il": "Ankara", "ilce": "Cankaya", "YerT_T": "2019-06-13", "Sozlesme_t": "2019-06-12", "Sozlesme_b": "2022-06-10", "Tahakkuk": "2022-06-13", "Odeme": "2022-06-14", "Parsel_d": 2 }, "geometry": { "type": "MultiPolygon", "coordinates": [[[[32.844587776132883, 39.935720352306284], [32.844735206743302, 39.935893243900296], [32.84488841894629, 39.935795715362509], [32.844720752761887, 39.935627256651671], [32.844587776132883, 39.935720352306284]]]] } },
-                { "type": "Feature", "properties": { "id": 3, "Sozlesme": "tr-5454", "Kiraci": "Ahmet B", "Bolge": 2, "AcıkAlan": 100, "KapalıAlan": 100, "KiraBedel": 5000, "KullanımA": "Büfe", "AdaParsel": "100/3", "il": "Ankara", "ilce": "Cankaya", "YerT_T": "2019-06-14", "Sozlesme_t": "2019-06-13", "Sozlesme_b": "2022-06-22", "Tahakkuk": "2022-06-07", "Odeme": "2022-06-14", "Parsel_d": 2 }, "geometry": { "type": "MultiPolygon", "coordinates": [[[[32.852856176200746, 39.929165111319435], [32.852955908672499, 39.929158460997137], [32.852948681681788, 39.929118559049776], [32.852840276821176, 39.929125209375947], [32.852856176200746, 39.929165111319435]]]] } },
-                { "type": "Feature", "properties": { "id": 4, "Sozlesme": "tr-12-33", "Kiraci": "Umut Tor", "Bolge": 1, "AcıkAlan": 12, "KapalıAlan": 323, "KiraBedel": 44444, "KullanımA": "lostra", "AdaParsel": "100/5", "il": "Istanbul", "ilce": "qwewqe", "YerT_T": "2018-06-16", "Sozlesme_t": "2018-06-19", "Sozlesme_b": "2025-06-13", "Tahakkuk": "2022-06-07", "Odeme": "2022-06-08", "Parsel_d": 2 }, "geometry": { "type": "MultiPolygon", "coordinates": [[[[29.04915799049617, 40.978711014916563], [29.049290967125177, 40.978643359980289], [29.049259168366074, 40.978590981917471], [29.04910884695936, 40.97864990723523], [29.04915799049617, 40.978711014916563]]]] } },
-                { "type": "Feature", "properties": { "id": 5, "Sozlesme": "rtr545", "Kiraci": "Haydar", "Bolge": 1, "AcıkAlan": 34, "KapalıAlan": 43, "KiraBedel": 333, "KullanımA": "cay", "AdaParsel": "100/6", "il": "Istanbul", "ilce": "Kadıköy", "YerT_T": "2021-12-16", "Sozlesme_t": "2021-06-13", "Sozlesme_b": "2025-06-13", "Tahakkuk": "2022-06-14", "Odeme": null, "Parsel_d": 2 }, "geometry": { "type": "MultiPolygon", "coordinates": [[[[29.029902396456535, 40.999687245141985], [29.030032482289261, 40.999667609641044], [29.029931304419364, 40.999388348550085], [29.029833017345741, 40.999425437981856], [29.029902396456535, 40.999687245141985]]]] } },
-                { "type": "Feature", "properties": { "id": 6, "Sozlesme": "errr", "Kiraci": "Mahmut", "Bolge": 6, "AcıkAlan": 22, "KapalıAlan": 22, "KiraBedel": 600, "KullanımA": "12", "AdaParsel": "233/1", "il": "Adana", "ilce": "Seyhan", "YerT_T": "2022-06-09", "Sozlesme_t": "2022-06-16", "Sozlesme_b": "2022-06-15", "Tahakkuk": "2022-06-23", "Odeme": "2022-06-14", "Parsel_d": 2 }, "geometry": { "type": "MultiPolygon", "coordinates": [[[[35.317664718755317, 37.003568460269292], [35.318017395901819, 37.003637717763944], [35.318040522272078, 37.003559225931902], [35.317679172736739, 37.003489968365727], [35.317664718755317, 37.003568460269292]]]] } }
+            "crs": {
+                "type": "name",
+                "properties": {
+                    "name": "urn:ogc:def:crs:OGC:1.3:CRS84"
+                }
+            },
+            "features": [{
+                    "type": "Feature",
+                    "properties": {
+                        "id": 1,
+                        "Sozlesme": "T12-ASD-FG",
+                        "Kiraci": "Oguzhan Ak",
+                        "Bolge": 2,
+                        "AcıkAlan": 20,
+                        "KapalıAlan": 10,
+                        "KiraBedel": 500,
+                        "KullanımA": "Berber",
+                        "AdaParsel": "100/1",
+                        "il": "Ankara",
+                        "ilce": "Altındag",
+                        "YerT_T": "2017-06-01",
+                        "Sozlesme_t": "2017-06-01",
+                        "Sozlesme_b": "2022-11-16",
+                        "Tahakkuk": "2022-06-14",
+                        "Odeme": "2022-06-30",
+                        "Parsel_d": 1
+                    },
+                    "geometry": {
+                        "type": "MultiPolygon",
+                        "coordinates": [
+                            [
+                                [
+                                    [32.843433625716969, 39.936347636391929],
+                                    [32.843529021994293, 39.936294439378109],
+                                    [32.843489996244486, 39.936249000229381],
+                                    [32.843388818374585, 39.93629998073564],
+                                    [32.843433625716969, 39.936347636391929]
+                                ]
+                            ]
+                        ]
+                    }
+                },
+                {
+                    "type": "Feature",
+                    "properties": {
+                        "id": 2,
+                        "Sozlesme": "tr-12-123213",
+                        "Kiraci": "Altındag B",
+                        "Bolge": 2,
+                        "AcıkAlan": 15,
+                        "KapalıAlan": 200,
+                        "KiraBedel": 500,
+                        "KullanımA": "otopark",
+                        "AdaParsel": "100/2",
+                        "il": "Ankara",
+                        "ilce": "Cankaya",
+                        "YerT_T": "2019-06-13",
+                        "Sozlesme_t": "2019-06-12",
+                        "Sozlesme_b": "2022-06-10",
+                        "Tahakkuk": "2022-06-13",
+                        "Odeme": "2022-06-14",
+                        "Parsel_d": 2
+                    },
+                    "geometry": {
+                        "type": "MultiPolygon",
+                        "coordinates": [
+                            [
+                                [
+                                    [32.844587776132883, 39.935720352306284],
+                                    [32.844735206743302, 39.935893243900296],
+                                    [32.84488841894629, 39.935795715362509],
+                                    [32.844720752761887, 39.935627256651671],
+                                    [32.844587776132883, 39.935720352306284]
+                                ]
+                            ]
+                        ]
+                    }
+                },
+                {
+                    "type": "Feature",
+                    "properties": {
+                        "id": 3,
+                        "Sozlesme": "tr-5454",
+                        "Kiraci": "Ahmet B",
+                        "Bolge": 2,
+                        "AcıkAlan": 100,
+                        "KapalıAlan": 100,
+                        "KiraBedel": 5000,
+                        "KullanımA": "Büfe",
+                        "AdaParsel": "100/3",
+                        "il": "Ankara",
+                        "ilce": "Cankaya",
+                        "YerT_T": "2019-06-14",
+                        "Sozlesme_t": "2019-06-13",
+                        "Sozlesme_b": "2022-06-22",
+                        "Tahakkuk": "2022-06-07",
+                        "Odeme": "2022-06-14",
+                        "Parsel_d": 2
+                    },
+                    "geometry": {
+                        "type": "MultiPolygon",
+                        "coordinates": [
+                            [
+                                [
+                                    [32.852856176200746, 39.929165111319435],
+                                    [32.852955908672499, 39.929158460997137],
+                                    [32.852948681681788, 39.929118559049776],
+                                    [32.852840276821176, 39.929125209375947],
+                                    [32.852856176200746, 39.929165111319435]
+                                ]
+                            ]
+                        ]
+                    }
+                },
+                {
+                    "type": "Feature",
+                    "properties": {
+                        "id": 4,
+                        "Sozlesme": "tr-12-33",
+                        "Kiraci": "Umut Tor",
+                        "Bolge": 1,
+                        "AcıkAlan": 12,
+                        "KapalıAlan": 323,
+                        "KiraBedel": 44444,
+                        "KullanımA": "lostra",
+                        "AdaParsel": "100/5",
+                        "il": "Istanbul",
+                        "ilce": "qwewqe",
+                        "YerT_T": "2018-06-16",
+                        "Sozlesme_t": "2018-06-19",
+                        "Sozlesme_b": "2025-06-13",
+                        "Tahakkuk": "2022-06-07",
+                        "Odeme": "2022-06-08",
+                        "Parsel_d": 2
+                    },
+                    "geometry": {
+                        "type": "MultiPolygon",
+                        "coordinates": [
+                            [
+                                [
+                                    [29.04915799049617, 40.978711014916563],
+                                    [29.049290967125177, 40.978643359980289],
+                                    [29.049259168366074, 40.978590981917471],
+                                    [29.04910884695936, 40.97864990723523],
+                                    [29.04915799049617, 40.978711014916563]
+                                ]
+                            ]
+                        ]
+                    }
+                },
+                {
+                    "type": "Feature",
+                    "properties": {
+                        "id": 5,
+                        "Sozlesme": "rtr545",
+                        "Kiraci": "Haydar",
+                        "Bolge": 1,
+                        "AcıkAlan": 34,
+                        "KapalıAlan": 43,
+                        "KiraBedel": 333,
+                        "KullanımA": "cay",
+                        "AdaParsel": "100/6",
+                        "il": "Istanbul",
+                        "ilce": "Kadıköy",
+                        "YerT_T": "2021-12-16",
+                        "Sozlesme_t": "2021-06-13",
+                        "Sozlesme_b": "2025-06-13",
+                        "Tahakkuk": "2022-06-14",
+                        "Odeme": null,
+                        "Parsel_d": 2
+                    },
+                    "geometry": {
+                        "type": "MultiPolygon",
+                        "coordinates": [
+                            [
+                                [
+                                    [29.029902396456535, 40.999687245141985],
+                                    [29.030032482289261, 40.999667609641044],
+                                    [29.029931304419364, 40.999388348550085],
+                                    [29.029833017345741, 40.999425437981856],
+                                    [29.029902396456535, 40.999687245141985]
+                                ]
+                            ]
+                        ]
+                    }
+                },
+                {
+                    "type": "Feature",
+                    "properties": {
+                        "id": 6,
+                        "Sozlesme": "errr",
+                        "Kiraci": "Mahmut",
+                        "Bolge": 6,
+                        "AcıkAlan": 22,
+                        "KapalıAlan": 22,
+                        "KiraBedel": 600,
+                        "KullanımA": "12",
+                        "AdaParsel": "233/1",
+                        "il": "Adana",
+                        "ilce": "Seyhan",
+                        "YerT_T": "2022-06-09",
+                        "Sozlesme_t": "2022-06-16",
+                        "Sozlesme_b": "2022-06-15",
+                        "Tahakkuk": "2022-06-23",
+                        "Odeme": "2022-06-14",
+                        "Parsel_d": 2
+                    },
+                    "geometry": {
+                        "type": "MultiPolygon",
+                        "coordinates": [
+                            [
+                                [
+                                    [35.317664718755317, 37.003568460269292],
+                                    [35.318017395901819, 37.003637717763944],
+                                    [35.318040522272078, 37.003559225931902],
+                                    [35.317679172736739, 37.003489968365727],
+                                    [35.317664718755317, 37.003568460269292]
+                                ]
+                            ]
+                        ]
+                    }
+                }
             ]
         }
-        map_16d19f0c4cb02d0360d2d91f78fb101a.panTo(new L.LatLng(39.936347636391929,32.843433625716969));
+        map_16d19f0c4cb02d0360d2d91f78fb101a.panTo(new L.LatLng(39.936347636391929, 32.843433625716969));
 
         myjsondata.features.forEach(element => {
-            console.log(parseFloat(Date.parse(element.properties.Odeme)-Date.parse((element.properties.Tahakkuk)))/(1000*60*60*24))
+            console.log(parseFloat(Date.parse(element.properties.Odeme) - Date.parse((element
+                .properties.Tahakkuk))) / (1000 * 60 * 60 * 24))
             var mylatlon = []
             element.geometry.coordinates[0][0].forEach(element2 => {
-                mylatlon.push([element2[1],element2[0]])
+                mylatlon.push([element2[1], element2[0]])
             });
             console.log(mylatlon)
-   
-            if(parseFloat(Date.parse(element.properties.Odeme)-Date.parse((element.properties.Tahakkuk)))/(1000*60*60*24)<=7){
+
+            if (parseFloat(Date.parse(element.properties.Odeme) - Date.parse((element.properties
+                    .Tahakkuk))) / (1000 * 60 * 60 * 24) <= 7) {
                 let obj = {};
-                    obj['color'] = "blue";
-                    obj['weight'] = 1;
-                var poly = L.polygon(mylatlon,obj).addTo(map_16d19f0c4cb02d0360d2d91f78fb101a)
+                obj['color'] = "blue";
+                obj['weight'] = 1;
+                var poly = L.polygon(mylatlon, obj).addTo(map_16d19f0c4cb02d0360d2d91f78fb101a)
                 poly.bindPopup(element.properties.Odeme)
-            }else{
+            } else {
                 let obj = {};
-                    obj['color'] = "red";
-                var poly = L.polygon(mylatlon,obj).addTo(map_16d19f0c4cb02d0360d2d91f78fb101a)
+                obj['color'] = "red";
+                var poly = L.polygon(mylatlon, obj).addTo(map_16d19f0c4cb02d0360d2d91f78fb101a)
                 poly.bindPopup(element.properties.Odeme)
             }
-                
+
         });
 
         console.log(myjsondata.features["coordinates"])
 
-        
+
 
 
 
@@ -2244,11 +2730,4 @@
         // map_16d19f0c4cb02d0360d2d91f78fb101a.on('zoomend', onZoom)
 
     });
-
-
-
-
-
-
-
 </script>

@@ -7,13 +7,13 @@
 
 .contentWindow{
   position: absolute;
-  background-color: #212529;
+  background-color: #35869A;
 }
 
 .resizer{
   position: absolute;
   z-index: 100;
-  background-color: #212529;
+  background-color: #35869A;
 }
 
 .verticalResizer{
