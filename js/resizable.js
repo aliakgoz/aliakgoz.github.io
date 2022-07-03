@@ -102,6 +102,10 @@ Resizable.ContentWindow = class{
       this.getDiv().style.overflow = "scroll";
       this.getDiv().style.height =  "100 vh";
     }
+    if(this.divId == "win2"){
+      this.getDiv().style.overflow = "scroll";
+      this.getDiv().style.height =  "100 vh";
+    }
 
     Resizable.activeContentWindows.push(this);
     this.calculateSizeFractionOfParent();
