@@ -780,44 +780,28 @@
 
             <section class="section projects-section">
                 <h2 class="section-title">
-                    Radiation Detector Project & Radioactivity Monitoring from UAV Project (2019 - ...)
+                    Radiation Detector Project (2019 - ...)
                 </h2>
                 <sub>Turkish Energy, Nuclear and Mineral Research Agency - Nuclear Energy Research Institute</sub>
                 <div class="intro">
-                    <p>Currently, in a R&D team, I am working as a developer / data scientist / data visualization
-                        expert in government funded projects of developing an in-house Hand-held Radiation Detector and
-                        A Radioactivity Monitoring System using UAV.
+                    <p>Currently, one of my active projects is developing a prototype of a radiation detector which
+                        works with (in-house produced) ceramic scintillators.
                         <br>
-                        In the scope of Hand-held Radiation Detector project my works can be summarized below:
+                        In the scope of this project my works can be summarized below:
                     </p>
 
                 </div>
                 <div class="container">
                     <div class="row" style="margin-top: 10px;">
                         <div class="col">
-                            <b>3D Model of Prototype Detector</b> <br>
-                            <span class="project-tagline">I used Autodesk Fusion 360 to design the 3D model of prototype
-                                detector.
-                                After design, 3D printed the model using Ultimaker S5 3D Printer.
-                            </span>
-                        </div>
-                        <div class="col" style="text-align: center;">
-                            <div class="online_3d_viewer" style="height: 300px;"
-                                model="./models/tenmak3_son_v1.obj">
-                            </div>
-                            <sub class="project-tagline" >3D model of prototype (3D viewer used here <i
-                                    class="fa-brands fa-github"></i> <a
-                                    href="https://github.com/kovacsv/Online3DViewer">kovacsv/Online3DViewer</a>)</sub>
-                        </div>
-                    </div>
-                    <div class="row" style="margin-top: 10px;">
-                        <div class="col">
                             <b>Android/IOS App for Detector</b> <br>
-                            <span class="project-tagline">Using Flutter (with Dart programming Language) I developed a mobile app 
+                            
+                            <span class="project-tagline">Flutter (with Dart programming Language) is used to develop this mobile app 
                                 for detector. <br>
                                 Briefly, measurement data from detector comes to mobile app via bluetooth connection. Data processed in 
                                 the mobile app and displayed on main screen. Total, average and instantaneous dose values can be seen on the 
-                                screen with a live graph of all measurements gathered after connection. <br>
+                                screen with a live graph. <br>
+                                Measurement data can be seen on map colored by their measurement values. <br> 
                                 Mobile app archives all the data (combining them with location data (lat,lon) if wanted) and 
                                 displays them in archive page. <br>
                                 User can easily share measurement data via email / Whatsapp or any other software. <br>
@@ -830,14 +814,53 @@
                             </span>
                         </div>
                         <div class="col" style="text-align: center;">
-                            <!-- <div class="online_3d_viewer" style="height: 300px;"
+                            <div class="container">
+                                <img class="avatar" src="./img/mobileapp.png" alt="profile picture"
+                                style="background-position:center; border-radius: 10px 10px 10px 10px; height: 600px; ">
+                            </div>
+                            <sub class="project-tagline">Screenshots from mobile app, main screen and archive screen.</sub>
+                        </div>
+                    </div>
+                    <div class="row" style="margin-top: 10px;">
+                        <div class="col">
+                            <b>3D Model of Prototype Detector</b> <br>
+                            <span class="project-tagline">I used Autodesk Fusion 360 to design the 3D model of prototype
+                                detector. <br>
+                                After design, I used Ultimaker S5 to 3D print the prototype model.
+                            </span>
+                        </div>
+                        <div class="col" style="text-align: center;">
+                            <div class="online_3d_viewer" style="height: 300px;"
                                 model="./models/tenmak3_son_v1.obj">
-                            </div> -->
-                            <sub class="project-tagline">3D model of prototype (3D viewer used here <i
+                            </div>
+                            <sub class="project-tagline" >3D model of prototype (3D viewer used here <i
                                     class="fa-brands fa-github"></i> <a
                                     href="https://github.com/kovacsv/Online3DViewer">kovacsv/Online3DViewer</a>)</sub>
                         </div>
                     </div>
+
+                    <div class="row" style="margin-top: 10px;">
+                        <div class="col">
+                            <b>Website for Database Interface</b> <br>
+                            <span class="project-tagline">When the mobile app sends data to the database it also automatically <br>
+                                drops to the website and live data stream that comes from detector can be watched directly from website. <br>
+                                Radiation workers may use this website to keep track of their total absorbed dose <br>
+                                and governmental organizations which may have responsibilities about may use it for radiation safety pusposes. <br>
+                                I used Angular to create this website, connected it to firebase database and used Plotly for live <br>
+                                and responsive data visualizations. 
+                                
+                            </span>
+                        </div>
+                        <div class="col" style="text-align: center;">
+                            <div class="online_3d_viewer" style="height: 300px;"
+                                model="./models/tenmak3_son_v1.obj">
+                            </div>
+                            <sub class="project-tagline" >3D model of prototype (3D viewer used here <i
+                                    class="fa-brands fa-github"></i> <a
+                                    href="https://github.com/kovacsv/Online3DViewer">kovacsv/Online3DViewer</a>)</sub>
+                        </div>
+                    </div>
+               
                 </div>
 
             </section>
@@ -2174,279 +2197,6 @@
 
 
     document.getElementById('hexbinbutton').addEventListener('click', async () => {
-
-
-        var myjsondata = {
-            "type": "FeatureCollection",
-            "name": "oz2",
-            "crs": {
-                "type": "name",
-                "properties": {
-                    "name": "urn:ogc:def:crs:OGC:1.3:CRS84"
-                }
-            },
-            "features": [{
-                    "type": "Feature",
-                    "properties": {
-                        "id": 1,
-                        "Sozlesme": "T12-ASD-FG",
-                        "Kiraci": "Oguzhan Ak",
-                        "Bolge": 2,
-                        "AcıkAlan": 20,
-                        "KapalıAlan": 10,
-                        "KiraBedel": 500,
-                        "KullanımA": "Berber",
-                        "AdaParsel": "100/1",
-                        "il": "Ankara",
-                        "ilce": "Altındag",
-                        "YerT_T": "2017-06-01",
-                        "Sozlesme_t": "2017-06-01",
-                        "Sozlesme_b": "2022-11-16",
-                        "Tahakkuk": "2022-06-14",
-                        "Odeme": "2022-06-30",
-                        "Parsel_d": 1
-                    },
-                    "geometry": {
-                        "type": "MultiPolygon",
-                        "coordinates": [
-                            [
-                                [
-                                    [32.843433625716969, 39.936347636391929],
-                                    [32.843529021994293, 39.936294439378109],
-                                    [32.843489996244486, 39.936249000229381],
-                                    [32.843388818374585, 39.93629998073564],
-                                    [32.843433625716969, 39.936347636391929]
-                                ]
-                            ]
-                        ]
-                    }
-                },
-                {
-                    "type": "Feature",
-                    "properties": {
-                        "id": 2,
-                        "Sozlesme": "tr-12-123213",
-                        "Kiraci": "Altındag B",
-                        "Bolge": 2,
-                        "AcıkAlan": 15,
-                        "KapalıAlan": 200,
-                        "KiraBedel": 500,
-                        "KullanımA": "otopark",
-                        "AdaParsel": "100/2",
-                        "il": "Ankara",
-                        "ilce": "Cankaya",
-                        "YerT_T": "2019-06-13",
-                        "Sozlesme_t": "2019-06-12",
-                        "Sozlesme_b": "2022-06-10",
-                        "Tahakkuk": "2022-06-13",
-                        "Odeme": "2022-06-14",
-                        "Parsel_d": 2
-                    },
-                    "geometry": {
-                        "type": "MultiPolygon",
-                        "coordinates": [
-                            [
-                                [
-                                    [32.844587776132883, 39.935720352306284],
-                                    [32.844735206743302, 39.935893243900296],
-                                    [32.84488841894629, 39.935795715362509],
-                                    [32.844720752761887, 39.935627256651671],
-                                    [32.844587776132883, 39.935720352306284]
-                                ]
-                            ]
-                        ]
-                    }
-                },
-                {
-                    "type": "Feature",
-                    "properties": {
-                        "id": 3,
-                        "Sozlesme": "tr-5454",
-                        "Kiraci": "Ahmet B",
-                        "Bolge": 2,
-                        "AcıkAlan": 100,
-                        "KapalıAlan": 100,
-                        "KiraBedel": 5000,
-                        "KullanımA": "Büfe",
-                        "AdaParsel": "100/3",
-                        "il": "Ankara",
-                        "ilce": "Cankaya",
-                        "YerT_T": "2019-06-14",
-                        "Sozlesme_t": "2019-06-13",
-                        "Sozlesme_b": "2022-06-22",
-                        "Tahakkuk": "2022-06-07",
-                        "Odeme": "2022-06-14",
-                        "Parsel_d": 2
-                    },
-                    "geometry": {
-                        "type": "MultiPolygon",
-                        "coordinates": [
-                            [
-                                [
-                                    [32.852856176200746, 39.929165111319435],
-                                    [32.852955908672499, 39.929158460997137],
-                                    [32.852948681681788, 39.929118559049776],
-                                    [32.852840276821176, 39.929125209375947],
-                                    [32.852856176200746, 39.929165111319435]
-                                ]
-                            ]
-                        ]
-                    }
-                },
-                {
-                    "type": "Feature",
-                    "properties": {
-                        "id": 4,
-                        "Sozlesme": "tr-12-33",
-                        "Kiraci": "Umut Tor",
-                        "Bolge": 1,
-                        "AcıkAlan": 12,
-                        "KapalıAlan": 323,
-                        "KiraBedel": 44444,
-                        "KullanımA": "lostra",
-                        "AdaParsel": "100/5",
-                        "il": "Istanbul",
-                        "ilce": "qwewqe",
-                        "YerT_T": "2018-06-16",
-                        "Sozlesme_t": "2018-06-19",
-                        "Sozlesme_b": "2025-06-13",
-                        "Tahakkuk": "2022-06-07",
-                        "Odeme": "2022-06-08",
-                        "Parsel_d": 2
-                    },
-                    "geometry": {
-                        "type": "MultiPolygon",
-                        "coordinates": [
-                            [
-                                [
-                                    [29.04915799049617, 40.978711014916563],
-                                    [29.049290967125177, 40.978643359980289],
-                                    [29.049259168366074, 40.978590981917471],
-                                    [29.04910884695936, 40.97864990723523],
-                                    [29.04915799049617, 40.978711014916563]
-                                ]
-                            ]
-                        ]
-                    }
-                },
-                {
-                    "type": "Feature",
-                    "properties": {
-                        "id": 5,
-                        "Sozlesme": "rtr545",
-                        "Kiraci": "Haydar",
-                        "Bolge": 1,
-                        "AcıkAlan": 34,
-                        "KapalıAlan": 43,
-                        "KiraBedel": 333,
-                        "KullanımA": "cay",
-                        "AdaParsel": "100/6",
-                        "il": "Istanbul",
-                        "ilce": "Kadıköy",
-                        "YerT_T": "2021-12-16",
-                        "Sozlesme_t": "2021-06-13",
-                        "Sozlesme_b": "2025-06-13",
-                        "Tahakkuk": "2022-06-14",
-                        "Odeme": null,
-                        "Parsel_d": 2
-                    },
-                    "geometry": {
-                        "type": "MultiPolygon",
-                        "coordinates": [
-                            [
-                                [
-                                    [29.029902396456535, 40.999687245141985],
-                                    [29.030032482289261, 40.999667609641044],
-                                    [29.029931304419364, 40.999388348550085],
-                                    [29.029833017345741, 40.999425437981856],
-                                    [29.029902396456535, 40.999687245141985]
-                                ]
-                            ]
-                        ]
-                    }
-                },
-                {
-                    "type": "Feature",
-                    "properties": {
-                        "id": 6,
-                        "Sozlesme": "errr",
-                        "Kiraci": "Mahmut",
-                        "Bolge": 6,
-                        "AcıkAlan": 22,
-                        "KapalıAlan": 22,
-                        "KiraBedel": 600,
-                        "KullanımA": "12",
-                        "AdaParsel": "233/1",
-                        "il": "Adana",
-                        "ilce": "Seyhan",
-                        "YerT_T": "2022-06-09",
-                        "Sozlesme_t": "2022-06-16",
-                        "Sozlesme_b": "2022-06-15",
-                        "Tahakkuk": "2022-06-23",
-                        "Odeme": "2022-06-14",
-                        "Parsel_d": 2
-                    },
-                    "geometry": {
-                        "type": "MultiPolygon",
-                        "coordinates": [
-                            [
-                                [
-                                    [35.317664718755317, 37.003568460269292],
-                                    [35.318017395901819, 37.003637717763944],
-                                    [35.318040522272078, 37.003559225931902],
-                                    [35.317679172736739, 37.003489968365727],
-                                    [35.317664718755317, 37.003568460269292]
-                                ]
-                            ]
-                        ]
-                    }
-                }
-            ]
-        }
-        map_16d19f0c4cb02d0360d2d91f78fb101a.panTo(new L.LatLng(39.936347636391929, 32.843433625716969));
-
-        myjsondata.features.forEach(element => {
-            console.log(parseFloat(Date.parse(element.properties.Odeme) - Date.parse((element
-                .properties.Tahakkuk))) / (1000 * 60 * 60 * 24))
-            var mylatlon = []
-            element.geometry.coordinates[0][0].forEach(element2 => {
-                mylatlon.push([element2[1], element2[0]])
-            });
-            console.log(mylatlon)
-
-            if (parseFloat(Date.parse(element.properties.Odeme) - Date.parse((element.properties
-                    .Tahakkuk))) / (1000 * 60 * 60 * 24) <= 7) {
-                let obj = {};
-                obj['color'] = "blue";
-                obj['weight'] = 1;
-                var poly = L.polygon(mylatlon, obj).addTo(map_16d19f0c4cb02d0360d2d91f78fb101a)
-                poly.bindPopup(element.properties.Odeme)
-            } else {
-                let obj = {};
-                obj['color'] = "red";
-                var poly = L.polygon(mylatlon, obj).addTo(map_16d19f0c4cb02d0360d2d91f78fb101a)
-                poly.bindPopup(element.properties.Odeme)
-            }
-
-        });
-
-        console.log(myjsondata.features["coordinates"])
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
