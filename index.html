@@ -43,8 +43,11 @@
     <script src="./js/kriging.js"></script>
     <script src="./js/proj4.js"></script>
     <script src="./js/fontawesome.js"></script>
-    <script src="./js/firebase-app.js"></script>
-    <script src="./js/firebase-database.min.js"></script>
+ 
+    <script type="module" src="./js/main.js"></script>
+
+    
+
     <script type="text/javascript" src="./o3dv/o3dv.min.js"></script>
     <script type="text/javascript">
         // Set the external libraries location to the
@@ -1077,6 +1080,7 @@
 
 
 </body>
+
 <script>
     /*
      *   This content is licensed according to the W3C Software License at
@@ -1109,8 +1113,11 @@
         measurementId: "G-G06PGHE21K"
     };
 
+   
     // Initialize Firebase
     const app = initializeApp(firebaseConfig);
+
+    
     // const analytics = getAnalytics(app);
     const database = getDatabase(app);
 

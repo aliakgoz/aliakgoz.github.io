@@ -1,4 +1,4 @@
-// import { getApp, _getProvider, _registerComponent, registerVersion, SDK_VERSION as SDK_VERSION$1 } from 'https://www.gstatic.com/firebasejs/9.9.0/firebase-app.js';
+import { getApp, _getProvider, _registerComponent, registerVersion, SDK_VERSION as SDK_VERSION$1 } from 'https://www.gstatic.com/firebasejs/9.9.0/firebase-app.js';
 
 /**
  * @license
@@ -31,7 +31,7 @@ const CONSTANTS = {
     /**
      * Firebase SDK Version
      */
-    SDK_VERSIONa: '${JSCORE_VERSION}'
+    SDK_VERSION: '${JSCORE_VERSION}'
 };
 
 /**
@@ -63,7 +63,7 @@ const assert = function (assertion, message) {
  */
 const assertionError = function (message) {
     return new Error('Firebase Database (' +
-        CONSTANTS.SDK_VERSIONa +
+        CONSTANTS.SDK_VERSION +
         ') INTERNAL ASSERT FAILED: ' +
         message);
 };
@@ -84,7 +84,7 @@ const assertionError = function (message) {
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-const stringToByteArray$1a = function (str) {
+const stringToByteArray$1 = function (str) {
     // TODO(user): Use native implementations if/when available
     const out = [];
     let p = 0;
@@ -121,7 +121,7 @@ const stringToByteArray$1a = function (str) {
  * @param bytes Array of numbers representing characters.
  * @return Stringification of the array.
  */
-const byteArrayToStringa = function (bytes) {
+const byteArrayToString = function (bytes) {
     // TODO(user): Use native implementations if/when available
     const out = [];
     let pos = 0, c = 0;
@@ -155,7 +155,7 @@ const byteArrayToStringa = function (bytes) {
 // We define it as an object literal instead of a class because a class compiled down to es5 can't
 // be treeshaked. https://github.com/rollup/rollup/issues/1691
 // Static lookup maps, lazily populated by init_()
-const base64a = {
+const base64 = {
     /**
      * Maps bytes to characters.
      */
@@ -251,7 +251,7 @@ const base64a = {
         if (this.HAS_NATIVE_SUPPORT && !webSafe) {
             return btoa(input);
         }
-        return this.encodeByteArray(stringToByteArray$1a(input), webSafe);
+        return this.encodeByteArray(stringToByteArray$1(input), webSafe);
     },
     /**
      * Base64-decode a string.
@@ -267,7 +267,7 @@ const base64a = {
         if (this.HAS_NATIVE_SUPPORT && !webSafe) {
             return atob(input);
         }
-        return byteArrayToStringa(this.decodeStringToByteArray(input, webSafe));
+        return byteArrayToString(this.decodeStringToByteArray(input, webSafe));
     },
     /**
      * Base64-decode a string.
@@ -346,17 +346,17 @@ const base64a = {
 /**
  * URL-safe base64 encoding
  */
-const base64Encodea = function (str) {
-    const utf8Bytes = stringToByteArray$1a(str);
-    return base64a.encodeByteArray(utf8Bytes, true);
+const base64Encode = function (str) {
+    const utf8Bytes = stringToByteArray$1(str);
+    return base64.encodeByteArray(utf8Bytes, true);
 };
 /**
  * URL-safe base64 encoding (without "." padding in the end).
  * e.g. Used in JSON Web Token (JWT) parts.
  */
-const base64urlEncodeWithoutPaddinga = function (str) {
+const base64urlEncodeWithoutPadding = function (str) {
     // Use base64url encoding and remove padding in the end (dot characters).
-    return base64Encodea(str).replace(/\./g, '');
+    return base64Encode(str).replace(/\./g, '');
 };
 /**
  * URL-safe base64 decoding
@@ -369,7 +369,7 @@ const base64urlEncodeWithoutPaddinga = function (str) {
  */
 const base64Decode = function (str) {
     try {
-        return base64a.decodeString(str, true);
+        return base64.decodeString(str, true);
     }
     catch (e) {
         console.error('base64Decode failed: ', e);
@@ -465,7 +465,7 @@ function isValidKey$1(key) {
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-class Deferreda {
+class Deferred {
     constructor() {
         this.reject = () => { };
         this.resolve = () => { };
@@ -544,8 +544,8 @@ function createMockUserToken(token, projectId) {
     // Unsecured JWTs use the empty string as a signature.
     const signature = '';
     return [
-        base64urlEncodeWithoutPaddinga(JSON.stringify(header)),
-        base64urlEncodeWithoutPaddinga(JSON.stringify(payload)),
+        base64urlEncodeWithoutPadding(JSON.stringify(header)),
+        base64urlEncodeWithoutPadding(JSON.stringify(payload)),
         signature
     ].join('.');
 }
@@ -1173,7 +1173,7 @@ function getModularInstance(service) {
 /**
  * Component for service name T, e.g. `auth`, `auth-internal`
  */
-class Componenta {
+class Component {
     /**
      *
      * @param name The public service name, e.g. app, auth, firestore, database
@@ -1246,7 +1246,7 @@ var LogLevel;
     LogLevel[LogLevel["ERROR"] = 4] = "ERROR";
     LogLevel[LogLevel["SILENT"] = 5] = "SILENT";
 })(LogLevel || (LogLevel = {}));
-const levelStringToEnuma = {
+const levelStringToEnum = {
     'debug': LogLevel.DEBUG,
     'verbose': LogLevel.VERBOSE,
     'info': LogLevel.INFO,
@@ -1257,14 +1257,14 @@ const levelStringToEnuma = {
 /**
  * The default log level
  */
-const defaultLogLevela = LogLevel.INFO;
+const defaultLogLevel = LogLevel.INFO;
 /**
  * By default, `console.debug` is not displayed in the developer console (in
  * chrome). To avoid forcing users to have to opt-in to these logs twice
  * (i.e. once for firebase, and once in the console), we are sending `DEBUG`
  * logs to the `console.log` function.
  */
-const ConsoleMethoda = {
+const ConsoleMethod = {
     [LogLevel.DEBUG]: 'log',
     [LogLevel.VERBOSE]: 'log',
     [LogLevel.INFO]: 'info',
@@ -1276,12 +1276,12 @@ const ConsoleMethoda = {
  * messages on to their corresponding console counterparts (if the log method
  * is supported by the current log level)
  */
-const defaultLogHandlera = (instance, logType, ...args) => {
+const defaultLogHandler = (instance, logType, ...args) => {
     if (logType < instance.logLevel) {
         return;
     }
     const now = new Date().toISOString();
-    const method = ConsoleMethoda[logType];
+    const method = ConsoleMethod[logType];
     if (method) {
         console[method](`[${now}]  ${instance.name}:`, ...args);
     }
@@ -1289,7 +1289,7 @@ const defaultLogHandlera = (instance, logType, ...args) => {
         throw new Error(`Attempted to log a message with an invalid logType (value: ${logType})`);
     }
 };
-class Loggera {
+class Logger {
     /**
      * Gives you an instance of a Logger to capture messages according to
      * Firebase's logging scheme.
@@ -1301,12 +1301,12 @@ class Loggera {
         /**
          * The log level of the given Logger instance.
          */
-        this._logLevel = defaultLogLevela;
+        this._logLevel = defaultLogLevel;
         /**
          * The main (internal) log handler for the Logger instance.
          * Can be set to a new function in internal package code but not by user.
          */
-        this._logHandler = defaultLogHandlera;
+        this._logHandler = defaultLogHandler;
         /**
          * The optional, additional, user-defined log handler for the Logger instance.
          */
@@ -1323,7 +1323,7 @@ class Loggera {
     }
     // Workaround for setter/getter having to be the same type.
     setLogLevel(val) {
-        this._logLevel = typeof val === 'string' ? levelStringToEnuma[val] : val;
+        this._logLevel = typeof val === 'string' ? levelStringToEnum[val] : val;
     }
     get logHandler() {
         return this._logHandler;
@@ -1367,7 +1367,7 @@ class Loggera {
 }
 
 const name = "@firebase/database";
-const versiona = "0.13.3";
+const version = "0.13.3";
 
 /**
  * @license
@@ -1386,13 +1386,13 @@ const versiona = "0.13.3";
  * limitations under the License.
  */
 /** The semver (www.semver.org) version of the SDK. */
-let SDK_VERSIONa = '';
+let SDK_VERSION = '';
 /**
  * SDK_VERSION should be set before any database instance is created
  * @internal
  */
 function setSDKVersion(version) {
-    SDK_VERSIONa = version;
+    SDK_VERSION = version;
 }
 
 /**
@@ -1572,7 +1572,7 @@ const SessionStorage = createStoragefor('sessionStorage');
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-const logClient = new Loggera('@firebase/database');
+const logClient = new Logger('@firebase/database');
 /**
  * Returns a locally-unique ID (generated by just incrementing up from 0 each time its called).
  */
@@ -1592,7 +1592,7 @@ const sha1 = function (str) {
     const sha1 = new Sha1();
     sha1.update(utf8Bytes);
     const sha1Bytes = sha1.digest();
-    return base64a.encodeByteArray(sha1Bytes);
+    return base64.encodeByteArray(sha1Bytes);
 };
 const buildLogMessage_ = function (...varArgs) {
     let message = '';
@@ -1618,7 +1618,7 @@ const buildLogMessage_ = function (...varArgs) {
 /**
  * Use this for all debug messages in Firebase.
  */
-let loggera = null;
+let logger = null;
 /**
  * Flag to check for log availability on first log message
  */
@@ -1632,29 +1632,29 @@ const enableLogging$1 = function (logger_, persistent) {
     assert(!persistent || logger_ === true || logger_ === false, "Can't turn on custom loggers persistently.");
     if (logger_ === true) {
         logClient.logLevel = LogLevel.VERBOSE;
-        loggera = logClient.log.bind(logClient);
+        logger = logClient.log.bind(logClient);
         if (persistent) {
             SessionStorage.set('logging_enabled', true);
         }
     }
     else if (typeof logger_ === 'function') {
-        loggera = logger_;
+        logger = logger_;
     }
     else {
-        loggera = null;
+        logger = null;
         SessionStorage.remove('logging_enabled');
     }
 };
 const log = function (...varArgs) {
     if (firstLog_ === true) {
         firstLog_ = false;
-        if (loggera === null && SessionStorage.get('logging_enabled') === true) {
+        if (logger === null && SessionStorage.get('logging_enabled') === true) {
             enableLogging$1(true);
         }
     }
-    if (loggera) {
+    if (logger) {
         const message = buildLogMessage_.apply(null, varArgs);
-        loggera(message);
+        logger(message);
     }
 };
 const logWrapper = function (prefix) {
@@ -2770,7 +2770,7 @@ class BrowserPollConnection {
         this.bytesSent += dataStr.length;
         this.stats_.incrementCounter('bytes_sent', dataStr.length);
         //first, lets get the base64-encoded data
-        const base64data = base64Encodea(dataStr);
+        const base64data = base64Encode(dataStr);
         //We can only fit a certain amount in each URL, so we need to split this request
         //up into multiple pieces if it doesn't fit in one request.
         const dataSegs = splitStringBySize(base64data, MAX_PAYLOAD_SIZE);
@@ -3814,7 +3814,7 @@ class Connection {
      */
     onHandshake_(handshake) {
         const timestamp = handshake.ts;
-        const versiona = handshake.v;
+        const version = handshake.v;
         const host = handshake.h;
         this.sessionId = handshake.s;
         this.repoInfo_.host = host;
@@ -4577,7 +4577,7 @@ class PersistentConnection extends ServerActions {
     }
     get(query) {
         this.initConnection_();
-        const deferreda = new Deferreda();
+        const deferred = new Deferred();
         const request = {
             p: query._path.toString(),
             q: query._queryObject
@@ -4588,10 +4588,10 @@ class PersistentConnection extends ServerActions {
             onComplete: (message) => {
                 const payload = message['d'];
                 if (message['s'] === 'ok') {
-                    deferreda.resolve(payload);
+                    deferred.resolve(payload);
                 }
                 else {
-                    deferreda.reject(payload);
+                    deferred.reject(payload);
                 }
             }
         };
@@ -4601,7 +4601,7 @@ class PersistentConnection extends ServerActions {
         if (this.connected_) {
             this.sendGet_(index);
         }
-        return deferreda.promise;
+        return deferred.promise;
     }
     listen(query, currentHashFn, tag, onComplete) {
         this.initConnection_();
@@ -5267,7 +5267,7 @@ class PersistentConnection extends ServerActions {
     sendConnectStats_() {
         const stats = {};
         let clientName = 'js';
-        stats['sdk.' + clientName + '.' + SDK_VERSIONa.replace(/\./g, '-')] = 1;
+        stats['sdk.' + clientName + '.' + SDK_VERSION.replace(/\./g, '-')] = 1;
         if (isMobileCordova()) {
             stats['framework.cordova'] = 1;
         }
@@ -8285,7 +8285,7 @@ class ReadonlyRestClient extends ServerActions {
     get(query) {
         const queryStringParameters = queryParamsToRestQueryStringParameters(query._queryParams);
         const pathString = query._path.toString();
-        const deferreda = new Deferreda();
+        const deferred = new Deferred();
         this.restRequest_(pathString + '.json', queryStringParameters, (error, result) => {
             let data = result;
             if (error === 404) {
@@ -8296,13 +8296,13 @@ class ReadonlyRestClient extends ServerActions {
                 this.onDataUpdate_(pathString, data, 
                 /*isMerge=*/ false, 
                 /*tag=*/ null);
-                deferreda.resolve(data);
+                deferred.resolve(data);
             }
             else {
-                deferreda.reject(new Error(data));
+                deferred.reject(new Error(data));
             }
         });
-        return deferreda.promise;
+        return deferred.promise;
     }
     /** @inheritDoc */
     refreshAuthToken(token) {
@@ -12286,7 +12286,7 @@ function eventListRaise(eventList) {
         if (eventData !== null) {
             eventList.events[i] = null;
             const eventFn = eventData.getEventRunner();
-            if (loggera) {
+            if (logger) {
                 log('event: ' + eventData.toString());
             }
             exceptionGuard(eventFn);
@@ -13506,9 +13506,9 @@ class OnDisconnect {
      * @returns Resolves when synchronization to the server is complete.
      */
     cancel() {
-        const deferreda = new Deferreda();
-        repoOnDisconnectCancel(this._repo, this._path, deferreda.wrapCallback(() => { }));
-        return deferreda.promise;
+        const deferred = new Deferred();
+        repoOnDisconnectCancel(this._repo, this._path, deferred.wrapCallback(() => { }));
+        return deferred.promise;
     }
     /**
      * Ensures the data at this location is deleted when the client is disconnected
@@ -13518,9 +13518,9 @@ class OnDisconnect {
      */
     remove() {
         validateWritablePath('OnDisconnect.remove', this._path);
-        const deferreda = new Deferreda();
-        repoOnDisconnectSet(this._repo, this._path, null, deferreda.wrapCallback(() => { }));
-        return deferreda.promise;
+        const deferred = new Deferred();
+        repoOnDisconnectSet(this._repo, this._path, null, deferred.wrapCallback(() => { }));
+        return deferred.promise;
     }
     /**
      * Ensures the data at this location is set to the specified value when the
@@ -13544,9 +13544,9 @@ class OnDisconnect {
     set(value) {
         validateWritablePath('OnDisconnect.set', this._path);
         validateFirebaseDataArg('OnDisconnect.set', value, this._path, false);
-        const deferreda = new Deferreda();
-        repoOnDisconnectSet(this._repo, this._path, value, deferreda.wrapCallback(() => { }));
-        return deferreda.promise;
+        const deferred = new Deferred();
+        repoOnDisconnectSet(this._repo, this._path, value, deferred.wrapCallback(() => { }));
+        return deferred.promise;
     }
     /**
      * Ensures the data at this location is set to the specified value and priority
@@ -13562,9 +13562,9 @@ class OnDisconnect {
         validateWritablePath('OnDisconnect.setWithPriority', this._path);
         validateFirebaseDataArg('OnDisconnect.setWithPriority', value, this._path, false);
         validatePriority('OnDisconnect.setWithPriority', priority, false);
-        const deferreda = new Deferreda();
-        repoOnDisconnectSetWithPriority(this._repo, this._path, value, priority, deferreda.wrapCallback(() => { }));
-        return deferreda.promise;
+        const deferred = new Deferred();
+        repoOnDisconnectSetWithPriority(this._repo, this._path, value, priority, deferred.wrapCallback(() => { }));
+        return deferred.promise;
     }
     /**
      * Writes multiple values at this location when the client is disconnected (due
@@ -13585,9 +13585,9 @@ class OnDisconnect {
     update(values) {
         validateWritablePath('OnDisconnect.update', this._path);
         validateFirebaseMergeDataArg('OnDisconnect.update', values, this._path, false);
-        const deferreda = new Deferreda();
-        repoOnDisconnectUpdate(this._repo, this._path, values, deferreda.wrapCallback(() => { }));
-        return deferreda.promise;
+        const deferred = new Deferred();
+        repoOnDisconnectUpdate(this._repo, this._path, values, deferred.wrapCallback(() => { }));
+        return deferred.promise;
     }
 }
 
@@ -14115,10 +14115,10 @@ function set(ref, value) {
     ref = getModularInstance(ref);
     validateWritablePath('set', ref._path);
     validateFirebaseDataArg('set', value, ref._path, false);
-    const deferreda = new Deferreda();
+    const deferred = new Deferred();
     repoSetWithPriority(ref._repo, ref._path, value, 
-    /*priority=*/ null, deferreda.wrapCallback(() => { }));
-    return deferreda.promise;
+    /*priority=*/ null, deferred.wrapCallback(() => { }));
+    return deferred.promise;
 }
 /**
  * Sets a priority for the data at this Database location.
@@ -14136,9 +14136,9 @@ function setPriority(ref, priority) {
     ref = getModularInstance(ref);
     validateWritablePath('setPriority', ref._path);
     validatePriority('setPriority', priority, false);
-    const deferreda = new Deferreda();
-    repoSetWithPriority(ref._repo, pathChild(ref._path, '.priority'), priority, null, deferreda.wrapCallback(() => { }));
-    return deferreda.promise;
+    const deferred = new Deferred();
+    repoSetWithPriority(ref._repo, pathChild(ref._path, '.priority'), priority, null, deferred.wrapCallback(() => { }));
+    return deferred.promise;
 }
 /**
  * Writes data the Database location. Like `set()` but also specifies the
@@ -14162,9 +14162,9 @@ function setWithPriority(ref, value, priority) {
     if (ref.key === '.length' || ref.key === '.keys') {
         throw 'setWithPriority failed: ' + ref.key + ' is a read-only object.';
     }
-    const deferreda = new Deferreda();
-    repoSetWithPriority(ref._repo, ref._path, value, priority, deferreda.wrapCallback(() => { }));
-    return deferreda.promise;
+    const deferred = new Deferred();
+    repoSetWithPriority(ref._repo, ref._path, value, priority, deferred.wrapCallback(() => { }));
+    return deferred.promise;
 }
 /**
  * Writes multiple values to the Database at once.
@@ -14203,9 +14203,9 @@ function setWithPriority(ref, value, priority) {
  */
 function update(ref, values) {
     validateFirebaseMergeDataArg('update', values, ref._path, false);
-    const deferreda = new Deferreda();
-    repoUpdate(ref._repo, ref._path, values, deferreda.wrapCallback(() => { }));
-    return deferreda.promise;
+    const deferred = new Deferred();
+    repoUpdate(ref._repo, ref._path, values, deferred.wrapCallback(() => { }));
+    return deferred.promise;
 }
 /**
  * Gets the most up-to-date result for this query.
@@ -15107,8 +15107,8 @@ function goOnline(db) {
     db._checkNotDeleted('goOnline');
     repoResume(db._repo);
 }
-function enableLogging(loggera, persistent) {
-    enableLogging$1(loggera, persistent);
+function enableLogging(logger, persistent) {
+    enableLogging$1(logger, persistent);
 }
 
 /**
@@ -15128,16 +15128,16 @@ function enableLogging(loggera, persistent) {
  * limitations under the License.
  */
 function registerDatabase(variant) {
-    setSDKVersion(SDK_VERSIONa);
-    _registerComponent(new Componenta('database', (container, { instanceIdentifier: url }) => {
+    setSDKVersion(SDK_VERSION$1);
+    _registerComponent(new Component('database', (container, { instanceIdentifier: url }) => {
         const app = container.getProvider('app').getImmediate();
         const authProvider = container.getProvider('auth-internal');
         const appCheckProvider = container.getProvider('app-check-internal');
         return repoManagerDatabaseFromApp(app, authProvider, appCheckProvider, url);
     }, "PUBLIC" /* PUBLIC */).setMultipleInstances(true));
-    registerVersion(name, versiona, variant);
+    registerVersion(name, version, variant);
     // BUILD_TARGET will be replaced by values like esm5, esm2017, cjs5, etc during the compilation
-    registerVersion(name, versiona, 'esm2017');
+    registerVersion(name, version, 'esm2017');
 }
 
 /**
@@ -15263,21 +15263,21 @@ transactionUpdate, options) {
         throw ('Reference.transaction failed: ' + ref.key + ' is a read-only object.');
     }
     const applyLocally = (_a = options === null || options === void 0 ? void 0 : options.applyLocally) !== null && _a !== void 0 ? _a : true;
-    const deferreda = new Deferreda();
+    const deferred = new Deferred();
     const promiseComplete = (error, committed, node) => {
         let dataSnapshot = null;
         if (error) {
-            deferreda.reject(error);
+            deferred.reject(error);
         }
         else {
             dataSnapshot = new DataSnapshot(node, new ReferenceImpl(ref._repo, ref._path), PRIORITY_INDEX);
-            deferreda.resolve(new TransactionResult(committed, dataSnapshot));
+            deferred.resolve(new TransactionResult(committed, dataSnapshot));
         }
     };
     // Add a watch to make sure we get server updates.
     const unwatcher = onValue(ref, () => { });
     repoStartTransaction(ref._repo, ref._path, transactionUpdate, promiseComplete, unwatcher, applyLocally);
-    return deferreda.promise;
+    return deferred.promise;
 }
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 PersistentConnection.prototype.simpleListen = function (pathString, onComplete) {
@@ -15317,6 +15317,6 @@ const forceRestClient = function (forceRestClient) {
  */
 registerDatabase();
 
-// export { DataSnapshot, Database, OnDisconnect, QueryConstraint, TransactionResult, QueryImpl as _QueryImpl, QueryParams as _QueryParams, ReferenceImpl as _ReferenceImpl, forceRestClient as _TEST_ACCESS_forceRestClient, hijackHash as _TEST_ACCESS_hijackHash, repoManagerDatabaseFromApp as _repoManagerDatabaseFromApp, setSDKVersion as _setSDKVersion, validatePathString as _validatePathString, validateWritablePath as _validateWritablePath, child, connectDatabaseEmulator, enableLogging, endAt, endBefore, equalTo, forceLongPolling, forceWebSockets, get, getDatabase, goOffline, goOnline, increment, limitToFirst, limitToLast, off, onChildAdded, onChildChanged, onChildMoved, onChildRemoved, onDisconnect, onValue, orderByChild, orderByKey, orderByPriority, orderByValue, push, query, ref, refFromURL, remove, runTransaction, serverTimestamp, set, setPriority, setWithPriority, startAfter, startAt, update };
+export { DataSnapshot, Database, OnDisconnect, QueryConstraint, TransactionResult, QueryImpl as _QueryImpl, QueryParams as _QueryParams, ReferenceImpl as _ReferenceImpl, forceRestClient as _TEST_ACCESS_forceRestClient, hijackHash as _TEST_ACCESS_hijackHash, repoManagerDatabaseFromApp as _repoManagerDatabaseFromApp, setSDKVersion as _setSDKVersion, validatePathString as _validatePathString, validateWritablePath as _validateWritablePath, child, connectDatabaseEmulator, enableLogging, endAt, endBefore, equalTo, forceLongPolling, forceWebSockets, get, getDatabase, goOffline, goOnline, increment, limitToFirst, limitToLast, off, onChildAdded, onChildChanged, onChildMoved, onChildRemoved, onDisconnect, onValue, orderByChild, orderByKey, orderByPriority, orderByValue, push, query, ref, refFromURL, remove, runTransaction, serverTimestamp, set, setPriority, setWithPriority, startAfter, startAt, update };
 
 //# sourceMappingURL=firebase-database.js.map
