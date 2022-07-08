@@ -15319,4 +15319,4 @@ registerDatabase();
 
 export { DataSnapshot, Database, OnDisconnect, QueryConstraint, TransactionResult, QueryImpl as _QueryImpl, QueryParams as _QueryParams, ReferenceImpl as _ReferenceImpl, forceRestClient as _TEST_ACCESS_forceRestClient, hijackHash as _TEST_ACCESS_hijackHash, repoManagerDatabaseFromApp as _repoManagerDatabaseFromApp, setSDKVersion as _setSDKVersion, validatePathString as _validatePathString, validateWritablePath as _validateWritablePath, child, connectDatabaseEmulator, enableLogging, endAt, endBefore, equalTo, forceLongPolling, forceWebSockets, get, getDatabase, goOffline, goOnline, increment, limitToFirst, limitToLast, off, onChildAdded, onChildChanged, onChildMoved, onChildRemoved, onDisconnect, onValue, orderByChild, orderByKey, orderByPriority, orderByValue, push, query, ref, refFromURL, remove, runTransaction, serverTimestamp, set, setPriority, setWithPriority, startAfter, startAt, update };
 
-//# sourceMappingURL=firebase-database.js.map
+// # sourceMappingURL=firebase-database.js.map
