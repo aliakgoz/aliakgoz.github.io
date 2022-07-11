@@ -617,8 +617,8 @@
                             </span>
                         </div>
                         <div class="col">
-                            <div class="online_3d_viewer" style="height: 600px;" model="./models/drone.obj">
-                            </div>
+                            <!-- <div class="online_3d_viewer" style="height: 600px;" model="./models/drone.obj">
+                            </div> -->
                         </div>
 
                     </div>
@@ -886,6 +886,7 @@
                 if (kikindex > myrandominput && kiknetkey[0].includes("EW1") && onedataonly) {
                     
                     ew1 = kiknetkey[1];
+                    console.log(kiknetkey);
                     ew1ok = true;
                 }
                 if (kikindex > myrandominput && kiknetkey[0].includes("EW2") && ew1ok && onedataonly) {
