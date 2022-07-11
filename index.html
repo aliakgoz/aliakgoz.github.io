@@ -9,45 +9,19 @@
         L_DISABLE_3D = false;
     </script>
 
-    <style>
-        /* html,
-        body {
-            width: 100%;
-            height: 100%;
-            margin: 0;
-            padding: 0;
-        } */
-    </style>
-    <style>
-        /* #map {
-            display: flex;
-            position: relative;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            bottom: 0;
-            right: 0;
-            left: 0;
-        } */
-    </style>
+
     <script src="./js/leaflet.js"></script>
     <script src="./js/jquery-3.6.0.min.js"></script>
     <script src="./js/bootstrap.min.js"></script>
-    <script src="./js/leaflet.awesome-markers.js"></script>
     <script src="./js/resizable.js"></script>
-    <script src="./js/sortable-table.js"></script>
-    <script src="./js/slider-multithumb.js"></script>
     <script src="./js/mycmaps.js"></script>
     <script src="./js/select-only.js"></script>
     <script src="./js/plotly.js"></script>
     <script src="./js/kriging.js"></script>
     <script src="./js/proj4.js"></script>
     <script src="./js/fontawesome.js"></script>
-    <!-- <script type="module" src="./js/firebase-app.js"></script>
-    <script type="module" src="./js/firebase-database.js"></script> -->
-
-
-    <!-- <script type="module" src="./js/main.js"></script> -->
+    <script src="./js/popper.js"></script>
+    <script src="./js/hdf5.js"></script>
 
 
 
@@ -61,12 +35,7 @@
         OV.Init3DViewerElements();
     </script>
 
-    <!-- <script src="./js/hexbin.js"></script>     -->
-    <!-- Load d3.js -->
-    <script src="https://d3js.org/d3.v4.js"></script>
-    <!-- <script src="https://d3js.org/d3.v6.js"></script> -->
-    <script src="https://d3js.org/d3-hexbin.v0.2.min.js"></script>
-    <script src="./js/leaflet-d3.js"></script>
+
 
     <link rel="stylesheet" href="./css/resizable-style.css" />
     <link rel="stylesheet" href="./css/leaflet.css" />
@@ -93,109 +62,6 @@
             left: 0.0%;
             top: 0.0%;
 
-        }
-
-        .hexbin-hexagon {
-            stroke: #000;
-            stroke-width: .5px;
-        }
-
-        .hexbin-container:hover .hexbin-hexagon {
-            transition: 200ms;
-            stroke: orange;
-            stroke-width: 1px;
-            stroke-opacity: 1;
-        }
-
-        .hexbin-tooltip {
-            padding: 8px;
-            border-radius: 4px;
-            border: 1px solid black;
-            background-color: white;
-        }
-
-        .tabs {
-            font-family: "lucida grande", sans-serif;
-        }
-
-        [role="tablist"] {
-            min-width: 250px;
-        }
-
-        [role="tab"],
-        [role="tab"]:focus,
-        [role="tab"]:hover {
-            position: relative;
-            z-index: 2;
-            top: 2px;
-            margin: 0;
-            margin-top: 4px;
-            padding: 3px 3px 4px;
-            border: 1px solid rgb(33 37 41);
-            border-bottom: 2px solid rgb(33 37 41);
-            border-radius: 5px 5px 0 0;
-            overflow: visible;
-            background: hsl(220deg 20% 94%);
-            outline: none;
-            font-weight: bold;
-            font-size: small;
-        }
-
-        [role="tab"][aria-selected="true"] {
-            color: hsl(220deg 20% 94%);
-            padding: 2px 2px 4px;
-            margin-top: 0;
-            border-width: 2px;
-            border-top-width: 6px;
-            border-radius: 5px 5px 0 0;
-            border: 1px solid hsl(220deg 20% 94%);
-            border-bottom-color: rgb(33 37 41);
-            background: rgb(33 37 41);
-
-        }
-
-        [role="tab"][aria-selected="false"] {
-            border-bottom: 1px solid rgb(33 37 41);
-
-        }
-
-        [role="tab"] span.focus {
-            display: inline-block;
-            margin: 2px;
-            padding: 4px 6px;
-        }
-
-        [role="tab"]:hover span.focus,
-        [role="tab"]:focus span.focus,
-        [role="tab"]:active span.focus {
-            padding: 2px 4px;
-            border: 2px solid rgba(117, 121, 126, 0.349);
-            border-radius: 3px;
-        }
-
-        [role="tabpanel"] {
-            padding: 5px;
-            border: 1px solid hsl(220deg 20% 94%);
-            border-radius: 0 5px 5px;
-            background: rgb(33 37 41);
-            min-height: 10em;
-            min-width: 250px;
-            overflow: auto;
-            font-size: small;
-            overflow-y: auto;
-            max-height: 90vh;
-        }
-
-        [role="tabpanel"].is-hidden {
-            display: none;
-            overflow: auto;
-            overflow-y: auto;
-            scroll-behavior: auto;
-        }
-
-        [role="tabpanel"] p {
-            margin: 0;
-            overflow: auto;
         }
 
         .profile-container {
@@ -319,8 +185,8 @@
             position: absolute;
             top: 0;
             left: 0;
-            
-           
+
+
         }
 
 
@@ -329,7 +195,7 @@
             height: 400px;
             border: 1px solid #444;
             background-color: rgba(0, 0, 0, 0.2);
-            
+
         }
     </style>
 
@@ -417,386 +283,9 @@
 
                     </ul>
                 </div>
-                <div class="tabs" hidden>
-
-                    <div role="tablist" aria-labelledby="tablist-1" class="automatic">
-                        <button id="tab-1" type="button" role="tab" aria-selected="true" aria-controls="tabpanel-1">
-                            <span class="focus">
-                                Veri
-                            </span>
-                        </button>
-                        <button id="tab-2" type="button" role="tab" aria-selected="false" aria-controls="tabpanel-2"
-                            tabindex="-1">
-                            <span class="focus">
-                                Analiz
-                            </span>
-                        </button>
-                        <button id="tab-3" type="button" role="tab" aria-selected="false" aria-controls="tabpanel-3"
-                            tabindex="-1">
-                            <span class="focus">
-                                Ayarlar
-                            </span>
-                        </button>
-                        <!-- <button id="tab-4" type="button" role="tab" aria-selected="false" aria-controls="tabpanel-4"
-                            tabindex="-1">
-                            <span class="focus">
-                                Peter Lange-Müller
-                            </span>
-                        </button> -->
-                    </div>
-                    <div id="tabpanel-1" role="tabpanel" tabindex="0" aria-labelledby="tab-1">
-                        <div class="text-center">
-                            <img class="center-block" src="./img/Resim1.png"
-                                style="background-color:  rgb(33 37 41); border: 0px; height: 80px;">
-
-                        </div>
-                        <a href="/"
-                            class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
-                            <!-- <svg class="bi me-2" width="40" height="24">
-                                <use xlink:href="#bootstrap"></use>
-                            </svg> -->
-
-
-                            <h3><a style="display: flex; justify-content: center; ">TENMAK NÜKEN</a></h3>
 
 
 
-                            <p style="display: flex; justify-content: center"><u>İHA Veri Analiz ve Haritalama
-                                    Sistemi</u></p>
-
-
-
-                        </a>
-                        <hr>
-                        <p style="padding: 4px;">Veri Bağlantısı</p>
-                        <!-- <hr> -->
-                        <div class="row g-3">
-                            <div class="col">
-                                <a style="display: flex; justify-content: center; padding: 4px;"
-                                    id="coordlatlng">LatLng(Lat,Long)</a>
-                            </div>
-
-                        </div>
-                        <div class="row g-3">
-                            <div class="col-sm-5">
-                                <div class="input-group mb-3">
-                                    <label class="input-group-text" for="baudrate_options"
-                                        style="font-size: 12px;">BAUD</label>
-                                    <select class="form-select" id="baudrate_options" style="font-size: 12px;">
-                                        <option value="57600" selected>57600</option>
-                                        <option value="9600">9600</option>
-                                        <option value="14400">14400</option>
-                                        <option value="19200">19200</option>
-                                        <option value="38400">38400</option>
-                                        <option value="74880">74880</option>
-                                        <option value="115200">115200</option>
-                                        <!-- <option value="8">Hot</option>
-                                        <option value="9">Hot</option>
-                                        <option value="10">Hot</option>
-                                        <option value="11">Hot</option> -->
-
-                                        <!-- <option value="2">Hot</option> -->
-                                        <!-- <option value="3">Three</option> -->
-                                    </select>
-                                </div>
-
-                            </div>
-                            <div class="col-sm">
-                                <!-- <input type="text" class="form-control" placeholder="State" aria-label="State"> -->
-                            </div>
-                            <div class="col-sm">
-                                <button type="button" class="btn btn-secondary" id="connectbutton"
-                                    style="width: 100px; font-size: small; padding: 4px;">
-                                    Bağlan
-                                </button>
-                            </div>
-                        </div>
-
-
-                        <div class="mb-3">
-                            <label for="gelenveriTextarea1" class="form-label">Gelen Veri</label>
-                            <textarea class="form-control" id="gelenveriTextarea1" rows="10"
-                                style="font-size: 12px; margin-bottom: 4px;"></textarea>
-                            <!-- <button type="button" class="btn btn-secondary" id="butOpenFile"
-                                style="width: 100px; font-size: small; padding: 4px;">
-                                Dosya Aç
-                            </button> -->
-                            <div class="row g-3">
-                                <div class="col-sm-5">
-                                    <div class="form-check form-switch">
-                                        <input class="form-check-input" type="checkbox" role="switch"
-                                            id="autoscrollCheck" checked>
-                                        <label class="form-check-label" for="autoscrollCheck">Otomatik Kaydır</label>
-                                    </div>
-                                </div>
-                                <div class="col-sm">
-
-
-
-                                </div>
-                                <div class="col-sm">
-                                    <button type="button" class="btn btn-secondary" id="logkaydetbutton"
-                                        style="width: 100px; font-size: small; padding: 4px;">
-                                        Log Kaydet
-                                    </button>
-
-                                </div>
-
-
-
-                            </div>
-
-                            <hr>
-
-
-                            <!-- <abbr title="United States Dollars">
-                                  USD
-                                </abbr> -->
-                            <!-- 
-                            <label id="combo1-label" class="combo-label">
-                                Select Colormap
-                            </label>
-                            <div class="combo js-select">
-                                <div aria-controls="listbox1" aria-expanded="false" aria-haspopup="listbox"
-                                    aria-labelledby="combo1-label" id="combo1" class="combo-input" role="combobox"
-                                    tabindex="0">
-                                </div>
-                                <div class="combo-menu" role="listbox" id="listbox1" aria-labelledby="combo1-label"
-                                    tabindex="-1">
-                                </div>
-                            </div> -->
-
-                            <div class="row g-3">
-                                <div class="col-sm">
-                                    <label for="carpanRange" id="carpanRangeLabel" class="form-label">L - P</label>
-                                    <input type="range" class="form-range" min="1" max="99" id="carpanRange">
-                                </div>
-                                <div class="col-sm">
-                                    <label class="form-label">Dedektör</label>
-                                    <div class="input-group mb-3">
-                                        <label class="input-group-text" for="markersetselect"
-                                            style="font-size: 12px;">Seçiniz</label>
-                                        <select class="form-select" id="markersetselect" style="font-size: 12px;">
-                                            <option value="toplam" selected>Toplam</option>
-                                            <option value="carpim">Çarpım</option>
-                                            <option value="expcarpim">Expçarpım</option>
-                                            <option value="lantan">Lantan</option>
-                                            <option value="plastik">Plastik</option>
-                                        </select>
-                                    </div>
-
-                                </div>
-                                <div class="col-sm">
-                                    <!-- <label for="expcarpimRange" id="expcarpimLabel" class="form-label">Çarpım
-                                        Katsayı</label>
-                                    <input type="range" class="form-range" min="33" max="99" id="expcarpimRange" value="33"> -->
-                                </div>
-                            </div>
-                            <hr>
-
-
-                            <div class="row g-3">
-                                <div class="col-sm-5">
-                                    <label class="form-label">Renk Haritası</label>
-                                    <div class="input-group mb-3">
-                                        <label class="input-group-text" for="colormapselecta"
-                                            style="font-size: 12px;">Seçiniz</label>
-                                        <select class="form-select" id="colormapselecta" style="font-size: 12px;">
-                                            <option value="RdYlBu">RdYlBu</option>
-                                            <option value="hot" selected>Hot</option>
-                                            <option value="viridis">viridis</option>
-                                            <option value="gist_heat">gist_heat</option>
-                                            <option value="Accent">Accent</option>
-                                            <option value="Blues">Blues</option>
-                                            <option value="BrBG">BrBG</option>
-                                            <option value="BuGn">BuGn</option>
-                                            <option value="BuPu">BuPu</option>
-                                            <option value="CMRmap">CMRmap</option>
-                                            <option value="Dark2">Dark2</option>
-                                            <option value="GnBu">GnBu</option>
-                                            <option value="Greens">Greens</option>
-                                            <option value="Greys">Greys</option>
-                                            <option value="OrRd">OrRd</option>
-                                            <option value="Oranges">Oranges</option>
-                                            <option value="PRGn">PRGn</option>
-                                            <option value="Paired">Paired</option>
-                                            <option value="Pastel1">Pastel1</option>
-                                            <option value="Pastel2">Pastel2</option>
-                                            <option value="PiYG">PiYG</option>
-                                            <option value="PuBu">PuBu</option>
-                                            <option value="PuBuGn">PuBuGn</option>
-                                            <option value="PuOr">PuOr</option>
-                                            <option value="PuRd">PuRd</option>
-                                            <option value="Purples">Purples</option>
-                                            <option value="RdBu">RdBu</option>
-                                            <option value="RdGy">RdGy</option>
-                                            <option value="RdPu">RdPu</option>
-                                            <option value="RdYlGn">RdYlGn</option>
-                                            <option value="Reds">Reds</option>
-                                            <option value="Set1">Set1</option>
-                                            <option value="Set2">Set2</option>
-                                            <option value="Set3">Set3</option>
-                                            <option value="Spectral">Spectral</option>
-                                            <option value="Wistia">Wistia</option>
-                                            <option value="YlGn">YlGn</option>
-                                            <option value="YlGnBu">YlGnBu</option>
-                                            <option value="YlOrBr">YlOrBr</option>
-                                            <option value="YlOrRd">YlOrRd</option>
-                                            <option value="afmhot">afmhot</option>
-                                            <option value="autumn">autumn</option>
-                                            <option value="binary">binary</option>
-                                            <option value="bone">bone</option>
-                                            <option value="brg">brg</option>
-                                            <option value="bwr">bwr</option>
-                                            <option value="cividis">cividis</option>
-                                            <option value="cool">cool</option>
-                                            <option value="coolwarm">coolwarm</option>
-                                            <option value="copper">copper</option>
-                                            <option value="cubehelix">cubehelix</option>
-                                            <option value="flag">flag</option>
-                                            <option value="gist_earth">gist_earth</option>
-                                            <option value="gist_gray">gist_gray</option>
-                                            <option value="gist_ncar">gist_ncar</option>
-                                            <option value="gist_rainbow">gist_rainbow</option>
-                                            <option value="gist_stern">gist_stern</option>
-                                            <option value="gist_yarg">gist_yarg</option>
-                                            <option value="gnuplot">gnuplot</option>
-                                            <option value="gnuplot2">gnuplot2</option>
-                                            <option value="gray">gray</option>
-                                            <option value="hsv">hsv</option>
-                                            <option value="inferno">inferno</option>
-                                            <option value="jet">jet</option>
-                                            <option value="magma">magma</option>
-                                            <option value="nipy_spectral">nipy_spectral</option>
-                                            <option value="ocean">ocean</option>
-                                            <option value="pink">pink</option>
-                                            <option value="plasma">plasma</option>
-                                            <option value="prism">prism</option>
-                                            <option value="rainbow">rainbow</option>
-                                            <option value="seismic">seismic</option>
-                                            <option value="spring">spring</option>
-                                            <option value="summer">summer</option>
-                                            <option value="tab10">tab10</option>
-                                            <option value="tab20">tab20</option>
-                                            <option value="tab20b">tab20b</option>
-                                            <option value="tab20c">tab20c</option>
-                                            <option value="terrain">terrain</option>
-                                            <option value="turbo">turbo</option>
-                                            <option value="twilight">twilight</option>
-                                            <option value="twilight_shifted">twilight_shifted</option>
-                                            <option value="winter">winter</option>
-
-                                            <!-- <option value="2">Hot</option> -->
-                                            <!-- <option value="3">Three</option> -->
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-sm">
-
-                                    <!-- <div class="slider-multithumb">
-                                <svg role="none" class="slider-group" width="360" height="60">
-                                    <g aria-hidden="true" class="rail">
-                                        <rect height="0" width="0"></rect>
-                                    </g>
-                                    <g aria-hidden="true" class="range">
-                                        <rect height="0" width="0"></rect>
-                                    </g>
-                                    <g class="minimum" role="slider" tabindex="0" aria-valuemin="0" aria-valuenow="100"
-                                        aria-valuemax="250" aria-label="Hotel Minimum Price in US dollars">
-                                        <text class="value">
-                                            0
-                                        </text>
-                                        <rect class="focus-ring" height="0" width="0"></rect>
-                                        <polygon class="thumb" points="0,0 0,0"></polygon>
-                                    </g>
-                                    <g class="maximum" role="slider" tabindex="0" aria-valuemin="100"
-                                        aria-valuenow="250" aria-valuemax="400"
-                                        aria-label="Hotel Maximum Price in US dollars">
-                                        <text class="value">
-                                            0
-                                        </text>
-                                        <rect class="focus-ring" height="0" width="0"></rect>
-                                        <polygon class="thumb" points="0,0 0,0"></polygon>
-                                    </g>
-                                </svg>
-                            </div> -->
-                                    <label for="colormapRange" class="form-label">Renk Haritası Aralığı</label>
-                                    <input type="range" class="form-range" min="0" max="255" id="colormapRange">
-                                </div>
-                                <div class="col-sm">
-                                    <!-- <input type="text" class="form-control" placeholder="Zip" aria-label="Zip"> -->
-                                    <label for="opacityRangeaa" class="form-label">Opaklık</label>
-                                    <input type="range" class="form-range" min="0" max="100" id="opacityRangeaa"
-                                        value="100">
-                                </div>
-                            </div>
-                            <hr>
-                            <!-- <button type="button" class="btn btn-secondary" id="soundbutton"
-                                style="width: 100px; font-size: small; padding: 4px;">
-                                Sound
-                            </button> -->
-
-
-                        </div>
-
-                    </div>
-                    <div id="tabpanel-2" role="tabpanel" tabindex="0" aria-labelledby="tab-2" class="is-hidden">
-
-
-                        <button type="button" class="btn btn-secondary" id="butOpenCsv"
-                            style="width: 100px; font-size: small; padding: 4px; margin-bottom: 6px;">
-                            Csv Aç
-                        </button>
-                        <!-- <table class="myCsvTable"></table> -->
-                        <table class="table table-dark table-striped table-hover" id="myCsvTable">
-
-                        </table>
-
-                        <div id='myHistogram1'>
-                            <!-- Plotly chart will be drawn inside this DIV -->
-                        </div>
-
-                        <button type="button" class="btn btn-secondary" id="lfdatamap"
-                            style="width: 100px; font-size: small; padding: 4px;">
-                            Lf data plot
-                        </button>
-
-                        <div id='my3Dplot'>
-                            <!-- Plotly chart will be drawn inside this DIV -->
-                        </div>
-
-                        <button type="button" class="btn btn-secondary" id="3Dplotbutton"
-                            style="width: 100px; font-size: small; padding: 4px;">
-                            3D plot
-                        </button>
-
-                        <button type="button" class="btn btn-secondary" id="hexbinbutton"
-                            style="width: 100px; font-size: small; padding: 4px;">
-                            Hexbin Plot (D3)
-                        </button>
-                        <div class="options">
-                            <label>Radius </label><input type="range" id="radius" value="25" min="10" max="50"><br>
-                            <label>Blur </label><input type="range" id="blur" value="15" min="10" max="50">
-                        </div>
-
-                        <!-- Create a div where the graph will take place -->
-                        <div id="my_dataviz"></div>
-
-
-
-
-                    </div>
-                    <div id="tabpanel-3" role="tabpanel" tabindex="0" aria-labelledby="tab-3" class="is-hidden">
-                        <p>
-
-                        </p>
-                    </div>
-                    <!-- <div id="tabpanel-4" role="tabpanel" tabindex="0" aria-labelledby="tab-4" class="is-hidden">
-                        <p>
-                            
-                        </p>
-                    </div> -->
-                </div>
 
 
             </div>
@@ -846,9 +335,9 @@
                             </span>
                         </div>
                         <div class="col" style="text-align: center;">
-                            <div class="container">
+                            <div class="container-fluid">
                                 <img class="avatar" src="./img/mobileapp.png" alt="profile picture"
-                                    style="background-position:center; border-radius: 10px 10px 10px 10px; height: 600px; ">
+                                    style="background-position:center; border-radius: 10px 10px 10px 10px;">
                             </div>
                             <sub class="project-tagline">Screenshots from mobile app, main screen and archive
                                 screen.</sub>
@@ -875,9 +364,10 @@
                         <div class="col text-wrap">
                             <b>Website for Database Interface</b> <br>
                             <span class="project-tagline ">When the mobile app sends data to the database it also
-                                automatically drops to the website and live data stream that comes from detector can be watched
+                                automatically drops to the website and live data stream that comes from detector can be
+                                watched
                                 directly from website.
-                                Radiation workers may use this website to keep track of their total absorbed dose 
+                                Radiation workers may use this website to keep track of their total absorbed dose
                                 and governmental organizations which may have responsibilities about may use it for
                                 radiation safety pusposes. <br>
                                 I used Angular to create this website, connected it to firebase database and used Plotly
@@ -886,10 +376,10 @@
                             </span>
                         </div>
                         <div class="col" style="text-align: center;">
-                            <div class="container">
+                            <div class="container-fluid">
                                 <!-- <img class="avatar" src="./img/webtenmakssd.PNG" alt="profile picture"
                                     style="background-position:center; border-radius: 10px 10px 10px 10px; width: 600px; "> -->
-                                <div id="plotlydaychart"></div>
+                                <div class="container-fluid" id="plotlydaychart"></div>
                                 <div class="row justify-content-md-center">
 
                                     <label class="input-group-text" for="deviceselect"
@@ -935,27 +425,171 @@
                     <div class="row" style="margin-top: 10px;">
                         <div class="col text-wrap">
                             <b>Ground Station Software for UAV Monitoring System</b> <br>
-                            <span class="project-tagline">When the mobile app sends data to the database it also
-                                automatically <br>
-                                drops to the website and live data stream that comes from detector can be watched
-                                directly from website. <br>
-                                Radiation workers may use this website to keep track of their total absorbed dose <br>
-                                and governmental organizations which may have responsibilities about may use it for
-                                radiation safety pusposes. <br>
-                                I used Angular to create this website, connected it to firebase database and used Plotly
-                                for live <br>
-                                and responsive data visualizations.
+                            <span class="project-tagline">Ground station, which receives data from RF module on USB,
+                                processes data and overlays it on the map live. Like this very page I developed ground
+                                station
+                                software using Javascript. Ground Station Software, which I still work on, has these
+                                features:
+                                <ul>
+                                    <li>
+                                        Online map using leaflet.js ( <a href="https://leafletjs.com/">leafletjs.com</a>
+                                        )
+                                    </li>
+                                    <li>
+                                        Direct com port (choose com port and baud rate from UI) connection ability
+                                    </li>
+                                    <li>
+                                        Live overlaying of incoming data, simultaneously coloring it with user preferred
+                                        colormap.
+                                        (I added all colormaps of matplotlib (thanks to <i
+                                            class="fa-brands fa-github"></i> <a
+                                            href="https://github.com/timothygebhard/js-colormaps">timothygebhard/js-colormaps</a>))
+                                    </li>
+                                    <li>
+                                        Save data to local log file.
+                                    </li>
+                                    <li>
+                                        Geospatial analysis of gathered data using Krigging method. (It works on Python
+                                        now)
+                                    </li>
+
+                                </ul>
 
                             </span>
                         </div>
 
                         <div class="col" style="text-align: center;">
-                            <div class="container-fluid">
+                            <div class="container-fluid ">
+                                <div class="row">
+                                    <div class="container-fluid">
+                                        <div class="mapbox">
+                                            <div class="container-fluid overlay asd"
+                                                id="map_16d19f0c4cb02d0360d2d91f78fb101a"
+                                                style="width: 600px; height: 400px;">
 
-                                <div class="container-fluid">
-                                    <div class="mapbox">
-                                        <div class="row-fluid overlay asd" id="map_16d19f0c4cb02d0360d2d91f78fb101a"
-                                            style="width: 600px; height: 400px;">
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="container-fluid">
+                                        <div class="row">
+                                            <div class="col">
+                                                <div class="row align-content-center">
+                                                    <button type="button" class="btn btn-outline-dark" id="logacbutton"
+                                                        style=" font-size: small; padding: 4px; ">
+                                                        Open Demo Log
+                                                    </button>
+                                                </div>
+                                                <div class="row">
+                                                    <div>
+                                                        <sub id="coordlatlon">LatLong( --- , --- )</sub>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col">
+                                                <label class="input-group-text" for="colormapselect"
+                                                    style="font-size: 12px;">Choose colormap</label>
+                                                <select class="form-select" id="colormapselect"
+                                                    style="font-size: 12px;">
+                                                    <option value="RdYlBu">RdYlBu</option>
+                                                    <option value="hot" selected>Hot</option>
+                                                    <option value="viridis">viridis</option>
+                                                    <option value="gist_heat">gist_heat</option>
+                                                    <option value="Accent">Accent</option>
+                                                    <option value="Blues">Blues</option>
+                                                    <option value="BrBG">BrBG</option>
+                                                    <option value="BuGn">BuGn</option>
+                                                    <option value="BuPu">BuPu</option>
+                                                    <option value="CMRmap">CMRmap</option>
+                                                    <option value="Dark2">Dark2</option>
+                                                    <option value="GnBu">GnBu</option>
+                                                    <option value="Greens">Greens</option>
+                                                    <option value="Greys">Greys</option>
+                                                    <option value="OrRd">OrRd</option>
+                                                    <option value="Oranges">Oranges</option>
+                                                    <option value="PRGn">PRGn</option>
+                                                    <option value="Paired">Paired</option>
+                                                    <option value="Pastel1">Pastel1</option>
+                                                    <option value="Pastel2">Pastel2</option>
+                                                    <option value="PiYG">PiYG</option>
+                                                    <option value="PuBu">PuBu</option>
+                                                    <option value="PuBuGn">PuBuGn</option>
+                                                    <option value="PuOr">PuOr</option>
+                                                    <option value="PuRd">PuRd</option>
+                                                    <option value="Purples">Purples</option>
+                                                    <option value="RdBu">RdBu</option>
+                                                    <option value="RdGy">RdGy</option>
+                                                    <option value="RdPu">RdPu</option>
+                                                    <option value="RdYlGn">RdYlGn</option>
+                                                    <option value="Reds">Reds</option>
+                                                    <option value="Set1">Set1</option>
+                                                    <option value="Set2">Set2</option>
+                                                    <option value="Set3">Set3</option>
+                                                    <option value="Spectral">Spectral</option>
+                                                    <option value="Wistia">Wistia</option>
+                                                    <option value="YlGn">YlGn</option>
+                                                    <option value="YlGnBu">YlGnBu</option>
+                                                    <option value="YlOrBr">YlOrBr</option>
+                                                    <option value="YlOrRd">YlOrRd</option>
+                                                    <option value="afmhot">afmhot</option>
+                                                    <option value="autumn">autumn</option>
+                                                    <option value="binary">binary</option>
+                                                    <option value="bone">bone</option>
+                                                    <option value="brg">brg</option>
+                                                    <option value="bwr">bwr</option>
+                                                    <option value="cividis">cividis</option>
+                                                    <option value="cool">cool</option>
+                                                    <option value="coolwarm">coolwarm</option>
+                                                    <option value="copper">copper</option>
+                                                    <option value="cubehelix">cubehelix</option>
+                                                    <option value="flag">flag</option>
+                                                    <option value="gist_earth">gist_earth</option>
+                                                    <option value="gist_gray">gist_gray</option>
+                                                    <option value="gist_ncar">gist_ncar</option>
+                                                    <option value="gist_rainbow">gist_rainbow</option>
+                                                    <option value="gist_stern">gist_stern</option>
+                                                    <option value="gist_yarg">gist_yarg</option>
+                                                    <option value="gnuplot">gnuplot</option>
+                                                    <option value="gnuplot2">gnuplot2</option>
+                                                    <option value="gray">gray</option>
+                                                    <option value="hsv">hsv</option>
+                                                    <option value="inferno">inferno</option>
+                                                    <option value="jet">jet</option>
+                                                    <option value="magma">magma</option>
+                                                    <option value="nipy_spectral">nipy_spectral</option>
+                                                    <option value="ocean">ocean</option>
+                                                    <option value="pink">pink</option>
+                                                    <option value="plasma">plasma</option>
+                                                    <option value="prism">prism</option>
+                                                    <option value="rainbow">rainbow</option>
+                                                    <option value="seismic">seismic</option>
+                                                    <option value="spring">spring</option>
+                                                    <option value="summer">summer</option>
+                                                    <option value="tab10">tab10</option>
+                                                    <option value="tab20">tab20</option>
+                                                    <option value="tab20b">tab20b</option>
+                                                    <option value="tab20c">tab20c</option>
+                                                    <option value="terrain">terrain</option>
+                                                    <option value="turbo">turbo</option>
+                                                    <option value="twilight">twilight</option>
+                                                    <option value="twilight_shifted">twilight_shifted</option>
+                                                    <option value="winter">winter</option>
+
+                                                    <!-- <option value="2">Hot</option> -->
+                                                    <!-- <option value="3">Three</option> -->
+                                                </select>
+                                            </div>
+                                            <div class="col">
+                                                <label for="opacityRange" class="form-label">Opacity</label>
+                                                <input type="range" class="form-range" min="0" max="100"
+                                                    id="opacityRange" value="100">
+                                            </div>
+
 
                                         </div>
 
@@ -964,134 +598,81 @@
 
 
 
-
-
-
-
-
-                                <div class="row flex">
-                                    <div class="col-sm-3">
-                                        <button type="button" class="btn btn-outline-dark" id="logacbutton"
-                                            style=" font-size: small; padding: 4px;">
-                                            Open Demo Log
-                                        </button>
-                                    </div>
-
-                                    <div class="col-sm-3">
-                                        <label class="input-group-text" for="colormapselect"
-                                            style="font-size: 12px;">Choose colormap</label>
-                                        <select class="form-select" id="colormapselect" style="font-size: 12px;">
-                                            <option value="RdYlBu">RdYlBu</option>
-                                            <option value="hot" selected>Hot</option>
-                                            <option value="viridis">viridis</option>
-                                            <option value="gist_heat">gist_heat</option>
-                                            <option value="Accent">Accent</option>
-                                            <option value="Blues">Blues</option>
-                                            <option value="BrBG">BrBG</option>
-                                            <option value="BuGn">BuGn</option>
-                                            <option value="BuPu">BuPu</option>
-                                            <option value="CMRmap">CMRmap</option>
-                                            <option value="Dark2">Dark2</option>
-                                            <option value="GnBu">GnBu</option>
-                                            <option value="Greens">Greens</option>
-                                            <option value="Greys">Greys</option>
-                                            <option value="OrRd">OrRd</option>
-                                            <option value="Oranges">Oranges</option>
-                                            <option value="PRGn">PRGn</option>
-                                            <option value="Paired">Paired</option>
-                                            <option value="Pastel1">Pastel1</option>
-                                            <option value="Pastel2">Pastel2</option>
-                                            <option value="PiYG">PiYG</option>
-                                            <option value="PuBu">PuBu</option>
-                                            <option value="PuBuGn">PuBuGn</option>
-                                            <option value="PuOr">PuOr</option>
-                                            <option value="PuRd">PuRd</option>
-                                            <option value="Purples">Purples</option>
-                                            <option value="RdBu">RdBu</option>
-                                            <option value="RdGy">RdGy</option>
-                                            <option value="RdPu">RdPu</option>
-                                            <option value="RdYlGn">RdYlGn</option>
-                                            <option value="Reds">Reds</option>
-                                            <option value="Set1">Set1</option>
-                                            <option value="Set2">Set2</option>
-                                            <option value="Set3">Set3</option>
-                                            <option value="Spectral">Spectral</option>
-                                            <option value="Wistia">Wistia</option>
-                                            <option value="YlGn">YlGn</option>
-                                            <option value="YlGnBu">YlGnBu</option>
-                                            <option value="YlOrBr">YlOrBr</option>
-                                            <option value="YlOrRd">YlOrRd</option>
-                                            <option value="afmhot">afmhot</option>
-                                            <option value="autumn">autumn</option>
-                                            <option value="binary">binary</option>
-                                            <option value="bone">bone</option>
-                                            <option value="brg">brg</option>
-                                            <option value="bwr">bwr</option>
-                                            <option value="cividis">cividis</option>
-                                            <option value="cool">cool</option>
-                                            <option value="coolwarm">coolwarm</option>
-                                            <option value="copper">copper</option>
-                                            <option value="cubehelix">cubehelix</option>
-                                            <option value="flag">flag</option>
-                                            <option value="gist_earth">gist_earth</option>
-                                            <option value="gist_gray">gist_gray</option>
-                                            <option value="gist_ncar">gist_ncar</option>
-                                            <option value="gist_rainbow">gist_rainbow</option>
-                                            <option value="gist_stern">gist_stern</option>
-                                            <option value="gist_yarg">gist_yarg</option>
-                                            <option value="gnuplot">gnuplot</option>
-                                            <option value="gnuplot2">gnuplot2</option>
-                                            <option value="gray">gray</option>
-                                            <option value="hsv">hsv</option>
-                                            <option value="inferno">inferno</option>
-                                            <option value="jet">jet</option>
-                                            <option value="magma">magma</option>
-                                            <option value="nipy_spectral">nipy_spectral</option>
-                                            <option value="ocean">ocean</option>
-                                            <option value="pink">pink</option>
-                                            <option value="plasma">plasma</option>
-                                            <option value="prism">prism</option>
-                                            <option value="rainbow">rainbow</option>
-                                            <option value="seismic">seismic</option>
-                                            <option value="spring">spring</option>
-                                            <option value="summer">summer</option>
-                                            <option value="tab10">tab10</option>
-                                            <option value="tab20">tab20</option>
-                                            <option value="tab20b">tab20b</option>
-                                            <option value="tab20c">tab20c</option>
-                                            <option value="terrain">terrain</option>
-                                            <option value="turbo">turbo</option>
-                                            <option value="twilight">twilight</option>
-                                            <option value="twilight_shifted">twilight_shifted</option>
-                                            <option value="winter">winter</option>
-
-                                            <!-- <option value="2">Hot</option> -->
-                                            <!-- <option value="3">Three</option> -->
-                                        </select>
-                                    </div>
-                                    <div class="col-sm-3">
-                                        <label for="opacityRange" class="form-label">Opacity</label>
-                                        <input type="range" class="form-range" min="0" max="100" id="opacityRange"
-                                            value="100">
-                                    </div>
-
-                                </div>
-
                             </div>
                         </div>
+                    </div>
+                    <div class="row" style="margin-top: 10px;">
+                        <div class="col text-wrap">
+                            <b>3D Design and Printing of Prototype Model</b> <br>
+                            <span class="project-tagline">Like hand-held detector prototype, I designed the case with
+                                Autodesk Fusion
+                                360. 3D printed the case with 6 mm wall thickness and PLA flament on Ultimaker S5.
+
+                            </span>
+                        </div>
+                        <div class="col">
+                            <div class="online_3d_viewer" style="height: 600px;" model="./models/drone.obj">
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                </div>
+                <h2 class="section-title" style="margin-top: 40px;">
+                    Master Thesis (2020 - ...)
+                </h2>
+                <sub>Hacettepe University</sub>
+                <div class="intro">
+                    <p>My master thesis title is : <b>Estimation of Seismic Wave Propagation Patterns on Different Soil
+                            Types
+                            Using Neural Network Models</b>
+                        <br>
+                        For master thesis, I downloaded 1.5 million earthquake records from
+                        Japanese <a
+                            href="https://www.kyoshin.bosai.go.jp/kyoshin/docs/overview_kyoshin_index_en.html">Kik-Net</a>
+                        database. In Kik-Net system there are two seismographs at every point, one is at the level of
+                        bedrock and the other
+                        at surface. The difference of accelerograms of these two seismographs, should contain the
+                        information of soil column
+                        between them. In my thesis, I am using neural networks to extract patterns of seismic wave
+                        propagation on different soil
+                        types.
+                        <br>
+                        My thesis requires processing of 1.5 million earthquake recordings. In addition to that
+                        I had to visualize the data in different ways for a better understanding of the data.
+                        <br>
+                        Before deciding to work on this subject I made a project (much simpler version of my thesis) for
+                        my Neural Network Class (CMP684).
+                        In this project I used Turkey's seismograph data and earthquake recordings to determine soil
+                        type (Soft Soil, Hard Soil, Rock etc.)
+                        of the seismograph site. <br> You can view this project on <i class="fa-brands fa-github"></i>
+                        <a href="https://github.com/aliakgoz/ai_vs30_prediction">aliakgoz/ai_vs30_prediction</a>.
+
+
+
+                    </p>
+
+                </div>
+                <div class="container">
+                    <div class="row" style="margin-top: 10px;">
+                        <div class="col text-wrap">
+                            <b>Kik-Net Earthquake Data Visualization</b> <br>
+                            <span class="project-tagline">As stated above, I processed 1.5 million earthquake recordings
+                                for my thesis. And I made a data visualization tool for myself, to check some properties
+                                of
+                                data and to get more insight.
+                            </span>
+                        </div>
+
+
+                    </div>
+                    <div class="row">
+                        <div class="container-fluid" id="plotlykiknet"></div>
                     </div>
                 </div>
 
             </section>
-
-            <!-- <div class="online_3d_viewer" style="width: 800px; height: 600px;" model="./models/tenmak3_son_v1.obj">
-            </div> -->
-            <div>
-
-            </div>
-
-
-
 
 
         </div>
@@ -1101,311 +682,275 @@
     <script type="module">
         import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.9.0/firebase-app.js';
         import { getDatabase, ref, onValue } from 'https://www.gstatic.com/firebasejs/9.9.0/firebase-database.js';
-       
-
-                // TODO: Add SDKs for Firebase products that you want to use
-    // https://firebase.google.com/docs/web/setup#available-libraries
-
-    // Your web app's Firebase configuration
-    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-    const firebaseConfig = {
-        apiKey: "AIzaSyCZ5VOK0MVfAW-eptdXKxC5egvtK15QAoM",
-        authDomain: "tenmak-ssd.firebaseapp.com",
-        databaseURL: "https://tenmak-ssd-default-rtdb.firebaseio.com",
-        projectId: "tenmak-ssd",
-        storageBucket: "tenmak-ssd.appspot.com",
-        messagingSenderId: "624648233215",
-        appId: "1:624648233215:web:3b154bb1679bbc2d13acca",
-        measurementId: "G-G06PGHE21K"
-    };
 
 
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
 
-   
-    // Initialize Firebase
-    const app = initializeApp(firebaseConfig);
+        // Your web app's Firebase configuration
+        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+        const firebaseConfig = {
+            apiKey: "AIzaSyCZ5VOK0MVfAW-eptdXKxC5egvtK15QAoM",
+            authDomain: "tenmak-ssd.firebaseapp.com",
+            databaseURL: "https://tenmak-ssd-default-rtdb.firebaseio.com",
+            projectId: "tenmak-ssd",
+            storageBucket: "tenmak-ssd.appspot.com",
+            messagingSenderId: "624648233215",
+            appId: "1:624648233215:web:3b154bb1679bbc2d13acca",
+            measurementId: "G-G06PGHE21K"
+        };
 
-    
-    // const analytics = getAnalytics(app);
-    const database = getDatabase(app);
+        const kiknetfirebaseConfig = {
+            apiKey: "AIzaSyA6yqD1Z-Rh2WlabVpYL-Hhe-ABbKs2hB0",
+            authDomain: "kik-plotter.firebaseapp.com",
+            databaseURL: "https://kik-plotter-default-rtdb.firebaseio.com",
+            projectId: "kik-plotter",
+            storageBucket: "kik-plotter.appspot.com",
+            messagingSenderId: "348685544996",
+            appId: "1:348685544996:web:88a4429436b8d8dc2eb2b1",
+            measurementId: "G-PTP4BN6WLL"
+        };
 
-    
-const deviceref = ref(database);
+        // Initialize Firebase
+        const kiknetapp = initializeApp(kiknetfirebaseConfig);
 
-var deviceselectbox = document.getElementById("deviceselect");
-var dayselectbox = document.getElementById("dayselect");
 
-onValue(deviceref, (snapshot1) => {
-//   const data = snapshot.val();
-var i = 0;
-var j = 0;
-Object.keys(snapshot1.val()).forEach((key1) => {
-    if (i == 2) {
-        
-        
-    // console.log(document.getElementById('deviceselect').options[document.getElementById('deviceselect').selectedIndex]);
-    const dayref = ref(database, "/" + key1 + "/Doz/");
-    onValue(dayref, (snapshot2) => {
-//   const data = snapshot.val();
-// console.log(snapshot.val());
-Object.keys(snapshot2.val()).forEach((key2) => {
-    // console.log(key);
-    if(j == 4){
-        const doseref = ref(database, "/" + key1 +"/Doz/"+key2);
-                var dosetime = [];
-                var dosevalue = [];
-                onValue(doseref, (snapshot3) => {
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+
+
+        // const analytics = getAnalytics(app);
+        const database = getDatabase(app);
+        const kiknetdatabase = getDatabase(kiknetapp);
+
+        const deviceref = ref(database);
+
+        var deviceselectbox = document.getElementById("deviceselect");
+        var dayselectbox = document.getElementById("dayselect");
+
+        onValue(deviceref, (snapshot1) => {
             //   const data = snapshot.val();
-            console.log(snapshot3.val());
-            Object.entries(snapshot3.val()).forEach((key3, value3) => {
+            var i = 0;
+            var j = 0;
+            Object.keys(snapshot1.val()).forEach((key1) => {
+                if (i == 2) {
 
-                dosetime.push(key3[0].split("_")[0].substring(8,10)+":"+key3[0].split("_")[0].substring(10,12)+":"+key3[0].split("_")[0].substring(12));
-                dosevalue.push(key3[1]);
-                // var option = document.createElement("OPTION");
-                //    option.innerHTML = key;
-                //    option.value = key;
-                //    dayselectbox.options.add(option);
+
+                    // console.log(document.getElementById('deviceselect').options[document.getElementById('deviceselect').selectedIndex]);
+                    const dayref = ref(database, "/" + key1 + "/Doz/");
+                    onValue(dayref, (snapshot2) => {
+                        //   const data = snapshot.val();
+                        // console.log(snapshot.val());
+                        Object.keys(snapshot2.val()).forEach((key2) => {
+                            // console.log(key);
+                            if (j == 4) {
+                                const doseref = ref(database, "/" + key1 + "/Doz/" + key2);
+                                var dosetime = [];
+                                var dosevalue = [];
+                                onValue(doseref, (snapshot3) => {
+                                    //   const data = snapshot.val();
+                                    console.log(snapshot3.val());
+                                    Object.entries(snapshot3.val()).forEach((key3, value3) => {
+
+                                        dosetime.push(key3[0].split("_")[0].substring(8, 10) + ":" + key3[0].split("_")[0].substring(10, 12) + ":" + key3[0].split("_")[0].substring(12));
+                                        dosevalue.push(key3[1]);
+                                        // var option = document.createElement("OPTION");
+                                        //    option.innerHTML = key;
+                                        //    option.value = key;
+                                        //    dayselectbox.options.add(option);
+                                    });
+
+                                    //   console.log( Object.keys(snapshot.val()));
+                                    //   updateStarCount(postElement, data);
+                                });
+                                var trace1 = {
+                                    x: dosetime,
+                                    y: dosevalue,
+                                    type: 'scatter'
+                                };
+                                var data = [trace1];
+
+                                Plotly.newPlot('plotlydaychart', data);
+
+                            };
+
+                            var option = document.createElement("OPTION");
+                            option.innerHTML = key2;
+                            option.value = key2;
+                            dayselectbox.options.add(option);
+                            if (j == 4) {
+                                option.selected = true;
+                            }
+                            j++;
+                        });
+                    });
+                };
+
+                var option = document.createElement("OPTION");
+                option.innerHTML = key1;
+                option.value = key1;
+                if (i == 2) {
+                    option.selected = true;
+                }
+                deviceselectbox.options.add(option);
+                i++;
             });
 
             //   console.log( Object.keys(snapshot.val()));
             //   updateStarCount(postElement, data);
+        });
+
+
+
+
+        document.getElementById('deviceselect').addEventListener('change', async (event) => {
+            dayselectbox.innerText = null;
+            const dayref = ref(database, "/" + event.target.value + "/Doz/");
+            onValue(dayref, (snapshot) => {
+                //   const data = snapshot.val();
+                console.log(snapshot.val());
+                Object.keys(snapshot.val()).forEach((key) => {
+                    console.log(key);
+                    var option = document.createElement("OPTION");
+                    option.innerHTML = key;
+                    option.value = key;
+                    dayselectbox.options.add(option);
+                })
+
+                //   console.log( Object.keys(snapshot.val()));
+                //   updateStarCount(postElement, data);
             });
-                var trace1 = {
-            x: dosetime,
-            y: dosevalue,
-            type: 'scatter'
+
+        });
+
+        document.getElementById('dayselect').addEventListener('change', async (event) => {
+            const doseref = ref(database, "/" + document.getElementById('deviceselect').value + "/Doz/" + event.target.value);
+            var dosetime = [];
+            var dosevalue = [];
+            onValue(doseref, (snapshot) => {
+                //   const data = snapshot.val();
+                console.log(snapshot.val());
+                Object.entries(snapshot.val()).forEach((key, value) => {
+
+                    dosetime.push(key[0].split("_")[0].substring(8, 10) + ":" + key[0].split("_")[0].substring(10, 12) + ":" + key[0].split("_")[0].substring(12));
+                    dosevalue.push(key[1]);
+                    // var option = document.createElement("OPTION");
+                    //    option.innerHTML = key;
+                    //    option.value = key;
+                    //    dayselectbox.options.add(option);
+                });
+
+                //   console.log( Object.keys(snapshot.val()));
+                //   updateStarCount(postElement, data);
+            });
+            var trace1 = {
+                x: dosetime,
+                y: dosevalue,
+                type: 'scatter'
             };
+
+
+
             var data = [trace1];
 
             Plotly.newPlot('plotlydaychart', data);
 
-    };
-    
-    var option = document.createElement("OPTION");
-       option.innerHTML = key2;
-       option.value = key2;
-       dayselectbox.options.add(option);
-        if (j==4){
-            option.selected = true;
-        }
-       j++;
-});
-});
-    };
-    
-    var option = document.createElement("OPTION");
-       option.innerHTML = key1;
-       option.value = key1;
-       if(i == 2){
-        option.selected = true;
-       }
-       deviceselectbox.options.add(option);
-       i++;
-});
+        });
 
-//   console.log( Object.keys(snapshot.val()));
-//   updateStarCount(postElement, data);
-});
+        const accref = ref(kiknetdatabase, "/Acc_Data/");
 
+        const boreholeref = ref(kiknetdatabase, "/Kiknet Borehole Data 1m/");
 
+        var myrandominput = Math.floor(Math.random() * 100);
+        var onedataonly = true;
+        onValue(accref, (kiknetsnapshot) => {
+            var kikindex = 0;
+            Object.entries(kiknetsnapshot.val()).forEach((kiknetkey) => {
 
+                //kiknetkey[0] : ABSH010608180020_EW1, ABSH010608180020_EW2, ABSH010608180020_NS1, ABSH010608180020_NS2...
+                //kiknetkey[1] : accdata
+                
+                if (kikindex > myrandominput && kiknetkey[0].substring(kiknetkey[0].lastIndexOf("_") + 1) == "EW1" && onedataonly) {
+                    
+                    var ew1 = kiknetkey[1];
+                }
+                if (kikindex > myrandominput && kiknetkey[0].substring(kiknetkey[0].lastIndexOf("_") + 1) == "EW2" && ew1.length > 10) {
+                    
+                    var ew2 = kiknetkey[1];
+                }
+                if (kikindex > myrandominput && kiknetkey[0].substring(kiknetkey[0].lastIndexOf("_") + 1) == "NS1" && ew2.length > 10) {
+                    
+                    var ns1 = kiknetkey[1];
+                }
+                if (kikindex > myrandominput && kiknetkey[0].substring(kiknetkey[0].lastIndexOf("_") + 1) == "NS2" && ns1.length > 10) {
+                    
+                    var ns2 = kiknetkey[1];
+                }
+                if (kikindex > myrandominput && kiknetkey[0].substring(kiknetkey[0].lastIndexOf("_") + 1) == "UD1" && ns2.length > 10) {
+                    
+                    var ud1 = kiknetkey[1];
+                }
+                if (kikindex > myrandominput && kiknetkey[0].substring(kiknetkey[0].lastIndexOf("_") + 1) == "UD2" && ud1.length > 10) {
+                    
+                    var ud2 = kiknetkey[1];
+                    onedataonly = false;
+                }
 
-document.getElementById('deviceselect').addEventListener('change', async (event) => { 
-    dayselectbox.innerText = null;
-    const dayref = ref(database, "/" + event.target.value +"/Doz/");
-    onValue(dayref, (snapshot) => {
-//   const data = snapshot.val();
-console.log(snapshot.val());
-Object.keys(snapshot.val()).forEach((key) => {
-    console.log(key);
-    var option = document.createElement("OPTION");
-       option.innerHTML = key;
-       option.value = key;
-       dayselectbox.options.add(option);
-})
-
-//   console.log( Object.keys(snapshot.val()));
-//   updateStarCount(postElement, data);
-});
-
-});
-
-document.getElementById('dayselect').addEventListener('change', async (event) => { 
-    const doseref = ref(database, "/" + document.getElementById('deviceselect').value +"/Doz/"+event.target.value);
-    var dosetime = [];
-    var dosevalue = [];
-    onValue(doseref, (snapshot) => {
-//   const data = snapshot.val();
-console.log(snapshot.val());
-Object.entries(snapshot.val()).forEach((key, value) => {
-
-    dosetime.push(key[0].split("_")[0].substring(8,10)+":"+key[0].split("_")[0].substring(10,12)+":"+key[0].split("_")[0].substring(12));
-    dosevalue.push(key[1]);
-    // var option = document.createElement("OPTION");
-    //    option.innerHTML = key;
-    //    option.value = key;
-    //    dayselectbox.options.add(option);
-});
-
-//   console.log( Object.keys(snapshot.val()));
-//   updateStarCount(postElement, data);
-});
-    var trace1 = {
-  x: dosetime,
-  y: dosevalue,
-  type: 'scatter'
-};
+                kikindex++;
+            });
 
 
+        });
 
-var data = [trace1];
+        var trace1 = {
+                        x: ew1,
+                        y: ew2,
+                        xaxis: 'EW1',
+                        yaxis: 'EW2',
+                        type: 'scatter'
+                    };
 
-Plotly.newPlot('plotlydaychart', data);
+                    var trace2 = {
+                        x: ns1,
+                        y: ns2,
+                        xaxis: 'NS1',
+                        yaxis: 'NS2',
+                        type: 'scatter'
+                    };
 
-});
+                    var trace3 = {
+                        x: ud1,
+                        y: ud2,
+                        xaxis: 'UD1',
+                        yaxis: 'UD2',
+                        type: 'scatter'
+                    };
+
+                    // var trace4 = {
+                    //     x: [4000, 5000, 6000],
+                    //     y: [7000, 8000, 9000],
+                    //     xaxis: 'x4',
+                    //     yaxis: 'y4',
+                    //     type: 'scatter'
+                    // };
+
+                    var kiknetdata = [trace1, trace2, trace3];
+
+                    var kiknetlayout = {
+                        grid: { rows: 3, columns: 1, pattern: 'independent' },
+                    };
+
+                    Plotly.newPlot('plotlykiknet', kiknetdata, kiknetlayout);
 
 
-      </script>
+    </script>
 
 
 </body>
 
 <script>
-    /*
-     *   This content is licensed according to the W3C Software License at
-     *   https://www.w3.org/Consortium/Legal/2015/copyright-software-and-document
-     *
-     *   File:   tabs-automatic.js
-     *
-     *   Desc:   Tablist widget that implements ARIA Authoring Practices
-     */
-
     'use strict';
 
-
-    // Import the functions you need from the SDKs you need
-
-
-
-
-    class TabsAutomatic {
-        constructor(groupNode) {
-            this.tablistNode = groupNode;
-
-            this.tabs = [];
-
-            this.firstTab = null;
-            this.lastTab = null;
-
-            this.tabs = Array.from(this.tablistNode.querySelectorAll('[role=tab]'));
-            this.tabpanels = [];
-
-            for (var i = 0; i < this.tabs.length; i += 1) {
-                var tab = this.tabs[i];
-                var tabpanel = document.getElementById(tab.getAttribute('aria-controls'));
-
-                tab.tabIndex = -1;
-                tab.setAttribute('aria-selected', 'false');
-                this.tabpanels.push(tabpanel);
-
-                tab.addEventListener('keydown', this.onKeydown.bind(this));
-                tab.addEventListener('click', this.onClick.bind(this));
-
-                if (!this.firstTab) {
-                    this.firstTab = tab;
-                }
-                this.lastTab = tab;
-            }
-
-            this.setSelectedTab(this.firstTab, false);
-        }
-
-        setSelectedTab(currentTab, setFocus) {
-            if (typeof setFocus !== 'boolean') {
-                setFocus = true;
-            }
-            for (var i = 0; i < this.tabs.length; i += 1) {
-                var tab = this.tabs[i];
-                if (currentTab === tab) {
-                    tab.setAttribute('aria-selected', 'true');
-                    tab.removeAttribute('tabindex');
-                    this.tabpanels[i].classList.remove('is-hidden');
-                    if (setFocus) {
-                        tab.focus();
-                    }
-                } else {
-                    tab.setAttribute('aria-selected', 'false');
-                    tab.tabIndex = -1;
-                    this.tabpanels[i].classList.add('is-hidden');
-                }
-            }
-        }
-
-        setSelectedToPreviousTab(currentTab) {
-            var index;
-
-            if (currentTab === this.firstTab) {
-                this.setSelectedTab(this.lastTab);
-            } else {
-                index = this.tabs.indexOf(currentTab);
-                this.setSelectedTab(this.tabs[index - 1]);
-            }
-        }
-
-        setSelectedToNextTab(currentTab) {
-            var index;
-
-            if (currentTab === this.lastTab) {
-                this.setSelectedTab(this.firstTab);
-            } else {
-                index = this.tabs.indexOf(currentTab);
-                this.setSelectedTab(this.tabs[index + 1]);
-            }
-        }
-
-        /* EVENT HANDLERS */
-
-        onKeydown(event) {
-            var tgt = event.currentTarget,
-                flag = false;
-
-            switch (event.key) {
-                case 'ArrowLeft':
-                    this.setSelectedToPreviousTab(tgt);
-                    flag = true;
-                    break;
-
-                case 'ArrowRight':
-                    this.setSelectedToNextTab(tgt);
-                    flag = true;
-                    break;
-
-                case 'Home':
-                    this.setSelectedTab(this.firstTab);
-                    flag = true;
-                    break;
-
-                case 'End':
-                    this.setSelectedTab(this.lastTab);
-                    flag = true;
-                    break;
-
-                default:
-                    break;
-            }
-
-            if (flag) {
-                event.stopPropagation();
-                event.preventDefault();
-            }
-        }
-
-        onClick(event) {
-            this.setSelectedTab(event.currentTarget);
-        }
-    }
-
-    // Initialize tablist
 
     window.addEventListener('load', function () {
         var tablists = document.querySelectorAll('[role=tablist].automatic');
@@ -1457,26 +1002,7 @@ Plotly.newPlot('plotlydaychart', data);
     );
 
 
-    class LineBreakTransformer {
-        constructor() {
-            // A container for holding stream data until a new line.
-            this.chunks = "";
-        }
 
-        transform(chunk, controller) {
-            // Append new chunks to existing chunks.
-            this.chunks += chunk;
-            // For each line breaks in chunks, send the parsed lines out.
-            const lines = this.chunks.split("\r\n");
-            this.chunks = lines.pop();
-            lines.forEach((line) => controller.enqueue(line));
-        }
-
-        flush(controller) {
-            // When the stream is closed, flush any remaining chunks out.
-            controller.enqueue(this.chunks);
-        }
-    }
     // const url = 'http://127.0.0.1:3000/';
     $(document).ready(function () {
 
@@ -1499,35 +1025,7 @@ Plotly.newPlot('plotlydaychart', data);
         }
     };
 
-    var max_lantan_count = {
-        value: 1,
-        set: function (value) {
-            this.value = value;
-            this.getOnChange();
-        }
-    };
-    var max_plastik_count = {
-        value: 1,
-        set: function (value) {
-            this.value = value;
-            this.getOnChange();
-        }
-    };
-    var max_carpim_count = {
-        value: 1,
-        set: function (value) {
-            this.value = value;
-            this.getOnChange();
-        }
-    };
-    var max_expcarpim_count = {
-        value: 1,
-        set: function (value) {
-            this.value = value;
-            this.getOnChange();
-        }
-    };
-    var cm_max_expcarpim_count = 1.0;
+
 
 
 
@@ -1536,205 +1034,6 @@ Plotly.newPlot('plotlydaychart', data);
 
 
 
-    // Filter on devices with the Arduino Uno USB Vendor/Product IDs.
-    document.getElementById('connectbutton').addEventListener('click', async () => {
-        // Prompt user to select any serial port.
-
-
-        // const writable = await fileHandle.createWritable();
-        let alltext = "";
-        let lantan_geldi = false;
-        let plastik_geldi = false;
-        let lantan_count = 0;
-        let plastik_count = 0;
-        let lastlat = 40.05;
-        let lastlon = 32.60;
-        let total_count = 5.0;
-        let ilksefer = true;
-        let baudrate_options = document.getElementById('baudrate_options');
-        let mybaudrate = baudrate_options.options[baudrate_options.selectedIndex].value;
-        // console.log(mybaudrate);
-        const port = await navigator.serial.requestPort();
-        await port.open({
-            baudRate: parseInt(mybaudrate),
-            bufferSize: 10000000,
-        });
-        while (port.readable) {
-
-            try {
-                const textDecoder = new TextDecoderStream();
-                const readableStreamClosed = port.readable.pipeTo(textDecoder.writable);
-
-                const reader = textDecoder.readable
-                    .pipeThrough(new TransformStream(new LineBreakTransformer()))
-                    .getReader();
-
-
-                // Listen to data coming from the serial device.
-                while (true) {
-
-                    const {
-                        value,
-                        done
-                    } = await reader.read();
-                    if (done) {
-                        // Allow the serial port to be closed later.
-                        reader.releaseLock();
-                        break;
-                    }
-                    if ((value.slice(0, 2) == 'g ' && value.split(" ").length == 13) || (value.slice(0,
-                            2) == 'p ' && value.split(" ").length == 4) || (value.slice(0, 2) == 'l ' &&
-                            value.split(" ").length == 4)) {
-
-                        // if (alltext == "") {
-                        //     alltext = document.getElementById("gelenveriTextarea1").innerHTML;
-                        // };
-                        // alltext = alltext + new Date().toLocaleTimeString() + "." + new Date()
-                        //     .getMilliseconds() + " " + value.toString() + "\n";
-                        // await writeFile(fileHandle, alltext);
-
-                        if (document.getElementById('autoscrollCheck').checked) {
-                            document.getElementById("gelenveriTextarea1").scrollTop = document
-                                .getElementById("gelenveriTextarea1").scrollHeight;
-                        };
-
-                        document.getElementById("gelenveriTextarea1").innerHTML = document
-                            .getElementById("gelenveriTextarea1").innerHTML + new Date()
-                            .toLocaleTimeString() + "." + new Date().getMilliseconds() + " " + value
-                            .toString() + "\n";
-
-                        gelenveri = gelenveri + new Date().toLocaleTimeString() + "." + new Date()
-                            .getMilliseconds() + " " + value + "\n";
-
-                        // ÖRNEK lantan , plastik ve gps datası
-                        //p 205819 206660 296
-                        //g 205853 iTOW: 206700 lat/lon: 0.000000 0.000000 height: 0 hAcc: 4294967 vAcc: 3750002
-                        //l 205870 206700 11
-
-                        let cihaz = value.split(" ")[0];
-                        if (cihaz == "g") {
-                            if (((1 - Math.abs(lastlat / parseFloat(value.split(" ")[5]))) > 0.1) ||
-                                ilksefer) {
-                                map_16d19f0c4cb02d0360d2d91f78fb101a.panTo(new L.LatLng(parseFloat(value
-                                    .split(" ")[5]), parseFloat(value.split(" ")[6])));
-                                ilksefer = false;
-                            }
-                            lastlat = parseFloat(value.split(" ")[5]);
-                            lastlon = parseFloat(value.split(" ")[6]);
-
-                        } else if (cihaz == "l") {
-                            lantan_count = parseFloat(value.split(" ")[3]);
-                            lantan_geldi = true;
-                        } else if (cihaz == "p") {
-                            plastik_count = parseFloat(value.split(" ")[3]);
-                            plastik_geldi = true;
-                        };
-
-                        if (lantan_geldi && plastik_geldi) {
-
-                            total_count = carpan * (lantan_count * 2) + (1 - carpan) * (
-                                plastik_count * 2);
-                            if (lastlat > 0.1) {
-                                xycount.push([lastlat, lastlon, total_count]);
-                            }
-
-                            let carpim_count = Math.max(lantan_count, 1.0) * plastik_count;
-                            let expcarpim_count = (Math.max(lantan_count, 1.0) ** myexp) * (plastik_count **
-                                myexp);
-
-                            let obj = {};
-
-                            if (total_count > max_count.value) {
-                                max_count.set(total_count);
-                            };
-                            if (carpim_count > max_carpim_count.value) {
-                                max_carpim_count.set(carpim_count);
-                            };
-                            if (expcarpim_count > max_expcarpim_count.value) {
-                                max_expcarpim_count.set(expcarpim_count);
-                            };
-                            if (lantan_count > max_lantan_count.value) {
-                                max_lantan_count.set(lantan_count);
-                            };
-                            if (plastik_count > max_plastik_count.value) {
-                                max_plastik_count.set(plastik_count);
-                            };
-                            let mymaxcount = 0;
-                            let mycount = 0;
-                            if (document.getElementById('markersetselect').value == "toplam") {
-                                mymaxcount = max_count.value;
-                                mycount = total_count;
-                            } else if (document.getElementById('markersetselect').value == "carpim") {
-                                mymaxcount = max_carpim_count.value;
-                                mycount = carpim_count;
-                            } else if (document.getElementById('markersetselect').value == "expcarpim") {
-                                mymaxcount = max_expcarpim_count.value;
-                                mycount = expcarpim_count;
-                            } else if (document.getElementById('markersetselect').value == "lantan") {
-                                mymaxcount = max_lantan_count.value;
-                                mycount = lantan_count;
-                            } else if (document.getElementById('markersetselect').value == "plastik") {
-                                mymaxcount = max_plastik_count.value;
-                                mycount = plastik_count;
-                            };
-
-
-
-                            let mypopup = "total: " + total_count.toString() + " l: " + lantan_count
-                                .toString() + " p: " + plastik_count.toString();
-                            lantan_geldi = false;
-                            plastik_geldi = false;
-                            obj['className'] = lantan_count.toString() + " " + plastik_count.toString();
-                            lantan_count = 0;
-                            plastik_count = 0;
-                            // console.log(max_count.value);
-                            obj['radius'] = '5';
-                            obj['stroke'] = 'false';
-
-                            obj['opacity'] = (document.getElementById('opacityRange').value / 100)
-                                .toString();
-                            obj['fillOpacity'] = (document.getElementById('opacityRange').value / 100)
-                                .toString();
-                            obj['color'] = 'rgb(' + myColormap(mycount / mymaxcount)[0] + ',' +
-                                myColormap(mycount / mymaxcount)[1] + ',' + myColormap(
-                                    mycount / mymaxcount)[2] + ')';
-                            obj['weight'] = '0';
-
-
-                            // L.circleMarker([parseFloat(value.split(",")[0].split("-")[0]), parseFloat(value.split(",")[0].split("-")[1])], { 'radius': '5', 'stroke': 'false', 'color': 'rgb(RdYlBu(parseFloat(value.split(",")[1])/101)[0],RdYlBu(parseFloat(value.split(",")[1])/101)[1],RdYlBu(parseFloat(value.split(",")[1])/101)[2])', 'weight': '0' }).addTo(map_16d19f0c4cb02d0360d2d91f78fb101a);
-                            let mycirclemarker = L.circleMarker([lastlat, lastlon], obj).addTo(markerGroup);
-
-                            mycirclemarker.bindPopup(mypopup);
-                            mymarkers.push(mycirclemarker);
-
-
-                            // console.log(mycirclemarker);
-                        }
-
-                        // console.log(mycirclemarker.options.className);
-
-                    };
-
-
-
-
-                };
-            } catch (error) {
-                document.getElementById("gelenveriTextarea1").innerHTML = document
-                    .getElementById("gelenveriTextarea1").innerHTML + new Date()
-                    .toLocaleTimeString() + "." + new Date().getMilliseconds() + " " + error.toString() +
-                    "\n";
-                gelenveri = gelenveri + new Date().toLocaleTimeString() + "." + new Date()
-                    .getMilliseconds() + " " + error.toString() + "\n";
-                // continue;
-                // TODO: Handle non-fatal read error.
-                continue;
-            }
-
-        };
-
-
-    });
 
 
 
@@ -1755,86 +1054,7 @@ Plotly.newPlot('plotlydaychart', data);
 
     });
 
-    // document.getElementById('expcarpimRange').addEventListener('input', async () => {
-    //     cm_max_expcarpim_count = cm_max_expcarpim_count ** (1 / myexp);
-    //     myexp = event.target.value / 33;
-    //     cm_max_expcarpim_count = cm_max_expcarpim_count ** (myexp);
-    //     document.getElementById('expcarpimLabel').innerHTML = "Çarpım Katsayı: " + myexp.toString();
-    //     // console.log(myexp);
-    //     if (document.getElementById('markersetselect').value == "expcarpim") {
-    //         console.log("buraya girdi");
-    //         markerGroup.clearLayers();
-    //         myColormap = partial(document.getElementById('colormapselect').value);
-    //         markerGroup = L.layerGroup().addTo(map_16d19f0c4cb02d0360d2d91f78fb101a);
 
-    //         // var myexp = parseFloat(document.getElementById("expcarpimRange").value) / 33;
-    //         mymarkers.forEach(mymarker => {
-    //             try {
-
-    //                 var obj = {};
-    //                 var value = mymarker.options.className;
-    //                 var cm_lantan_count = parseFloat(value.split(" ")[0]);
-    //                 var cm_plastik_count = parseFloat(value.split(" ")[1]);
-    //                 var cm_expcarpim_count = (Math.max(cm_lantan_count, 1.0) ** myexp) * (
-    //                     cm_plastik_count ** myexp);
-    //                 // console.log("myexp: " + myexp + " cm_expcarpim_count: " + cm_expcarpim_count + "max: " + max_expcarpim_count.value);
-    //                 obj['color'] = 'rgb(' + myColormap(cm_expcarpim_count / cm_max_expcarpim_count)[0] + ',' +
-    //                     myColormap(cm_expcarpim_count / cm_max_expcarpim_count)[1] + ',' +
-    //                     myColormap(
-    //                         cm_expcarpim_count / cm_max_expcarpim_count)[2] + ')';
-
-    //                 mymarker.setStyle(obj);
-    //                 mymarker.addTo(markerGroup);
-    //             } catch (error) {
-    //                 console.log(error);
-    //                 return;
-    //             }
-
-    //         });
-    //     }
-    // });
-
-    document.getElementById('carpanRange').addEventListener('input', async () => {
-        carpan = parseFloat(document.getElementById('carpanRange').value) / 100;
-        document.getElementById('carpanRangeLabel').innerHTML = "L - P (L: %" + document
-            .getElementById('carpanRange').value + " P: %" + (100 - parseInt(document
-                .getElementById('carpanRange').value)).toString() + ")";
-        if (document.getElementById('markersetselect').value == "toplam") {
-            try {
-
-                mymarkers.forEach(mymarker => {
-                    try {
-
-                        let obj = {};
-                        let value = mymarker.options.className;
-                        let cm_lantan_count = parseFloat(value.split(" ")[0]);
-                        let cm_plastik_count = parseFloat(value.split(" ")[1]);
-                        let cm_total_count = (1 - carpan) * parseFloat(cm_lantan_count * 2) +
-                            carpan * parseFloat(cm_plastik_count * 2);
-                        let cm_max_total_count = (1 - carpan) * parseFloat(max_lantan_count.value *
-                                2) +
-                            carpan * parseFloat(max_plastik_count.value * 2);
-
-                        obj['color'] = 'rgb(' + myColormap(cm_total_count / parseFloat(
-                            cm_max_total_count))[0] + ',' + myColormap(cm_total_count /
-                            parseFloat(cm_max_total_count))[1] + ',' + myColormap(
-                            cm_total_count / parseFloat(cm_max_total_count))[2] + ')';
-
-                        mymarker.setStyle(obj);
-                        // mymarker.options.fillOpacity = document.getElementById('opacityRange').value/100;
-                        // mymarker.redraw();
-                    } catch (error) {
-                        console.log("carpim foreach: " + error.toString());
-                        return;
-                    }
-                });
-
-            } catch (error) {
-                console.log(error);
-            };
-        };
-
-    });
 
     document.getElementById('colormapselect').addEventListener('change', async (event) => {
         myColormap = partial(event.target.value);
@@ -1852,39 +1072,12 @@ Plotly.newPlot('plotlydaychart', data);
                 let cm_expcarpim_count = (Math.max(cm_lantan_count, 1.0) ** myexp) * (
                     cm_plastik_count **
                     myexp);
-                let markerset = document.getElementById('markersetselect').value;
-                if (markerset == 'toplam') {
-                    obj['color'] = 'rgb(' + myColormap(cm_total_count / max_count.value)[0] + ',' +
-                        myColormap(cm_total_count / max_count.value)[1] + ',' + myColormap(
-                            cm_total_count /
-                            max_count.value)[2] + ')';
-                } else if (markerset == 'carpim') {
-                    obj['color'] = 'rgb(' + myColormap(cm_carpim_count / max_carpim_count.value)[
-                            0] +
-                        ',' + myColormap(cm_carpim_count / max_carpim_count.value)[1] + ',' +
-                        myColormap(cm_carpim_count / max_carpim_count.value)[2] + ')';
-                } else if (markerset == "expcarpim") {
-                    obj['color'] = 'rgb(' + myColormap(cm_expcarpim_count / max_expcarpim_count
-                            .value)[
-                            0] + ',' +
-                        myColormap(cm_expcarpim_count / max_expcarpim_count.value)[1] + ',' +
-                        myColormap(
-                            cm_expcarpim_count / max_expcarpim_count.value)[2] + ')';
-                } else if (markerset == "lantan") {
-                    obj['color'] = 'rgb(' + myColormap(cm_lantan_count / max_lantan_count.value)[
-                            0] +
-                        ',' +
-                        myColormap(cm_lantan_count / max_lantan_count.value)[1] + ',' + myColormap(
-                            cm_lantan_count /
-                            max_lantan_count.value)[2] + ')';
-                } else if (markerset == "plastik") {
-                    obj['color'] = 'rgb(' + myColormap(cm_plastik_count / max_plastik_count.value)[
-                            0] +
-                        ',' +
-                        myColormap(cm_plastik_count / max_plastik_count.value)[1] + ',' +
-                        myColormap(
-                            cm_plastik_count / max_plastik_count.value)[2] + ')';
-                }
+
+                obj['color'] = 'rgb(' + myColormap(cm_total_count / max_count.value)[0] + ',' +
+                    myColormap(cm_total_count / max_count.value)[1] + ',' + myColormap(
+                        cm_total_count /
+                        max_count.value)[2] + ')';
+
                 mymarker.setStyle(obj);
             } catch (error) {
                 console.log(error);
@@ -1895,425 +1088,51 @@ Plotly.newPlot('plotlydaychart', data);
 
     });
 
-    document.getElementById('markersetselect').addEventListener('change', async (event) => {
-        myColormap = partial(document.getElementById('colormapselect').value);
-        markerGroup.clearLayers();
-        markerGroup = L.layerGroup().addTo(map_16d19f0c4cb02d0360d2d91f78fb101a);
-        // console.log("denemeeee");
-        let markerset = event.target.value;
 
-        // TOTAL
-        if (markerset == "toplam") {
-
-            mymarkers.forEach(mymarker => {
-                try {
-                    let obj = {};
-                    let value = mymarker.options.className;
-                    let cm_lantan_count = parseFloat(value.split(" ")[0]);
-                    let cm_plastik_count = parseFloat(value.split(" ")[1]);
-                    let cm_total_count = carpan * (cm_lantan_count * 2) + (1 - carpan) * (
-                        cm_plastik_count * 2);
-                    obj['color'] = 'rgb(' + myColormap(cm_total_count / max_count.value)[0] + ',' +
-                        myColormap(cm_total_count / max_count.value)[1] + ',' + myColormap(
-                            cm_total_count / max_count.value)[2] + ')';
-
-                    mymarker.setStyle(obj);
-                    mymarker.addTo(markerGroup);
-                } catch (error) {
-                    console.log(error);
-                    return;
-                }
-            });
-            //lantan
-        } else if (markerset == "carpim") {
-            // ÇARPIM            
-            mymarkers.forEach(mymarker => {
-                try {
-
-                    let obj = {};
-                    let value = mymarker.options.className;
-                    let cm_lantan_count = parseFloat(value.split(" ")[0]);
-                    let cm_plastik_count = parseFloat(value.split(" ")[1]);
-                    let cm_carpim_count = Math.max(cm_lantan_count, 1.0) * cm_plastik_count;
-
-                    obj['color'] = 'rgb(' + myColormap(cm_carpim_count / max_carpim_count.value)[
-                            0] +
-                        ',' + myColormap(cm_carpim_count / max_carpim_count.value)[1] + ',' +
-                        myColormap(cm_carpim_count / max_carpim_count.value)[2] + ')';
-
-                    mymarker.setStyle(obj);
-
-                    mymarker.addTo(markerGroup);
-
-                } catch (error) {
-                    console.log(error);
-                    return;
-                }
-            });
-
-        } else if (markerset == "expcarpim") {
-
-            mymarkers.forEach(mymarker => {
-                try {
-                    let obj = {};
-                    let value = mymarker.options.className;
-                    let cm_lantan_count = parseFloat(value.split(" ")[0]);
-                    // console.log("lantan " + cm_lantan_count);
-                    let cm_plastik_count = parseFloat(value.split(" ")[1]);
-                    // console.log("plastik " + cm_plastik_count);
-                    let cm_expcarpim_count = (Math.max(cm_lantan_count, 1.0) ** myexp) * (
-                        cm_plastik_count ** myexp);
-                    // console.log(cm_expcarpim_count);
-                    obj['color'] = 'rgb(' + myColormap(cm_expcarpim_count / max_expcarpim_count
-                            .value)[
-                            0] + ',' +
-                        myColormap(cm_expcarpim_count / max_expcarpim_count.value)[1] + ',' +
-                        myColormap(
-                            cm_expcarpim_count / max_expcarpim_count.value)[2] + ')';
-
-                    mymarker.setStyle(obj);
-                    mymarker.addTo(markerGroup);
-                } catch (error) {
-                    console.log(error);
-                    return;
-                }
-            });
-        } else if (markerset == "lantan") {
-
-            mymarkers.forEach(mymarker => {
-                try {
-                    let obj = {};
-                    let value = mymarker.options.className;
-                    let cm_lantan_count = parseFloat(value.split(" ")[0]);
-                    obj['color'] = 'rgb(' + myColormap(cm_lantan_count / max_lantan_count.value)[
-                            0] +
-                        ',' +
-                        myColormap(cm_lantan_count / max_lantan_count.value)[1] + ',' + myColormap(
-                            cm_lantan_count /
-                            max_lantan_count.value)[2] + ')';
-
-                    mymarker.setStyle(obj);
-                    mymarker.addTo(markerGroup);
-                } catch (error) {
-                    console.log(error);
-                    return;
-                }
-            });
-
-        } else if (markerset == "plastik") {
-
-            mymarkers.forEach(mymarker => {
-                try {
-                    let obj = {};
-                    let value = mymarker.options.className;
-                    let cm_plastik_count = parseFloat(value.split(" ")[1]);
-                    obj['color'] = 'rgb(' + myColormap(cm_plastik_count / max_plastik_count.value)[
-                            0] +
-                        ',' +
-                        myColormap(cm_plastik_count / max_plastik_count.value)[1] + ',' +
-                        myColormap(
-                            cm_plastik_count / max_plastik_count.value)[2] + ')';
-
-                    mymarker.setStyle(obj);
-                    mymarker.addTo(markerGroup);
-                } catch (error) {
-                    console.log(error);
-                    return;
-                }
-            });
-
-        };
-
-    });
 
     max_count.getOnChange = function () {
-        // console.log("total max:" + max_count.value.toString());
-        if (document.getElementById('markersetselect').value == "toplam") {
-            console.log("max_count   ###########################################################" + max_count.value
-                .toString());
-            myColormap = partial(document.getElementById('colormapselect').value);
 
-            mymarkers.forEach(mymarker => {
-                try {
-
-                    let obj = {};
-                    let value = mymarker.options.className;
-                    let cm_lantan_count = parseFloat(value.split(" ")[0]);
-                    let cm_plastik_count = parseFloat(value.split(" ")[1]);
-                    let cm_total_count = carpan * (cm_lantan_count * 2) + (1 - carpan) * (cm_plastik_count *
-                        2);
-
-
-                    obj['color'] = 'rgb(' + myColormap(cm_total_count / max_count.value)[0] + ',' +
-                        myColormap(cm_total_count / max_count.value)[1] + ',' + myColormap(cm_total_count /
-                            max_count.value)[2] + ')';
-
-
-                    mymarker.setStyle(obj);
-
-
-                } catch (error) {
-                    console.log(error);
-                    return;
-                }
-            });
-        }
-
-
-    };
-
-    max_lantan_count.getOnChange = function () {
-        if (document.getElementById('markersetselect').value == "lantan") {
-            console.log("max_lantan_count   ###########################################################" +
-                max_lantan_count.value.toString());
-            // console.log("lantan max: " + max_lantan_count.value.toString());
-            myColormap = partial(document.getElementById('colormapselect').value);
-            mymarkers.forEach(mymarker => {
-                try {
-                    let obj = {};
-                    let value = mymarker.options.className;
-                    let cm_lantan_count = parseFloat(value.split(" ")[0]);
-                    obj['color'] = 'rgb(' + myColormap(cm_lantan_count / max_lantan_count.value)[0] + ',' +
-                        myColormap(cm_lantan_count / max_lantan_count.value)[1] + ',' + myColormap(
-                            cm_lantan_count /
-                            max_lantan_count.value)[2] + ')';
-
-                    mymarker.setStyle(obj);
-                } catch (error) {
-                    console.log(error);
-                    return;
-                }
-
-            });
-        }
-
-
-    };
-
-    max_plastik_count.getOnChange = function () {
-        if (document.getElementById('markersetselect').value == "plastik") {
-            console.log("max_plastik_count   ###########################################################" +
-                max_plastik_count.value.toString());
-            // console.log("plastik max: " + max_plastik_count.value.toString());
-            myColormap = partial(document.getElementById('colormapselect').value);
-            mymarkers.forEach(mymarker => {
-                try {
-                    let obj = {};
-                    let value = mymarker.options.className;
-                    let cm_plastik_count = parseFloat(value.split(" ")[1]);
-                    obj['color'] = 'rgb(' + myColormap(cm_plastik_count / max_plastik_count.value)[0] +
-                        ',' +
-                        myColormap(cm_plastik_count / max_plastik_count.value)[1] + ',' + myColormap(
-                            cm_plastik_count / max_plastik_count.value)[2] + ')';
-
-                    mymarker.setStyle(obj);
-                } catch (error) {
-                    console.log(error);
-                    return;
-                }
-
-            });
-        }
-
-
-    };
-
-    max_carpim_count.getOnChange = function () {
-        if (document.getElementById('markersetselect').value == "carpim") {
-            console.log("max_carpim_count   ###########################################################" +
-                max_carpim_count.value.toString());
-            // console.log("plastik max: " + max_plastik_count.value.toString());
-            myColormap = partial(document.getElementById('colormapselect').value);
-            mymarkers.forEach(mymarker => {
-                try {
-                    let obj = {};
-                    let value = mymarker.options.className;
-                    let cm_lantan_count = parseFloat(value.split(" ")[0]);
-                    let cm_plastik_count = parseFloat(value.split(" ")[1]);
-                    let cm_carpim_count = Math.max(cm_lantan_count, 1.0) * cm_plastik_count;
-
-                    obj['color'] = 'rgb(' + myColormap(cm_carpim_count / max_carpim_count.value)[0] + ',' +
-                        myColormap(cm_carpim_count / max_carpim_count.value)[1] + ',' + myColormap(
-                            cm_carpim_count /
-                            max_carpim_count.value)[2] + ')';
-
-                    mymarker.setStyle(obj);
-                } catch (error) {
-                    console.log(error);
-                    return;
-                }
-
-            });
-        }
-
-
-    };
-
-    max_expcarpim_count.getOnChange = function () {
-        if (document.getElementById('markersetselect').value == "expcarpim") {
-            console.log("max_expcarpim_count   ###########################################################" +
-                max_expcarpim_count.value.toString());
-            // console.log("plastik max: " + max_plastik_count.value.toString());
-            myColormap = partial(document.getElementById('colormapselect').value);
-            mymarkers.forEach(mymarker => {
-                try {
-                    let obj = {};
-                    let value = mymarker.options.className;
-                    let cm_lantan_count = parseFloat(value.split(" ")[0]);
-                    let cm_plastik_count = parseFloat(value.split(" ")[1]);
-                    let cm_expcarpim_count = (Math.max(cm_lantan_count, 1.0) ** myexp) * (
-                        cm_plastik_count **
-                        myexp);
-
-                    obj['color'] = 'rgb(' + myColormap(cm_expcarpim_count / max_expcarpim_count.value)[0] +
-                        ',' +
-                        myColormap(cm_expcarpim_count / max_expcarpim_count.value)[1] + ',' + myColormap(
-                            cm_expcarpim_count / max_expcarpim_count.value)[2] + ')';
-
-                    mymarker.setStyle(obj);
-                } catch (error) {
-                    console.log(error);
-                    return;
-                }
-
-            });
-        }
-
-    };
-
-    let fileHandle_csv;
-    let mycsvarr;
-
-    document.getElementById('butOpenCsv').addEventListener('click', async () => {
-
-        [fileHandle_csv] = await window.showOpenFilePicker();
-        const file = await fileHandle_csv.getFile();
-        const contents = await file.text();
-        mycsvarr = csvStringToArray(contents);
-        console.log(mycsvarr);
-
-        // // Find a <table> element with id="myCsvTable":
-        let table = document.getElementById("myCsvTable");
-        for (let i = 0; i < 6; i++) {
-            let row = table.insertRow(i);
-            let item = mycsvarr[i];
-            item.forEach(function (item2, index2) {
-                let cell1 = row.insertCell(index2);
-                cell1.innerHTML = item2;
-                console.log(item2);
-            });
-
-        }
-
-
-        const arrayColumn = (arr, n) => arr.map(x => x[n]);
-
-
-        let trace = {
-            x: arrayColumn(mycsvarr, 5),
-            type: 'histogram',
-            // cumulative: { enabled: true }
-        };
-        let config = {
-            responsive: true
-        }
-        let data = [trace];
-        let layout = {
-            title: 'Histogram',
-            font: {
-                size: 14
-            }
-        };
-        Plotly.newPlot('myHistogram1', data, layout, config);
-
-
-    });
-
-    document.getElementById('3Dplotbutton').addEventListener('click', async () => {
-        let x = [];
-        let y = [];
-        let z = [];
-        let c = [];
-        mymarkers.forEach(mymarker => {
-            x.push(mymarker.getLatLng().lat);
-            y.push(mymarker.getLatLng().lng);
-            let value = mymarker.options.className;
-            let cm_lantan_count = parseFloat(value.split(" ")[0]);
-            let cm_plastik_count = parseFloat(value.split(" ")[1]);
-            let cm_carpim_count = Math.max(cm_lantan_count, 1.0) * cm_plastik_count;
-            z.push(cm_carpim_count / max_carpim_count.value);
-            c.push(cm_carpim_count / max_carpim_count.value);
-        });
-
-
-        Plotly.newPlot('my3Dplot', [{
-            type: 'scatter3d',
-            mode: 'lines',
-            x: x,
-            y: y,
-            z: z,
-            opacity: 1,
-            line: {
-                width: 6,
-                color: c,
-                reversescale: false
-            }
-        }], {
-            height: 640
-        });
-
-
-    });
-
-
-
-
-
-    document.getElementById('lfdatamap').addEventListener('click', async () => {
         myColormap = partial(document.getElementById('colormapselect').value);
-        const arrayColumn = (arr, n) => arr.map(x => x[n]);
-        let latarr = arrayColumn(mycsvarr, 3);
-        let lonarr = arrayColumn(mycsvarr, 4);
-        let dosearr = arrayColumn(mycsvarr, 5);
-        let floatdosearr = dosearr.slice(1, dosearr.length - 1).map(Number);
-        console.log(floatdosearr);
-        let maxdose = parseFloat(Math.max.apply(Math, floatdosearr));
-        // parseFloat(item) / maxdose
-        map_16d19f0c4cb02d0360d2d91f78fb101a.panTo(new L.LatLng(parseFloat(latarr[20]), parseFloat(lonarr[
-            20])));
-        floatdosearr.forEach(function (item, index) {
+
+        mymarkers.forEach(mymarker => {
             try {
-                if (index > 0) {
-                    console.log(maxdose);
-                    console.log(index);
-                    console.log(item);
-                    let obj = {};
-                    obj['radius'] = '5';
-                    obj['stroke'] = 'false';
-                    obj['color'] = 'rgb(' + myColormap(parseFloat(item) / maxdose)[0] + ',' +
-                        myColormap(
-                            parseFloat(item) / maxdose)[1] + ',' + myColormap(parseFloat(item) /
-                            maxdose)[2] + ')';
-                    obj['weight'] = '0';
 
-                    let mydataMarker = L.circleMarker([parseFloat(latarr[index]), parseFloat(lonarr[
-                        index])], obj).addTo(
-                        map_16d19f0c4cb02d0360d2d91f78fb101a);
-                    mydataMarker.bindPopup(item.toString());
-                    if (item == maxdose) {
-                        mydataMarker.openPopup();
-                    }
+                let obj = {};
+                let value = mymarker.options.className;
+                let cm_lantan_count = parseFloat(value.split(" ")[0]);
+                let cm_plastik_count = parseFloat(value.split(" ")[1]);
+                let cm_total_count = carpan * (cm_lantan_count * 2) + (1 - carpan) * (cm_plastik_count *
+                    2);
 
 
-                }
+                obj['color'] = 'rgb(' + myColormap(cm_total_count / max_count.value)[0] + ',' +
+                    myColormap(cm_total_count / max_count.value)[1] + ',' + myColormap(cm_total_count /
+                        max_count.value)[2] + ')';
+
+
+                mymarker.setStyle(obj);
+
 
             } catch (error) {
                 console.log(error);
                 return;
-            };
-
+            }
         });
-    });
+
+
+
+    };
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -2321,17 +1140,7 @@ Plotly.newPlot('plotlydaychart', data);
     var popup = L.popup();
 
     function onMapClick(e) {
-        // popup
-        //     .setLatLng(e.latlng)
-        //     .setContent("You clicked the map at " + e.latlng.toString())
-        //     .openOn(map_16d19f0c4cb02d0360d2d91f78fb101a);
-        // let fileHandle;
-        // document.getElementById('butOpenFile').addEventListener('click', async () => {
-        //     // Destructure the one-element array.
-        //     [fileHandle] = await window.showOpenFilePicker();
-        //     console.log(fileHandle);
-        //     // Do something with the file handle.
-        // });
+
         try {
             e.layer.openPopup();
 
@@ -2339,28 +1148,12 @@ Plotly.newPlot('plotlydaychart', data);
             // console.log(error);
         }
 
-
-
-
     };
 
-    const csvStringToArray = strData => {
-        const objPattern = new RegExp(("(\\;|\\r?\\n|\\r|^)(?:\"([^\"]*(?:\"\"[^\"]*)*)\"|([^\\;\\r\\n]*))"), "gi");
-        let arrMatches = null,
-            arrData = [
-                []
-            ];
-        while (arrMatches = objPattern.exec(strData)) {
-            if (arrMatches[1].length && arrMatches[1] !== ";") arrData.push([]);
-            arrData[arrData.length - 1].push(arrMatches[2] ?
-                arrMatches[2].replace(new RegExp("\"\"", "g"), "\"") :
-                arrMatches[3]);
-        }
-        return arrData;
-    }
+
 
     function onMouseMove(e) {
-        document.getElementById("coordlatlng").innerHTML = e.latlng.toString();
+        document.getElementById("coordlatlon").innerHTML = e.latlng.toString();
 
 
     }
@@ -2385,61 +1178,7 @@ Plotly.newPlot('plotlydaychart', data);
 
     let fileHandle_log;
 
-    document.getElementById('logkaydetbutton').addEventListener('click', async () => {
-        try {
-            async function writeFile(fileHandle, contents) {
-                try {
 
-                    // Support for Chrome 82 and earlier.
-                    if (fileHandle.createWriter) {
-                        // Create a writer (request permission if necessary).
-                        const writer = await fileHandle.createWriter();
-                        // Write the full length of the contents
-                        await writer.write(0, contents);
-                        // Close the file and write the contents to disk
-                        await writer.close();
-                        return;
-                    }
-                    // For Chrome 83 and later.
-                    // Create a FileSystemWritableFileStream to write to.
-                    const writable = await fileHandle.createWritable();
-                    // Write the contents of the file to the stream.
-                    await writable.write(contents);
-                    // Close the file and write the contents to disk.
-                    await writable.close();
-
-                } catch (error) {
-                    console.log("Writefile catched this: " + error.toString());
-                    await writable.close();
-                }
-
-            }
-
-            const fileHandle = await self.showSaveFilePicker({
-
-
-                suggestedName: 'Tenmak_iha_log_' + new Date().toLocaleDateString() + '_' +
-                    new Date()
-                    .toLocaleTimeString() + '.txt',
-                types: [{
-                    description: 'Text documents',
-                    accept: {
-                        'text/plain': ['.txt'],
-                    },
-                }],
-            });
-
-
-            await writeFile(fileHandle, gelenveri);
-
-
-        } catch (error) {
-            console.log(error);
-        }
-
-
-
-    });
 
     document.getElementById('logacbutton').addEventListener('click', async () => {
 
@@ -2461,9 +1200,7 @@ Plotly.newPlot('plotlydaychart', data);
         logarray.forEach(value => {
 
             try {
-                document.getElementById("gelenveriTextarea1").innerHTML = document
-                    .getElementById("gelenveriTextarea1").innerHTML + value
-                    .toString() + "\n";
+
 
                 value = value.split(" ").slice(1, ).join(" ");
                 console.log(value);
@@ -2504,37 +1241,13 @@ Plotly.newPlot('plotlydaychart', data);
                     if (total_count > max_count.value) {
                         max_count.set(total_count);
                     };
-                    if (carpim_count > max_carpim_count.value) {
-                        max_carpim_count.set(carpim_count);
-                    };
-                    if (expcarpim_count > max_expcarpim_count.value) {
-                        max_expcarpim_count.set(expcarpim_count);
-                    };
-                    if (lantan_count > max_lantan_count.value) {
-                        max_lantan_count.set(lantan_count);
-                    };
-                    if (plastik_count > max_plastik_count.value) {
-                        max_plastik_count.set(plastik_count);
-                    };
 
                     let mymaxcount = 0;
                     let mycount = 0;
-                    if (document.getElementById('markersetselect').value == "toplam") {
-                        mymaxcount = max_count.value;
-                        mycount = total_count;
-                    } else if (document.getElementById('markersetselect').value == "carpim") {
-                        mymaxcount = max_carpim_count.value;
-                        mycount = carpim_count;
-                    } else if (document.getElementById('markersetselect').value == "expcarpim") {
-                        mymaxcount = max_expcarpim_count.value;
-                        mycount = expcarpim_count;
-                    } else if (document.getElementById('markersetselect').value == "lantan") {
-                        mymaxcount = max_lantan_count.value;
-                        mycount = lantan_count;
-                    } else if (document.getElementById('markersetselect').value == "plastik") {
-                        mymaxcount = max_plastik_count.value;
-                        mycount = plastik_count;
-                    };
+
+                    mymaxcount = max_count.value;
+                    mycount = total_count;
+
 
                     let mypopup = "total: " + total_count.toString() + " l: " + lantan_count
                         .toString() + " p: " + plastik_count.toString() + " max: " + max_count
@@ -2568,326 +1281,12 @@ Plotly.newPlot('plotlydaychart', data);
 
 
             } catch (error) {
-                document.getElementById("gelenveriTextarea1").innerHTML = document
-                    .getElementById("gelenveriTextarea1").innerHTML + new Date()
-                    .toLocaleTimeString() + "." + new Date().getMilliseconds() + " " + error
-                    .toString() +
-                    "\n";
-                // continue;
-                // TODO: Handle non-fatal read error.
+                console.log(error);
                 return;
             };
 
 
         });
-        // let event = new Event('change');
-        // document.getElementById('colormapselect').options[0].selected = true;
-        // document.getElementById('colormapselect').dispatchEvent(event);
-        // console.log(document.getElementById('colormapselect').value);
-        // document.getElementById('colormapselect').options[1].selected = true;
-        // document.getElementById('colormapselect').dispatchEvent(event);
-    });
-
-
-
-
-    document.getElementById('hexbinbutton').addEventListener('click', async () => {
-
-
-
-        // function utmzone_from_lon(lon_deg) {
-        //     //get utm-zone from longitude degrees
-        //     return parseInt(((lon_deg + 180) / 6) % 60) + 1;
-        // }
-
-        // function proj4_setdef(lon_deg) {
-        //     //get UTM projection definition from longitude
-        //     const utm_zone = utmzone_from_lon(lon_deg);
-        //     const zdef = `+proj=utm +zone=${utm_zone} +datum=WGS84 +units=m +no_defs`;
-        //     return zdef;
-        // }
-
-        // // computation test
-        // let lon_input =  32.602;
-        // let lat_input = 40.0595;
-        // console.log("Input (long,lat):", lon_input, lat_input);
-        // const azone = utmzone_from_lon(lon_input);
-        // console.log(`UTM zone from longitude: ${azone}`);
-        // console.log("AUTO projection definition:", proj4_setdef(lon_input));
-
-        // // define proj4_defs for easy uses
-        // // "EPSG:4326" for long/lat degrees, no projection
-        // // "EPSG:AUTO" for UTM 'auto zone' projection
-        // proj4.defs([
-        //     [
-        //         "EPSG:4326",
-        //         "+title=WGS 84 (long/lat) +proj=longlat +ellps=WGS84 +datum=WGS84 +units=degrees"
-        //     ],
-        //     ["EPSG:AUTO", proj4_setdef(lon_input)]]);
-
-        // // usage:
-        // // conversion from (long/lat) to UTM (E/N)
-        // const en_m = proj4("EPSG:4326", "EPSG:AUTO", [lon_input, lat_input]);
-        // const e4digits = en_m[0].toFixed(4); //easting
-        // const n4digits = en_m[1].toFixed(4); //northing
-        // console.log(`Zone ${azone}, (E,N) m: ${e4digits}, ${n4digits}`);
-
-        // // inversion from (E,N) to (long,lat)
-        // const lonlat_chk = proj4("EPSG:AUTO", "EPSG:4326", en_m);
-        // console.log("Inverse check:", lonlat_chk);
-
-
-
-
-
-
-
-
-
-
-
-
-
-        //###################### heatmap.js ##################################################
-
-        // var cfg = {
-        //     // radius should be small ONLY if scaleRadius is true (or small radius is intended)
-        //     "radius": 0.00002,
-        //     "maxOpacity": .8,
-        //     // scales the radius based on map zoom
-        //     "scaleRadius": true,
-        //     // if set to false the heatmap uses the global maximum for colorization
-        //     // if activated: uses the data maximum within the current map boundaries 
-        //     //   (there will always be a red spot with useLocalExtremas true)
-        //     "useLocalExtrema": false,
-        //     // which field name in your data represents the latitude - default "lat"
-        //     latField: 'lat',
-        //     // which field name in your data represents the longitude - default "lng"
-        //     lngField: 'lng',
-        //     // which field name in your data represents the data value - default "value"
-        //     valueField: 'count'
-        // };
-
-
-        // var heatmapLayer = new HeatmapOverlay(cfg).addTo(map_16d19f0c4cb02d0360d2d91f78fb101a);
-
-        // // var map = new L.Map('map', {
-        // //   center: new L.LatLng(25.6586, -80.3568),
-        // //   zoom: 4,
-        // //   layers: [baseLayer, heatmapLayer]
-        // // });~
-
-
-
-        // console.log(xycount.length);    
-        // heatmapLayer.setData(xycount);
-
-        // make accessible for debugging
-        // layer = heatmapLayer;
-        // Create the hexbin layer and set all of the accessor functions
-
-        //###################### hexbinlayer ##################################################
-
-        // var options = {
-        //     radius: 12,
-        //     opacity: 0.8,
-        //     duration: 200,
-
-        //     colorScaleExtent: [1, undefined],
-        //     radiusScaleExtent: [1, undefined],
-        //     colorDomain: null,
-        //     radiusDomain: null,
-        //     colorRange: ["transparent", "#69b3a2"],
-        //     radiusRange: [5, 12],
-
-        //     pointerEvents: 'all'
-        // };
-        // var hexLayer = L.hexbinLayer(options).hoverHandler(L.HexbinHoverHandler.tooltip()).addTo(map_16d19f0c4cb02d0360d2d91f78fb101a);
-        // const inputForHexbinFun = []
-        // // coord_lat = 40.0595 + 0.000005 / 25 ;
-        // // coord_lon = 32.602 + 0.00001 / 60 ;
-        // var d_delta = 0.0005 / 25;
-        // for (let d_lat = 40.0595; d_lat < 40.06; d_lat = d_lat + d_delta) {
-        //     for (let d_lon = 32.602; d_lon < 32.603; d_lon = d_lon + d_delta) {
-        //         inputForHexbinFun.push([d_lon, d_lat]);
-        //     }
-        // }
-        // // console.log(inputForHexbinFun);
-        // // Reformat the data: d3.hexbin() needs a specific format
-
-
-
-        // xycount.forEach(function (onecount) {
-        //     // console.log(inputForHexbinFun.length)
-        //     // inputForHexbinFun.push([onecount[1], onecount[0]])  // Note that we had the transform value of X and Y !
-        //     inputForHexbinFun.push([onecount[1], onecount[0]])  // Note that we had the transform value of X and Y !
-        // })
-        // // console.log(inputForHexbinFun);
-        // hexLayer.data(inputForHexbinFun);
-
-        // //###################### hexbinlayer ##################################################
-        // const arrayColumn = (arr, n) => arr.map(x => x[n]);
-
-
-        // // read data
-        // // let targt = arrayColumn(xycount, 2);
-        // // let lats = arrayColumn(xycount, 0);
-        // // let lons = arrayColumn(xycount, 1);
-
-
-
-        // // var t = [ /* Target variable */];
-        // // var x = [ /* X-axis coordinates */];
-        // // var y = [ /* Y-axis coordinates */];
-        // console.log(Math.max(...arrayColumn(xycount, 2)));
-        // var t = arrayColumn(xycount, 2).map(function (item) { return item / Math.max(...arrayColumn(xycount, 2)) });
-        // var x = arrayColumn(xycount, 1);
-        // var y = arrayColumn(xycount, 0);
-        // var model = "exponential";
-        // var sigma2 = 0, alpha = 100;
-        // var variogram = kriging.train(t, x, y, model, sigma2, alpha);
-        // console.log(variogram);
-        // // var canvas = document.body.appendChild(document.createElement("canvas"));
-        // // var ctx = canvas.getContext("2d");
-        // // kriging.plot(canvas, );
-
-        // for (let d_lat = 40.0595; d_lat < 40.06; d_lat = d_lat + d_delta) {
-        //     for (let d_lon = 32.602; d_lon < 32.603; d_lon = d_lon + d_delta) {
-        //         // console.log(kriging.predict(d_lat, d_lon, variogram));
-        //         console.log(kriging.predict(d_lon, d_lat, variogram));
-        //     }
-        // }
-        //         var xnew, ynew /* Pair of new coordinates to predict */;
-        //   var tpredicted = kriging.predict(xnew, ynew, variogram);
-
-        // Set the data (can be set multiple times)
-        // hexLayer.data([[lng1, lat1], [lng2, lat2], ... [lngN, latN]]);
-
-
-
-        // markerGroup.clearLayers();
-        // // Use Leaflets projection API for drawing svg path (creates a stream of projected points)
-        // const projectPoint = function (x, y) {
-        //     const point = map.latLngToLayerPoint(new L.LatLng(y, x))
-        //     this.stream.point(point.x, point.y)
-        // }
-
-        // // Use d3's custom geo transform method to implement the above
-        // const projection = d3.geoTransform({ point: projectPoint });
-
-        // // creates geopath from projected points (SVG)
-        // // const pathCreator = d3.geoPath().projection(projection);
-        // hexbin.hexagon(d.length)
-
-        // const arrayColumn = (arr, n) => arr.map(x => x[n]);
-
-
-        // // read data
-        // let lats = arrayColumn(xycount, 0);
-        // let lons = arrayColumn(xycount, 1);
-
-        // var corner1 = L.latLng(Math.min(...lats), Math.min(...lons)),
-        //     corner2 = L.latLng(Math.max(...lats), Math.max(...lons)),
-        //     bounds = L.latLngBounds(corner1, corner2);
-        // // set the dimensions and margins of the graph
-        // const margin = { top: 10, right: 30, bottom: 30, left: 40 },
-        //     width = (Math.max(...lats) - Math.min(...lats)) * 100000,
-        //     height = (Math.max(...lons) - Math.min(...lons)) * 100000;
-
-
-
-        // L.svg({ clickable: true }).addTo(map_16d19f0c4cb02d0360d2d91f78fb101a)// we have to make the svg layer clickable
-
-        // const overlay = d3.select(map_16d19f0c4cb02d0360d2d91f78fb101a.getPanes().overlayPane)
-        // const svg = overlay.select('svg');
-        // //     .attr("width", height)
-        // //     .attr("height", width);
-        // // .attr("cx", d => map_16d19f0c4cb02d0360d2d91f78fb101a.latLngToLayerPoint([d.geometry.coordinates[1], d.geometry.coordinates[0]]).x)
-        // // .attr("cy", d => map_16d19f0c4cb02d0360d2d91f78fb101a.latLngToLayerPoint([d.geometry.coordinates[1], d.geometry.coordinates[0]]).y);
-        // //  L.svgOverlay(svg,bounds).addTo(map_16d19f0c4cb02d0360d2d91f78fb101a);
-        // const g = svg.append('g').attr('class', 'leaflet-zoom-hide');
-
-
-        // // append the svg object to the body of the page
-        // const svg = d3.select("#my_dataviz")
-        //     .append("svg")
-        //     .attr("width", width + margin.left + margin.right)
-        //     .attr("height", height + margin.top + margin.bottom)
-        //     .append("g")
-        //     .attr("transform", `translate(${margin.left}, ${margin.top})`);
-
-
-        // console.log(xycount);
-        // console.log(Math.min(...lats));
-        // console.log(Math.max(...lats) - Math.min(...lats));
-        // // Add X axis
-        // const x = d3.scaleLinear()
-        //     .domain([Math.min(...lons), Math.max(...lons)])
-        //     .range([0, width]);
-        // svg.append("g")
-        //     .attr("transform", `translate(0, ${height})`)
-        //     .call(d3.axisBottom(x));
-
-        // // // Add Y axis
-        // const y = d3.scaleLinear()
-        //     .domain([Math.min(...lats), Math.max(...lats)])
-        //     .range([height, 0]);
-        // svg.append("g")
-        //     .call(d3.axisLeft(y));
-
-
-
-        // // Prepare a color palette
-        // const color = d3.scaleLinear()
-        //     .domain([0, 10]) // Number of points in the bin?
-        //     .range(["transparent", "#69b3a2"])
-
-        // // Compute the hexbin data
-        // const hexbin = d3.hexbin()
-        //     .radius(0.00001) // size of the bin in px
-        // // .extent([[0, 0], [width, height]])
-
-        // // Plot the hexbins
-        // // svg.append("clipPath")
-        // //     .attr("id", "clip")
-        // //     .append("rect")
-        // //     .attr("width", width)
-        // //     .attr("height", height)
-        // console.log(inputForHexbinFun);
-
-        // // const areaPaths = svg.append("g")
-        // //     .attr("clip-path", "url(#clip)")
-        // //     .selectAll("path")
-        // //     .data(hexbin(inputForHexbinFun)[0])
-        // //     .join("path")
-        // //     .attr("d", hexbin.hexagon())
-        // //     // .attr("transform", function (d) { return `translate(${d.x}, ${d.y})` })
-        // //     .attr("fill", function (d) { return color(d.length); })
-        // //     .attr("stroke", "black")
-        // //     .attr("stroke-width", "0.1")
-        // const radius = d3.scaleSqrt([0, d3.max(hexbin(inputForHexbinFun), d => d.length)], [0, hexbin.radius() * Math.SQRT2])
-        // console.log(hexbin(inputForHexbinFun))
-        // const areaPaths = svg.append("g")
-        //     .selectAll("path")
-        //     .data(hexbin(inputForHexbinFun))
-        //     .join("path")
-        //     .attr("transform",function (d) { `translate(${d.x},${d.y})`;
-        // console.log(d.x)})
-        //     .attr("d", d => hexbin.hexagon(d.length))
-        //     .attr("fill", function (d) {
-        //         console.log(d.length)
-        //         return color(d.length);
-        //     })
-        //     .attr("stroke", "black")
-        //     .attr("stroke-width", "0.1")
-
-
-        // const onZoom = () => areaPaths.attr('d', pathCreator)
-        // // initialize positioning
-        // onZoom()
-
-        // // reset whenever map is moved
-        // map_16d19f0c4cb02d0360d2d91f78fb101a.on('zoomend', onZoom)
 
     });
 </script>
