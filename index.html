@@ -375,35 +375,36 @@
 
                             </span>
                         </div>
-                        <div class="col" style="text-align: center;">
-                            <div class="container-fluid">
-                                <!-- <img class="avatar" src="./img/webtenmakssd.PNG" alt="profile picture"
-                                    style="background-position:center; border-radius: 10px 10px 10px 10px; width: 600px; "> -->
-                                <div class="container-fluid" id="plotlydaychart"></div>
-                                <div class="row justify-content-md-center">
 
-                                    <label class="input-group-text" for="deviceselect"
-                                        style="font-size: 12px; width: 80px;">Device</label>
-                                    <select class="form-select" id="deviceselect"
-                                        style="font-size: 12px; width: 140px; margin-right: 40px;">
+                    </div>
+                    <div class="row justify-content-center" style="text-align: center;">
+                        <div class="container-fluid">
+                            <!-- <img class="avatar" src="./img/webtenmakssd.PNG" alt="profile picture"
+                                style="background-position:center; border-radius: 10px 10px 10px 10px; width: 600px; "> -->
+                            <div class="container-fluid" id="plotlydaychart"></div>
+                            <div class="row justify-content-md-center">
 
-                                    </select>
+                                <label class="input-group-text" for="deviceselect"
+                                    style="font-size: 12px; width: 80px;">Device</label>
+                                <select class="form-select" id="deviceselect"
+                                    style="font-size: 12px; width: 140px; margin-right: 40px;">
 
-
-                                    <label class="input-group-text" for="dayselect"
-                                        style="font-size: 12px; width: 80px;">Day</label>
-                                    <select class="form-select" id="dayselect" style="font-size: 12px; width: 140px;">
-
-                                    </select>
+                                </select>
 
 
-                                </div>
+                                <label class="input-group-text" for="dayselect"
+                                    style="font-size: 12px; width: 80px;">Day</label>
+                                <select class="form-select" id="dayselect" style="font-size: 12px; width: 140px;">
+
+                                </select>
+
 
                             </div>
-                            <sub class="project-tagline">Select a device and a day to see daily dose measurement data.
-                                (Link for demo website:
-                                <a href="https://tenmak-ssd.web.app/"> https://tenmak-ssd.web.app/)</a></sub>
+
                         </div>
+                        <sub class="project-tagline" style="margin-top: 20px;">Select a device and a day to see daily dose measurement data.
+                            (Link for demo website:
+                            <a href="https://tenmak-ssd.web.app/"> https://tenmak-ssd.web.app/)</a></sub>
                     </div>
 
                 </div>
@@ -685,6 +686,9 @@
 
                     <div class="row">
                         <div class="container-fluid" id="plotlykiknet"></div>
+
+                    </div>
+                    <div class="row" style="text-align: center; margin-bottom: 20px;"> <sub id="kiknetPlotSub"></sub>
                     </div>
                     <div class="row justify-content-center">
                         <button class="btn-outline-dark" style="width: 160px;" id="showAnotherButton"> Show Another
@@ -928,7 +932,8 @@
                     ud2 = kiknetkey[1];
                     onedataonly = false;
                     // console.log(kikindex);
-                    mytitle = kiknetkey[0].substring(0,kiknetkey[0].length-4);
+                    mytitle = kiknetkey[0].substring(0, kiknetkey[0].length - 4);
+                    document.getElementById("kiknetPlotSub").innerHTML = "This plot shows the spectra of 6 accelerograms recorded by station " + mytitle.substring(0, 6) + " at 20" + mytitle.substring(6, 8) + "-" + mytitle.substring(8, 10) + "-" + mytitle.substring(10, 12) + " " + mytitle.substring(12, 14) + ":" + mytitle.substring(14, 16);
                 }
 
                 kikindex++;
@@ -1004,8 +1009,8 @@
 
             var kiknetlayout = {
                 title: {
-                        text: mytitle,
-                    },
+                    text: mytitle,
+                },
                 grid: { rows: 3, columns: 1, pattern: 'independent' },
             };
 
@@ -1062,7 +1067,9 @@
                         ud2 = kiknetkey[1];
                         onedataonly = false;
                         // console.log(kikindex);
-                        mytitle = kiknetkey[0].substring(0,kiknetkey[0].length-4);
+                        mytitle = kiknetkey[0].substring(0, kiknetkey[0].length - 4);
+                        document.getElementById("kiknetPlotSub").innerHTML = "This plot shows the spectra of 6 accelerograms recorded by station " + mytitle.substring(0, 6) + " at 20" + mytitle.substring(6, 8) + "-" + mytitle.substring(8, 10) + "-" + mytitle.substring(10, 12) + " " + mytitle.substring(12, 14) + ":" + mytitle.substring(14, 16);
+
                     }
 
                     kikindex++;
