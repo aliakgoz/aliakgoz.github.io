@@ -425,35 +425,29 @@
                     <div class="row" style="margin-top: 10px;">
                         <div class="col text-wrap">
                             <b>Ground Station Software for UAV Monitoring System</b> <br>
-                            <span class="project-tagline">Ground station, which receives data from RF module on USB,
-                                processes data and overlays it on the map live. Like this very page I developed ground
-                                station
-                                software using Javascript. Ground Station Software, which I still work on, has these
-                                features:
+                            <span class="project-tagline">Ground station, which receives data from RF module on USB, 
+                                processes data and overlays it on the map live. Like this very page I developed ground station 
+                                software using Javascript. Ground Station Software, which I still work on, has these features:
                                 <ul>
                                     <li>
-                                        Online map using leaflet.js ( <a href="https://leafletjs.com/">leafletjs.com</a>
-                                        )
+                                        Online map using leaflet.js ( <a href="https://leafletjs.com/">leafletjs.com</a> )
                                     </li>
                                     <li>
                                         Direct com port (choose com port and baud rate from UI) connection ability
                                     </li>
                                     <li>
-                                        Live overlaying of incoming data, simultaneously coloring it with user preferred
-                                        colormap.
-                                        (I added all colormaps of matplotlib (thanks to <i
-                                            class="fa-brands fa-github"></i> <a
-                                            href="https://github.com/timothygebhard/js-colormaps">timothygebhard/js-colormaps</a>))
+                                        Live overlaying of incoming data, simultaneously coloring it with user preferred colormap.
+                                        (I added all colormaps of matplotlib (thanks to <i class="fa-brands fa-github"></i> <a
+                                        href="https://github.com/timothygebhard/js-colormaps">timothygebhard/js-colormaps</a>))
                                     </li>
                                     <li>
                                         Save data to local log file.
                                     </li>
                                     <li>
-                                        Geospatial analysis of gathered data using Krigging method. (It works on Python
-                                        now)
+                                        Geospatial analysis of gathered data using Krigging method. (It works on Python now)
                                     </li>
 
-                                </ul>
+                                </ul>  
 
                             </span>
                         </div>
@@ -463,12 +457,11 @@
                                 <div class="row">
                                     <div class="container-fluid">
                                         <div class="mapbox">
-                                            <div class="container-fluid overlay asd"
-                                                id="map_16d19f0c4cb02d0360d2d91f78fb101a"
+                                            <div class="container-fluid overlay asd" id="map_16d19f0c4cb02d0360d2d91f78fb101a"
                                                 style="width: 600px; height: 400px;">
-
+    
                                             </div>
-
+    
                                         </div>
                                     </div>
                                 </div>
@@ -479,23 +472,22 @@
                                             <div class="col">
                                                 <div class="row align-content-center">
                                                     <button type="button" class="btn btn-outline-dark" id="logacbutton"
-                                                        style=" font-size: small; padding: 4px; ">
-                                                        Open Demo Log
-                                                    </button>
+                                                    style=" font-size: small; padding: 4px; ">
+                                                    Open Demo Log
+                                                </button>
                                                 </div>
                                                 <div class="row">
-                                                    <div>
+                                                    <div >
                                                         <sub id="coordlatlon">LatLong( --- , --- )</sub>
-
+                
                                                     </div>
                                                 </div>
                                             </div>
-
+        
                                             <div class="col">
                                                 <label class="input-group-text" for="colormapselect"
                                                     style="font-size: 12px;">Choose colormap</label>
-                                                <select class="form-select" id="colormapselect"
-                                                    style="font-size: 12px;">
+                                                <select class="form-select" id="colormapselect" style="font-size: 12px;">
                                                     <option value="RdYlBu">RdYlBu</option>
                                                     <option value="hot" selected>Hot</option>
                                                     <option value="viridis">viridis</option>
@@ -579,27 +571,41 @@
                                                     <option value="twilight">twilight</option>
                                                     <option value="twilight_shifted">twilight_shifted</option>
                                                     <option value="winter">winter</option>
-
+        
                                                     <!-- <option value="2">Hot</option> -->
                                                     <!-- <option value="3">Three</option> -->
                                                 </select>
                                             </div>
                                             <div class="col">
                                                 <label for="opacityRange" class="form-label">Opacity</label>
-                                                <input type="range" class="form-range" min="0" max="100"
-                                                    id="opacityRange" value="100">
+                                                <input type="range" class="form-range" min="0" max="100" id="opacityRange"
+                                                    value="100">
                                             </div>
-
-
+                                 
+        
                                         </div>
 
                                     </div>
                                 </div>
-
-
+                                
+                   
 
                             </div>
                         </div>
+                    </div>                    
+                    <div class="row" style="margin-top: 10px;">
+                        <div class="col text-wrap">
+                            <b>3D Design and Printing of Prototype Model</b> <br>
+                            <span class="project-tagline">Like hand-held detector prototype, I designed the case with Autodesk Fusion
+                                360. 3D printed the case with 6 mm wall thickness and PLA flament on Ultimaker S5. 
+                               
+                            </span>
+                        </div>
+                        <div class="col">
+                            <div class="online_3d_viewer" style="height: 600px;" model="./models/drone.obj">
+                            </div>
+                        </div>
+                    
                     </div>
                     <div class="row" style="margin-top: 10px;">
                         <div class="col text-wrap">
@@ -849,6 +855,8 @@
                 type: 'scatter'
             };
 
+        var deviceselectbox = document.getElementById("deviceselect");
+        var dayselectbox = document.getElementById("dayselect");
 
 
             var data = [trace1];
