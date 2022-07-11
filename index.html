@@ -872,6 +872,7 @@
         var myrandominput = Math.floor(Math.random() * 100);
         var onedataonly = true;
         var ew1,ew2,ns1,ns2,ud1,ud2;
+        var ew1ok = false;
 
         onValue(accref, (kiknetsnapshot) => {
             var kikindex = 0;
@@ -885,24 +886,25 @@
                 if (kikindex > myrandominput && kiknetkey[0].includes("EW1") && onedataonly) {
                     
                     ew1 = kiknetkey[1];
+                    ew1ok = true;
                 }
-                if (kikindex > myrandominput && kiknetkey[0].includes("EW2") && ew1.length > 10) {
+                if (kikindex > myrandominput && kiknetkey[0].includes("EW2") && ew1ok) {
                     
                     ew2 = kiknetkey[1];
                 }
-                if (kikindex > myrandominput && kiknetkey[0].includes("NS1") && ew2.length > 10) {
+                if (kikindex > myrandominput && kiknetkey[0].includes("NS1") ) {
                     
                     ns1 = kiknetkey[1];
                 }
-                if (kikindex > myrandominput && kiknetkey[0].includes("NS2") && ns1.length > 10) {
+                if (kikindex > myrandominput && kiknetkey[0].includes("NS2") ) {
                     
                     ns2 = kiknetkey[1];
                 }
-                if (kikindex > myrandominput && kiknetkey[0].includes("UD1") && ns2.length > 10) {
+                if (kikindex > myrandominput && kiknetkey[0].includes("UD1") ) {
                     
                     ud1 = kiknetkey[1];
                 }
-                if (kikindex > myrandominput && kiknetkey[0].includes("UD2") && ud1.length > 10) {
+                if (kikindex > myrandominput && kiknetkey[0].includes("UD2") ) {
                     
                     ud2 = kiknetkey[1];
                     onedataonly = false;
