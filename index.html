@@ -425,29 +425,35 @@
                     <div class="row" style="margin-top: 10px;">
                         <div class="col text-wrap">
                             <b>Ground Station Software for UAV Monitoring System</b> <br>
-                            <span class="project-tagline">Ground station, which receives data from RF module on USB, 
-                                processes data and overlays it on the map live. Like this very page I developed ground station 
-                                software using Javascript. Ground Station Software, which I still work on, has these features:
+                            <span class="project-tagline">Ground station, which receives data from RF module on USB,
+                                processes data and overlays it on the map live. Like this very page I developed ground
+                                station
+                                software using Javascript. Ground Station Software, which I still work on, has these
+                                features:
                                 <ul>
                                     <li>
-                                        Online map using leaflet.js ( <a href="https://leafletjs.com/">leafletjs.com</a> )
+                                        Online map using leaflet.js ( <a href="https://leafletjs.com/">leafletjs.com</a>
+                                        )
                                     </li>
                                     <li>
                                         Direct com port (choose com port and baud rate from UI) connection ability
                                     </li>
                                     <li>
-                                        Live overlaying of incoming data, simultaneously coloring it with user preferred colormap.
-                                        (I added all colormaps of matplotlib (thanks to <i class="fa-brands fa-github"></i> <a
-                                        href="https://github.com/timothygebhard/js-colormaps">timothygebhard/js-colormaps</a>))
+                                        Live overlaying of incoming data, simultaneously coloring it with user preferred
+                                        colormap.
+                                        (I added all colormaps of matplotlib (thanks to <i
+                                            class="fa-brands fa-github"></i> <a
+                                            href="https://github.com/timothygebhard/js-colormaps">timothygebhard/js-colormaps</a>))
                                     </li>
                                     <li>
                                         Save data to local log file.
                                     </li>
                                     <li>
-                                        Geospatial analysis of gathered data using Krigging method. (It works on Python now)
+                                        Geospatial analysis of gathered data using Krigging method. (It works on Python
+                                        now)
                                     </li>
 
-                                </ul>  
+                                </ul>
 
                             </span>
                         </div>
@@ -457,11 +463,12 @@
                                 <div class="row">
                                     <div class="container-fluid">
                                         <div class="mapbox">
-                                            <div class="container-fluid overlay asd" id="map_16d19f0c4cb02d0360d2d91f78fb101a"
+                                            <div class="container-fluid overlay asd"
+                                                id="map_16d19f0c4cb02d0360d2d91f78fb101a"
                                                 style="width: 600px; height: 400px;">
-    
+
                                             </div>
-    
+
                                         </div>
                                     </div>
                                 </div>
@@ -472,22 +479,23 @@
                                             <div class="col">
                                                 <div class="row align-content-center">
                                                     <button type="button" class="btn btn-outline-dark" id="logacbutton"
-                                                    style=" font-size: small; padding: 4px; ">
-                                                    Open Demo Log
-                                                </button>
+                                                        style=" font-size: small; padding: 4px; ">
+                                                        Open Demo Log
+                                                    </button>
                                                 </div>
                                                 <div class="row">
-                                                    <div >
+                                                    <div>
                                                         <sub id="coordlatlon">LatLong( --- , --- )</sub>
-                
+
                                                     </div>
                                                 </div>
                                             </div>
-        
+
                                             <div class="col">
                                                 <label class="input-group-text" for="colormapselect"
                                                     style="font-size: 12px;">Choose colormap</label>
-                                                <select class="form-select" id="colormapselect" style="font-size: 12px;">
+                                                <select class="form-select" id="colormapselect"
+                                                    style="font-size: 12px;">
                                                     <option value="RdYlBu">RdYlBu</option>
                                                     <option value="hot" selected>Hot</option>
                                                     <option value="viridis">viridis</option>
@@ -571,41 +579,42 @@
                                                     <option value="twilight">twilight</option>
                                                     <option value="twilight_shifted">twilight_shifted</option>
                                                     <option value="winter">winter</option>
-        
+
                                                     <!-- <option value="2">Hot</option> -->
                                                     <!-- <option value="3">Three</option> -->
                                                 </select>
                                             </div>
                                             <div class="col">
                                                 <label for="opacityRange" class="form-label">Opacity</label>
-                                                <input type="range" class="form-range" min="0" max="100" id="opacityRange"
-                                                    value="100">
+                                                <input type="range" class="form-range" min="0" max="100"
+                                                    id="opacityRange" value="100">
                                             </div>
-                                 
-        
+
+
                                         </div>
 
                                     </div>
                                 </div>
-                                
-                   
+
+
 
                             </div>
                         </div>
-                    </div>                    
+                    </div>
                     <div class="row" style="margin-top: 10px;">
                         <div class="col text-wrap">
                             <b>3D Design and Printing of Prototype Model</b> <br>
-                            <span class="project-tagline">Like hand-held detector prototype, I designed the case with Autodesk Fusion
-                                360. 3D printed the case with 6 mm wall thickness and PLA flament on Ultimaker S5. 
-                               
+                            <span class="project-tagline">Like hand-held detector prototype, I designed the case with
+                                Autodesk Fusion
+                                360. 3D printed the case with 6 mm wall thickness and PLA flament on Ultimaker S5.
+
                             </span>
                         </div>
                         <div class="col">
                             <div class="online_3d_viewer" style="height: 600px;" model="./models/drone.obj">
                             </div>
                         </div>
-                    
+
                     </div>
                     <div class="row" style="margin-top: 10px;">
                         <div class="col text-wrap">
@@ -673,9 +682,15 @@
 
 
                     </div>
+
                     <div class="row">
                         <div class="container-fluid" id="plotlykiknet"></div>
                     </div>
+                    <div class="row justify-content-center">
+                        <button class="btn-outline-dark" style="width: 160px;" id="showAnotherButton"> Show Another
+                        </button>
+                    </div>
+
                 </div>
 
             </section>
@@ -855,8 +870,8 @@
                 type: 'scatter'
             };
 
-        var deviceselectbox = document.getElementById("deviceselect");
-        var dayselectbox = document.getElementById("dayselect");
+            var deviceselectbox = document.getElementById("deviceselect");
+            var dayselectbox = document.getElementById("dayselect");
 
 
             var data = [trace1];
@@ -870,94 +885,271 @@
         const boreholeref = ref(kiknetdatabase, "/Kiknet Borehole Data 1m/");
 
         var myrandominput = Math.floor(Math.random() * 100);
-        var onedataonly = true;
-        var ew1,ew2,ns1,ns2,ud1,ud2;
-        var ew1ok = false;
+
 
         onValue(accref, (kiknetsnapshot) => {
             var kikindex = 0;
+            var onedataonly = true;
+            var ew1, ew2, ns1, ns2, ud1, ud2;
+            var ew1ok = false;
+            var mytitle;
             Object.entries(kiknetsnapshot.val()).forEach((kiknetkey) => {
 
                 //kiknetkey[0] : ABSH010608180020_EW1, ABSH010608180020_EW2, ABSH010608180020_NS1, ABSH010608180020_NS2...
                 //kiknetkey[1] : accdata
                 // console.log(kiknetkey[0]);
-                console.log(kiknetkey[1]);
-                console.log(kiknetkey[0].includes("EW1"));
+                // console.log(kiknetkey[1]);
+                // console.log(kiknetkey[0].includes("EW1"));
                 // console.log(kikindex);
-                if (kikindex > myrandominput && kiknetkey[0].includes("EW1") && onedataonly) {
-                    
+                if (onedataonly && kikindex > myrandominput && kiknetkey[0].includes("EW1")) {
+
                     ew1 = kiknetkey[1];
-                    console.log(kiknetkey);
+                    // console.log(kiknetkey);
                     ew1ok = true;
                 }
-                if (kikindex > myrandominput && kiknetkey[0].includes("EW2") && ew1ok && onedataonly) {
-                    
+                if (onedataonly && ew1ok && kikindex > myrandominput && kiknetkey[0].includes("EW2")) {
+
                     ew2 = kiknetkey[1];
                 }
-                if (kikindex > myrandominput && kiknetkey[0].includes("NS1") && onedataonly) {
-                    
+                if (onedataonly && ew1ok && kikindex > myrandominput && kiknetkey[0].includes("NS1")) {
+
                     ns1 = kiknetkey[1];
                 }
-                if (kikindex > myrandominput && kiknetkey[0].includes("NS2") && onedataonly) {
-                    
+                if (onedataonly && ew1ok && kikindex > myrandominput && kiknetkey[0].includes("NS2")) {
+
                     ns2 = kiknetkey[1];
                 }
-                if (kikindex > myrandominput && kiknetkey[0].includes("UD1") && onedataonly) {
-                    
+                if (onedataonly && ew1ok && kikindex > myrandominput && kiknetkey[0].includes("UD1")) {
+
                     ud1 = kiknetkey[1];
                 }
-                if (kikindex > myrandominput && kiknetkey[0].includes("UD2") && onedataonly) {
-                    
+                if (onedataonly && ew1ok && kikindex > myrandominput && kiknetkey[0].includes("UD2")) {
+
                     ud2 = kiknetkey[1];
                     onedataonly = false;
-                    console.log(kikindex);
+                    // console.log(kikindex);
+                    mytitle = kiknetkey[0].substring(0,kiknetkey[0].length-4);
                 }
 
                 kikindex++;
             });
 
+            ew1 = ew1.split(',').map(Number);
+            ew2 = ew2.split(',').map(Number);
+            ns1 = ns1.split(',').map(Number);
+            ns2 = ns2.split(',').map(Number);
+            ud1 = ud1.split(',').map(Number);
+            ud2 = ud2.split(',').map(Number);
+            var N = 600;
+            var myxaxis = Array.apply(null, { length: N }).map(Number.call, Number)
+
+            var trace1 = {
+                x: myxaxis,
+                y: ew1,
+                name: "EW1",
+                type: 'scatter'
+            };
+            var trace2 = {
+                x: myxaxis,
+                y: ew2,
+                name: "EW2",
+                type: 'scatter'
+            };
+
+            var trace3 = {
+                x: myxaxis,
+                y: ns1,
+                name: "NS1",
+                xaxis: 'x2',
+                yaxis: 'y2',
+                type: 'scatter'
+            };
+
+            var trace4 = {
+                x: myxaxis,
+                y: ns2,
+                name: "NS2",
+                xaxis: 'x2',
+                yaxis: 'y2',
+                type: 'scatter'
+            };
+
+            var trace5 = {
+                x: myxaxis,
+                y: ud1,
+                name: "UD1",
+                xaxis: 'x3',
+                yaxis: 'y3',
+                type: 'scatter'
+            };
+
+            var trace6 = {
+                x: myxaxis,
+                y: ud2,
+                name: "UD2",
+                xaxis: 'x3',
+                yaxis: 'y3',
+                type: 'scatter'
+            };
+
+            // var trace4 = {
+            //     x: [4000, 5000, 6000],
+            //     y: [7000, 8000, 9000],
+            //     xaxis: 'x4',
+            //     yaxis: 'y4',
+            //     type: 'scatter'
+            // };
+
+            var kiknetdata = [trace1, trace2, trace3, trace4, trace5, trace6];
+
+            var kiknetlayout = {
+                title: {
+                        text: mytitle,
+                    },
+                grid: { rows: 3, columns: 1, pattern: 'independent' },
+            };
+
+            Plotly.newPlot('plotlykiknet', kiknetdata, kiknetlayout);
+
 
         });
-        console.log(ew1);
-        var trace1 = {
-                        x: ew1,
-                        y: ew2,
-                        xaxis: 'EW1',
-                        yaxis: 'EW2',
-                        type: 'scatter'
-                    };
 
-                    var trace2 = {
-                        x: ns1,
-                        y: ns2,
-                        xaxis: 'NS1',
-                        yaxis: 'NS2',
-                        type: 'scatter'
-                    };
 
-                    var trace3 = {
-                        x: ud1,
-                        y: ud2,
-                        xaxis: 'UD1',
-                        yaxis: 'UD2',
-                        type: 'scatter'
-                    };
+        document.getElementById('showAnotherButton').addEventListener('click', async () => {
+            const d = new Date();
+            let ms = d.getMilliseconds();
+            var myrandominput = ms % 100;
+            // var myrandominput = Math.floor(Math.random() * 100);
+            // console.log(myrandominput);
+            onValue(accref, (kiknetsnapshot) => {
+                var kikindex = 0;
+                var onedataonly = true;
+                var ew1, ew2, ns1, ns2, ud1, ud2;
+                var ew1ok = false;
+                var mytitle;
+                Object.entries(kiknetsnapshot.val()).forEach((kiknetkey) => {
 
-                    // var trace4 = {
-                    //     x: [4000, 5000, 6000],
-                    //     y: [7000, 8000, 9000],
-                    //     xaxis: 'x4',
-                    //     yaxis: 'y4',
-                    //     type: 'scatter'
-                    // };
+                    //kiknetkey[0] : ABSH010608180020_EW1, ABSH010608180020_EW2, ABSH010608180020_NS1, ABSH010608180020_NS2...
+                    //kiknetkey[1] : accdata
+                    // console.log(kiknetkey[0]);
+                    // console.log(kiknetkey[1]);
+                    // console.log(kiknetkey[0].includes("EW1"));
+                    // console.log(kikindex);
+                    if (onedataonly && kikindex > myrandominput && kiknetkey[0].includes("EW1")) {
 
-                    var kiknetdata = [trace1, trace2, trace3];
+                        ew1 = kiknetkey[1];
+                        // console.log(kiknetkey);
+                        ew1ok = true;
+                    }
+                    if (onedataonly && ew1ok && kikindex > myrandominput && kiknetkey[0].includes("EW2")) {
 
-                    var kiknetlayout = {
-                        grid: { rows: 3, columns: 1, pattern: 'independent' },
-                    };
+                        ew2 = kiknetkey[1];
+                    }
+                    if (onedataonly && ew1ok && kikindex > myrandominput && kiknetkey[0].includes("NS1")) {
 
-                    Plotly.newPlot('plotlykiknet', kiknetdata, kiknetlayout);
+                        ns1 = kiknetkey[1];
+                    }
+                    if (onedataonly && ew1ok && kikindex > myrandominput && kiknetkey[0].includes("NS2")) {
+
+                        ns2 = kiknetkey[1];
+                    }
+                    if (onedataonly && ew1ok && kikindex > myrandominput && kiknetkey[0].includes("UD1")) {
+
+                        ud1 = kiknetkey[1];
+                    }
+                    if (onedataonly && ew1ok && kikindex > myrandominput && kiknetkey[0].includes("UD2")) {
+
+                        ud2 = kiknetkey[1];
+                        onedataonly = false;
+                        // console.log(kikindex);
+                        mytitle = kiknetkey[0].substring(0,kiknetkey[0].length-4);
+                    }
+
+                    kikindex++;
+                });
+
+                ew1 = ew1.split(',').map(Number);
+                ew2 = ew2.split(',').map(Number);
+                ns1 = ns1.split(',').map(Number);
+                ns2 = ns2.split(',').map(Number);
+                ud1 = ud1.split(',').map(Number);
+                ud2 = ud2.split(',').map(Number);
+                var N = 600;
+                var myxaxis = Array.apply(null, { length: N }).map(Number.call, Number)
+
+                var trace1 = {
+                    x: myxaxis,
+                    y: ew1,
+                    name: "EW1",
+                    type: 'scatter'
+                };
+                var trace2 = {
+                    x: myxaxis,
+                    y: ew2,
+                    name: "EW2",
+                    type: 'scatter'
+                };
+
+                var trace3 = {
+                    x: myxaxis,
+                    y: ns1,
+                    name: "NS1",
+                    xaxis: 'x2',
+                    yaxis: 'y2',
+                    type: 'scatter'
+                };
+
+                var trace4 = {
+                    x: myxaxis,
+                    y: ns2,
+                    name: "NS2",
+                    xaxis: 'x2',
+                    yaxis: 'y2',
+                    type: 'scatter'
+                };
+
+                var trace5 = {
+                    x: myxaxis,
+                    y: ud1,
+                    name: "UD1",
+                    xaxis: 'x3',
+                    yaxis: 'y3',
+                    type: 'scatter'
+                };
+
+                var trace6 = {
+                    x: myxaxis,
+                    y: ud2,
+                    name: "UD2",
+                    xaxis: 'x3',
+                    yaxis: 'y3',
+                    type: 'scatter'
+                };
+
+                // var trace4 = {
+                //     x: [4000, 5000, 6000],
+                //     y: [7000, 8000, 9000],
+                //     xaxis: 'x4',
+                //     yaxis: 'y4',
+                //     type: 'scatter'
+                // };
+
+                var kiknetdata = [trace1, trace2, trace3, trace4, trace5, trace6];
+
+                var kiknetlayout = {
+                    title: {
+                        text: mytitle,
+                    },
+                    grid: { rows: 3, columns: 1, pattern: 'independent' },
+                };
+
+                Plotly.newPlot('plotlykiknet', kiknetdata, kiknetlayout);
+
+
+            });
+
+        });
+
 
 
     </script>
@@ -975,6 +1167,8 @@
             new TabsAutomatic(tablists[i]);
         }
     });
+
+
 
     document.addEventListener("DOMContentLoaded", () => {
         //...
@@ -1010,12 +1204,12 @@
 
     var map_16d19f0c4cb02d0360d2d91f78fb101a = L.map(
         "map_16d19f0c4cb02d0360d2d91f78fb101a", {
-            center: [40.059774, 32.60246],
-            crs: L.CRS.EPSG3857,
-            zoom: 18,
-            zoomControl: true,
-            preferCanvas: false,
-        }
+        center: [40.059774, 32.60246],
+        crs: L.CRS.EPSG3857,
+        zoom: 18,
+        zoomControl: true,
+        preferCanvas: false,
+    }
     );
 
 
@@ -1181,16 +1375,16 @@
 
     var tile_layer_ec0c677b6367df196a132fd6fb0127a1 = L.tileLayer(
         "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}", {
-            "attribution": "Tiles \u0026copy; Esri \u0026mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community - TENMAK NÜKEN 2022",
-            "detectRetina": false,
-            "maxNativeZoom": 18,
-            "maxZoom": 22,
-            "minZoom": 0,
-            "noWrap": false,
-            "opacity": 1,
-            "subdomains": "abc",
-            "tms": false
-        }
+        "attribution": "Tiles \u0026copy; Esri \u0026mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community - TENMAK NÜKEN 2022",
+        "detectRetina": false,
+        "maxNativeZoom": 18,
+        "maxZoom": 22,
+        "minZoom": 0,
+        "noWrap": false,
+        "opacity": 1,
+        "subdomains": "abc",
+        "tms": false
+    }
     ).addTo(map_16d19f0c4cb02d0360d2d91f78fb101a);
 
     let fileHandle_log;
@@ -1219,7 +1413,7 @@
             try {
 
 
-                value = value.split(" ").slice(1, ).join(" ");
+                value = value.split(" ").slice(1,).join(" ");
                 console.log(value);
 
 
@@ -1268,7 +1462,7 @@
 
                     let mypopup = "total: " + total_count.toString() + " l: " + lantan_count
                         .toString() + " p: " + plastik_count.toString() + " max: " + max_count
-                        .value + " id: " + mymarkers.length;
+                            .value + " id: " + mymarkers.length;
                     lantan_geldi = false;
                     plastik_geldi = false;
                     obj['className'] = lantan_count.toString() + " " + plastik_count.toString();
