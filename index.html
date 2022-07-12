@@ -662,8 +662,24 @@
                             <b>Kik-Net Earthquake Data Visualization</b> <br>
                             <span class="project-tagline">As stated above, I processed 1.5 million earthquake recordings
                                 for my thesis. And I made a data visualization tool for myself, to check some properties
-                                of
-                                data and to get more insight.
+                                of data and to get more insight. There are six accelerograms recorded for every earthquake
+                                at Kik-Net. 
+                                <ul>
+                                    <li>EW1: Recorded by seismograph at bedrock level, which works on East West axis</li>
+                                    <li>EW2: Recorded by seismograph at surface level, which works on East West axis</li>
+                                    <li>NS1: Recorded by seismograph at bedrock level, which works on North South axis</li>
+                                    <li>NS2: Recorded by seismograph at surface level, which works on North South axis</li>
+                                    <li>UD1: Recorded by seismograph at bedrock level, which works on Up Down axis</li>
+                                    <li>UD2: Recorded by seismograph at surface level, which works on Up Down axis</li>
+                                </ul> 
+                                For standardization purposes, I calculated (Fast-Fourier Transformation) the frequency domain spectra from these accelerograms.
+                                My theory is EW2 recording (surface level) is a result of interaction between EW1 (bedrock level) and Soil Column. 
+                                Hence, I am using EW1 and soil column values as input to the neural network models and EW2 as the output. <br>
+                                Soil column values consists of two values (Vs and Vp) for each depth value from surface to the bedrock level.
+                                <ul>
+                                    <li>Vs (m/s): Shear Wave Velocity of soil</li>
+                                    <li>Vp (m/s): Pressure Wave Velocity of soil</li>
+                                </ul>   
                             </span>
                         </div>
 
@@ -692,7 +708,7 @@
 
     <script type="module">
         import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.9.0/firebase-app.js';
-        import { getDatabase, ref, onValue } from 'https://www.gstatic.com/firebasejs/9.9.0/firebase-database.js';
+        import { getDatabase, ref, onValue, get } from 'https://www.gstatic.com/firebasejs/9.9.0/firebase-database.js';
 
 
         // TODO: Add SDKs for Firebase products that you want to use
@@ -814,6 +830,7 @@
 
 
 
+
         document.getElementById('deviceselect').addEventListener('change', async (event) => {
             dayselectbox.innerText = null;
             const dayref = ref(database, "/" + event.target.value + "/Doz/");
@@ -832,6 +849,7 @@
                 //   updateStarCount(postElement, data);
             });
             dayselectbox.dispatchEvent(new Event('change'));
+            document.getElementById('showAnotherButton').dispatchEvent(new Event('click'));
 
         });
 
@@ -877,9 +895,10 @@
 
         const d = new Date();
         let ms = d.getMilliseconds();
+
         var myrandominput = ms % 100;
-
-
+        // var myrandominput = Math.floor(Math.random() * 100);
+        // console.log(myrandominput);
         onValue(accref, (kiknetsnapshot) => {
             var kikindex = 0;
             var onedataonly = true;
@@ -922,125 +941,138 @@
                     onedataonly = false;
                     // console.log(kikindex);
                     mytitle = kiknetkey[0].substring(0, kiknetkey[0].length - 4);
-                    document.getElementById("kiknetPlotSub").innerHTML = "This plot shows the spectra of 6 accelerograms recorded by station " + mytitle.substring(0, 6) + " at 20" + mytitle.substring(6, 8) + "-" + mytitle.substring(8, 10) + "-" + mytitle.substring(10, 12) + " " + mytitle.substring(12, 14) + ":" + mytitle.substring(14, 16);
+                    document.getElementById("kiknetPlotSub").innerHTML = "This plot shows the spectra of 6 accelerograms recorded by station " + mytitle.substring(0, 6) + " at 20" + mytitle.substring(6, 8) + "-" + mytitle.substring(8, 10) + "-" + mytitle.substring(10, 12) + " " + mytitle.substring(12, 14) + ":" + mytitle.substring(14, 16) + " and at the bottom soil column Vs-Vp values of the station given." ;
+
                 }
 
                 kikindex++;
             });
 
+
             var vs, vp, depth;
 
-            onValue(boreholeref, (boreholesnapshot) => {
+            get(boreholeref).then((boreholesnapshot) => {
+
                 Object.entries(boreholesnapshot.val()).forEach((boreholekey) => {
                     if (boreholekey[0] == mytitle.substring(0, 6)) {
-                        // console.log(boreholekey[1]['Depth_values']);
+ 
                         depth = boreholekey[1]['Depth_values'].split(',').map(Number);
                         vs = boreholekey[1]['Vs_values'].split(',').map(Number);
                         vp = boreholekey[1]['Vp_values'].split(',').map(Number);
-                        // console.log(vs);
-                        // console.log(depth);
+
+
                     }
 
                 });
+            }).then(() => {
+
+                ew1 = ew1.split(',').map(Number);
+                ew2 = ew2.split(',').map(Number);
+                ns1 = ns1.split(',').map(Number);
+                ns2 = ns2.split(',').map(Number);
+                ud1 = ud1.split(',').map(Number);
+                ud2 = ud2.split(',').map(Number);
+                var N = 600;
+                var myxaxis = Array.apply(null, { length: N }).map(Number.call, Number)
+
+                var trace1 = {
+                    x: myxaxis,
+                    y: ew1,
+                    name: "EW1",
+                    type: 'scatter'
+                };
+                var trace2 = {
+                    x: myxaxis,
+                    y: ew2,
+                    name: "EW2",
+                    type: 'scatter'
+                };
+
+                var trace3 = {
+                    x: myxaxis,
+                    y: ns1,
+                    name: "NS1",
+                    xaxis: 'x2',
+                    yaxis: 'y2',
+                    type: 'scatter'
+                };
+
+                var trace4 = {
+                    x: myxaxis,
+                    y: ns2,
+                    name: "NS2",
+                    xaxis: 'x2',
+                    yaxis: 'y2',
+                    type: 'scatter'
+                };
+
+                var trace5 = {
+                    x: myxaxis,
+                    y: ud1,
+                    name: "UD1",
+                    xaxis: 'x3',
+                    yaxis: 'y3',
+                    type: 'scatter'
+                };
+
+                var trace6 = {
+                    x: myxaxis,
+                    y: ud2,
+                    name: "UD2",
+                    xaxis: 'x3',
+                    yaxis: 'y3',
+                    type: 'scatter'
+                };
+
+                var trace7 = {
+                    x: depth,
+                    y: vs,
+                    name: "Vs (m/s)",
+                    xaxis: 'x4',
+                    yaxis: 'y4',
+                    type: 'scatter'
+                };
+                var trace8 = {
+                    x: depth,
+                    y: vp,
+                    name: "Vp (m/s)",
+                    xaxis: 'x4',
+                    yaxis: 'y4',
+                    type: 'scatter'
+                };
+
+                // var trace4 = {
+                //     x: [4000, 5000, 6000],
+                //     y: [7000, 8000, 9000],
+                //     xaxis: 'x4',
+                //     yaxis: 'y4',
+                //     type: 'scatter'
+                // };
+
+                var kiknetdata = [trace1, trace2, trace3, trace4, trace5, trace6, trace7, trace8];
+
+                var kiknetlayout = {
+                    title: {
+                        text: mytitle,
+                    },
+                    grid: { rows: 4, columns: 1, pattern: 'independent' },
+                };
+
+                Plotly.newPlot('plotlykiknet', kiknetdata, kiknetlayout);
+
             });
 
-            ew1 = ew1.split(',').map(Number);
-            ew2 = ew2.split(',').map(Number);
-            ns1 = ns1.split(',').map(Number);
-            ns2 = ns2.split(',').map(Number);
-            ud1 = ud1.split(',').map(Number);
-            ud2 = ud2.split(',').map(Number);
-            var N = 600;
-            var myxaxis = Array.apply(null, { length: N }).map(Number.call, Number)
 
-            var trace1 = {
-                x: myxaxis,
-                y: ew1,
-                name: "EW1",
-                type: 'scatter'
-            };
-            var trace2 = {
-                x: myxaxis,
-                y: ew2,
-                name: "EW2",
-                type: 'scatter'
-            };
 
-            var trace3 = {
-                x: myxaxis,
-                y: ns1,
-                name: "NS1",
-                xaxis: 'x2',
-                yaxis: 'y2',
-                type: 'scatter'
-            };
 
-            var trace4 = {
-                x: myxaxis,
-                y: ns2,
-                name: "NS2",
-                xaxis: 'x2',
-                yaxis: 'y2',
-                type: 'scatter'
-            };
 
-            var trace5 = {
-                x: myxaxis,
-                y: ud1,
-                name: "UD1",
-                xaxis: 'x3',
-                yaxis: 'y3',
-                type: 'scatter'
-            };
 
-            var trace6 = {
-                x: myxaxis,
-                y: ud2,
-                name: "UD2",
-                xaxis: 'x3',
-                yaxis: 'y3',
-                type: 'scatter'
-            };
 
-            var trace7 = {
-                x: depth,
-                y: vs,
-                name: "Vs (m/s)",
-                xaxis: 'x4',
-                yaxis: 'y4',
-                type: 'scatter'
-            };
-            var trace8 = {
-                x: depth,
-                y: vp,
-                name: "Vp (m/s)",
-                xaxis: 'x4',
-                yaxis: 'y4',
-                type: 'scatter'
-            };
-
-            // var trace4 = {
-            //     x: [4000, 5000, 6000],
-            //     y: [7000, 8000, 9000],
-            //     xaxis: 'x4',
-            //     yaxis: 'y4',
-            //     type: 'scatter'
-            // };
-
-            var kiknetdata = [trace1, trace2, trace3, trace4, trace5, trace6, trace7, trace8];
-
-            var kiknetlayout = {
-                title: {
-                    text: mytitle,
-                },
-                grid: { rows: 4, columns: 1, pattern: 'independent' },
-            };
-
-            Plotly.newPlot('plotlykiknet', kiknetdata, kiknetlayout);
 
 
         });
 
+        // document.getElementById('showAnotherButton').dispatchEvent(new Event('click'));
 
         document.getElementById('showAnotherButton').addEventListener('click', async () => {
             const d = new Date();
