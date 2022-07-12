@@ -402,7 +402,8 @@
                             </div>
 
                         </div>
-                        <sub class="project-tagline" style="margin-top: 20px;">Select a device and a day to see daily dose measurement data.
+                        <sub class="project-tagline" style="margin-top: 20px;">Select a device and a day to see daily
+                            dose measurement data.
                             (Link for demo website:
                             <a href="https://tenmak-ssd.web.app/"> https://tenmak-ssd.web.app/)</a></sub>
                     </div>
@@ -820,7 +821,7 @@
                 //   const data = snapshot.val();
                 console.log(snapshot.val());
                 Object.keys(snapshot.val()).forEach((key) => {
-                    console.log(key);
+                    // console.log(key);
                     var option = document.createElement("OPTION");
                     option.innerHTML = key;
                     option.value = key;
@@ -830,6 +831,7 @@
                 //   console.log( Object.keys(snapshot.val()));
                 //   updateStarCount(postElement, data);
             });
+            dayselectbox.dispatchEvent(new Event('change'));
 
         });
 
@@ -839,7 +841,7 @@
             var dosevalue = [];
             onValue(doseref, (snapshot) => {
                 //   const data = snapshot.val();
-                console.log(snapshot.val());
+                // console.log(snapshot.val());
                 Object.entries(snapshot.val()).forEach((key, value) => {
 
                     dosetime.push(key[0].split("_")[0].substring(8, 10) + ":" + key[0].split("_")[0].substring(10, 12) + ":" + key[0].split("_")[0].substring(12));
@@ -873,7 +875,9 @@
 
         const boreholeref = ref(kiknetdatabase, "/Kiknet Borehole Data 1m/");
 
-        var myrandominput = Math.floor(Math.random() * 100);
+        const d = new Date();
+        let ms = d.getMilliseconds();
+        var myrandominput = ms % 100;
 
 
         onValue(accref, (kiknetsnapshot) => {
@@ -922,6 +926,22 @@
                 }
 
                 kikindex++;
+            });
+
+            var vs, vp, depth;
+
+            onValue(boreholeref, (boreholesnapshot) => {
+                Object.entries(boreholesnapshot.val()).forEach((boreholekey) => {
+                    if (boreholekey[0] == mytitle.substring(0, 6)) {
+                        // console.log(boreholekey[1]['Depth_values']);
+                        depth = boreholekey[1]['Depth_values'].split(',').map(Number);
+                        vs = boreholekey[1]['Vs_values'].split(',').map(Number);
+                        vp = boreholekey[1]['Vp_values'].split(',').map(Number);
+                        // console.log(vs);
+                        // console.log(depth);
+                    }
+
+                });
             });
 
             ew1 = ew1.split(',').map(Number);
@@ -982,6 +1002,23 @@
                 type: 'scatter'
             };
 
+            var trace7 = {
+                x: depth,
+                y: vs,
+                name: "Vs (m/s)",
+                xaxis: 'x4',
+                yaxis: 'y4',
+                type: 'scatter'
+            };
+            var trace8 = {
+                x: depth,
+                y: vp,
+                name: "Vp (m/s)",
+                xaxis: 'x4',
+                yaxis: 'y4',
+                type: 'scatter'
+            };
+
             // var trace4 = {
             //     x: [4000, 5000, 6000],
             //     y: [7000, 8000, 9000],
@@ -990,13 +1027,13 @@
             //     type: 'scatter'
             // };
 
-            var kiknetdata = [trace1, trace2, trace3, trace4, trace5, trace6];
+            var kiknetdata = [trace1, trace2, trace3, trace4, trace5, trace6, trace7, trace8];
 
             var kiknetlayout = {
                 title: {
                     text: mytitle,
                 },
-                grid: { rows: 3, columns: 1, pattern: 'independent' },
+                grid: { rows: 4, columns: 1, pattern: 'independent' },
             };
 
             Plotly.newPlot('plotlykiknet', kiknetdata, kiknetlayout);
@@ -1060,6 +1097,23 @@
                     kikindex++;
                 });
 
+
+                var vs, vp, depth;
+
+                onValue(boreholeref, (boreholesnapshot) => {
+                    Object.entries(boreholesnapshot.val()).forEach((boreholekey) => {
+                        if (boreholekey[0] == mytitle.substring(0, 6)) {
+                            // console.log(boreholekey[1]['Depth_values']);
+                            depth = boreholekey[1]['Depth_values'].split(',').map(Number);
+                            vs = boreholekey[1]['Vs_values'].split(',').map(Number);
+                            vp = boreholekey[1]['Vp_values'].split(',').map(Number);
+                            // console.log(vs);
+                            // console.log(depth);
+                        }
+
+                    });
+                });
+
                 ew1 = ew1.split(',').map(Number);
                 ew2 = ew2.split(',').map(Number);
                 ns1 = ns1.split(',').map(Number);
@@ -1118,6 +1172,23 @@
                     type: 'scatter'
                 };
 
+                var trace7 = {
+                    x: depth,
+                    y: vs,
+                    name: "Vs (m/s)",
+                    xaxis: 'x4',
+                    yaxis: 'y4',
+                    type: 'scatter'
+                };
+                var trace8 = {
+                    x: depth,
+                    y: vp,
+                    name: "Vp (m/s)",
+                    xaxis: 'x4',
+                    yaxis: 'y4',
+                    type: 'scatter'
+                };
+
                 // var trace4 = {
                 //     x: [4000, 5000, 6000],
                 //     y: [7000, 8000, 9000],
@@ -1126,13 +1197,13 @@
                 //     type: 'scatter'
                 // };
 
-                var kiknetdata = [trace1, trace2, trace3, trace4, trace5, trace6];
+                var kiknetdata = [trace1, trace2, trace3, trace4, trace5, trace6, trace7, trace8];
 
                 var kiknetlayout = {
                     title: {
                         text: mytitle,
                     },
-                    grid: { rows: 3, columns: 1, pattern: 'independent' },
+                    grid: { rows: 4, columns: 1, pattern: 'independent' },
                 };
 
                 Plotly.newPlot('plotlykiknet', kiknetdata, kiknetlayout);
@@ -1168,6 +1239,7 @@
         document.getElementById("main").style.height = window.innerHeight + "px";
         document.getElementById("win1").style.height = "100 vh";
         document.getElementById("win1").style.maxHeight = "100 vh";
+
 
         var sizes = {
             "win1": 0.25,
