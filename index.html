@@ -478,7 +478,7 @@
                             <div class="row">
                                 <div class="container-fluid">
                                     <div class="row justify-content-md-center">
-                                        <div class="col-sm-2" >
+                                        <div class="col-sm-2">
                                             <div class="row align-content-center">
                                                 <button type="button" class="btn btn-outline-dark" id="logacbutton"
                                                     style=" font-size: small; padding: 4px; ">
@@ -493,7 +493,7 @@
                                             </div>
                                         </div>
 
-                                        <div class="col-sm-2" >
+                                        <div class="col-sm-2">
                                             <label class="input-group-text" for="colormapselect"
                                                 style="font-size: 12px;">Choose colormap</label>
                                             <select class="form-select" id="colormapselect" style="font-size: 12px;">
@@ -1150,113 +1150,115 @@
 
                 var vs, vp, depth;
                 get(boreholeref).then((boreholesnapshot) => {
-                // onValue(boreholeref, (boreholesnapshot) => {
+
                     Object.entries(boreholesnapshot.val()).forEach((boreholekey) => {
                         if (boreholekey[0] == mytitle.substring(0, 6)) {
-                            // console.log(boreholekey[1]['Depth_values']);
+
                             depth = boreholekey[1]['Depth_values'].split(',').map(Number);
                             vs = boreholekey[1]['Vs_values'].split(',').map(Number);
                             vp = boreholekey[1]['Vp_values'].split(',').map(Number);
-                            // console.log(vs);
-                            // console.log(depth);
+
+
                         }
 
                     });
+                }).then(() => {
+
+                    ew1 = ew1.split(',').map(Number);
+                    ew2 = ew2.split(',').map(Number);
+                    ns1 = ns1.split(',').map(Number);
+                    ns2 = ns2.split(',').map(Number);
+                    ud1 = ud1.split(',').map(Number);
+                    ud2 = ud2.split(',').map(Number);
+                    var N = 600;
+                    var myxaxis = Array.apply(null, { length: N }).map(Number.call, Number)
+
+                    var trace1 = {
+                        x: myxaxis,
+                        y: ew1,
+                        name: "EW1",
+                        type: 'scatter'
+                    };
+                    var trace2 = {
+                        x: myxaxis,
+                        y: ew2,
+                        name: "EW2",
+                        type: 'scatter'
+                    };
+
+                    var trace3 = {
+                        x: myxaxis,
+                        y: ns1,
+                        name: "NS1",
+                        xaxis: 'x2',
+                        yaxis: 'y2',
+                        type: 'scatter'
+                    };
+
+                    var trace4 = {
+                        x: myxaxis,
+                        y: ns2,
+                        name: "NS2",
+                        xaxis: 'x2',
+                        yaxis: 'y2',
+                        type: 'scatter'
+                    };
+
+                    var trace5 = {
+                        x: myxaxis,
+                        y: ud1,
+                        name: "UD1",
+                        xaxis: 'x3',
+                        yaxis: 'y3',
+                        type: 'scatter'
+                    };
+
+                    var trace6 = {
+                        x: myxaxis,
+                        y: ud2,
+                        name: "UD2",
+                        xaxis: 'x3',
+                        yaxis: 'y3',
+                        type: 'scatter'
+                    };
+
+                    var trace7 = {
+                        x: depth,
+                        y: vs,
+                        name: "Vs (m/s)",
+                        xaxis: 'x4',
+                        yaxis: 'y4',
+                        type: 'scatter'
+                    };
+                    var trace8 = {
+                        x: depth,
+                        y: vp,
+                        name: "Vp (m/s)",
+                        xaxis: 'x4',
+                        yaxis: 'y4',
+                        type: 'scatter'
+                    };
+
+                    // var trace4 = {
+                    //     x: [4000, 5000, 6000],
+                    //     y: [7000, 8000, 9000],
+                    //     xaxis: 'x4',
+                    //     yaxis: 'y4',
+                    //     type: 'scatter'
+                    // };
+
+                    var kiknetdata = [trace1, trace2, trace3, trace4, trace5, trace6, trace7, trace8];
+
+                    var kiknetlayout = {
+                        title: {
+                            text: mytitle,
+                        },
+                        grid: { rows: 4, columns: 1, pattern: 'independent' },
+                    };
+
+                    Plotly.newPlot('plotlykiknet', kiknetdata, kiknetlayout);
+
                 });
-
-                ew1 = ew1.split(',').map(Number);
-                ew2 = ew2.split(',').map(Number);
-                ns1 = ns1.split(',').map(Number);
-                ns2 = ns2.split(',').map(Number);
-                ud1 = ud1.split(',').map(Number);
-                ud2 = ud2.split(',').map(Number);
-                var N = 600;
-                var myxaxis = Array.apply(null, { length: N }).map(Number.call, Number)
-
-                var trace1 = {
-                    x: myxaxis,
-                    y: ew1,
-                    name: "EW1",
-                    type: 'scatter'
-                };
-                var trace2 = {
-                    x: myxaxis,
-                    y: ew2,
-                    name: "EW2",
-                    type: 'scatter'
-                };
-
-                var trace3 = {
-                    x: myxaxis,
-                    y: ns1,
-                    name: "NS1",
-                    xaxis: 'x2',
-                    yaxis: 'y2',
-                    type: 'scatter'
-                };
-
-                var trace4 = {
-                    x: myxaxis,
-                    y: ns2,
-                    name: "NS2",
-                    xaxis: 'x2',
-                    yaxis: 'y2',
-                    type: 'scatter'
-                };
-
-                var trace5 = {
-                    x: myxaxis,
-                    y: ud1,
-                    name: "UD1",
-                    xaxis: 'x3',
-                    yaxis: 'y3',
-                    type: 'scatter'
-                };
-
-                var trace6 = {
-                    x: myxaxis,
-                    y: ud2,
-                    name: "UD2",
-                    xaxis: 'x3',
-                    yaxis: 'y3',
-                    type: 'scatter'
-                };
-
-                var trace7 = {
-                    x: depth,
-                    y: vs,
-                    name: "Vs (m/s)",
-                    xaxis: 'x4',
-                    yaxis: 'y4',
-                    type: 'scatter'
-                };
-                var trace8 = {
-                    x: depth,
-                    y: vp,
-                    name: "Vp (m/s)",
-                    xaxis: 'x4',
-                    yaxis: 'y4',
-                    type: 'scatter'
-                };
-
-                // var trace4 = {
-                //     x: [4000, 5000, 6000],
-                //     y: [7000, 8000, 9000],
-                //     xaxis: 'x4',
-                //     yaxis: 'y4',
-                //     type: 'scatter'
-                // };
-
-                var kiknetdata = [trace1, trace2, trace3, trace4, trace5, trace6, trace7, trace8];
-
-                var kiknetlayout = {
-                    title: {
-                        text: mytitle,
-                    },
-                    grid: { rows: 4, columns: 1, pattern: 'independent' },
-                };
-
-                Plotly.newPlot('plotlykiknet', kiknetdata, kiknetlayout);
 
 
             });
