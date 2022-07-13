@@ -1149,8 +1149,8 @@
 
 
                 var vs, vp, depth;
-
-                onValue(boreholeref, (boreholesnapshot) => {
+                get(boreholeref).then((boreholesnapshot) => {
+                // onValue(boreholeref, (boreholesnapshot) => {
                     Object.entries(boreholesnapshot.val()).forEach((boreholekey) => {
                         if (boreholekey[0] == mytitle.substring(0, 6)) {
                             // console.log(boreholekey[1]['Depth_values']);
