@@ -1,0 +1,1876 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+
+    <script>
+        L_NO_TOUCH = false;
+        L_DISABLE_3D = false;
+    </script>
+
+
+    <script src="./js/leaflet.js"></script>
+    <script src="./js/jquery-3.6.0.min.js"></script>
+    <script src="./js/bootstrap.min.js"></script>
+    <script src="./js/resizable.js"></script>
+    <script src="./js/mycmaps.js"></script>
+    <script src="./js/select-only.js"></script>
+    <script src="./js/plotly.js"></script>
+    <script src="./js/kriging.js"></script>
+    <script src="./js/proj4.js"></script>
+    <script src="./js/fontawesome.js"></script>
+    <script src="./js/popper.js"></script>
+    <script src="./js/hdf5.js"></script>
+
+
+
+    <script type="text/javascript" src="./o3dv/o3dv.min.js"></script>
+    <script type="text/javascript">
+        // Set the external libraries location to the
+        // folder where the library is.
+        OV.SetExternalLibLocation('./o3dv/libs');
+
+        // Init all the 3d viewer elements.
+        OV.Init3DViewerElements();
+    </script>
+
+
+
+    <link rel="stylesheet" href="./css/resizable-style.css" />
+    <link rel="stylesheet" href="./css/leaflet.css" />
+    <link rel="stylesheet" href="./css/bootstrap.min.css" />
+    <link rel="stylesheet" href="./css/bootstrap.min.css.map" />
+    <link rel="stylesheet" href="./css/bootstrap-theme.min.css" />
+    <link rel="stylesheet" href="./css/font-awesome.min.css" />
+    <link rel="stylesheet" href="./css/leaflet.awesome-markers.css" />
+    <link rel="stylesheet" href="./css/leaflet.awesome.rotate.min.css" />
+    <link rel="stylesheet" href="./css/sortable-table.css" />
+    <link rel="stylesheet" href="./css/slider-multithumb.css" />
+    <link rel="stylesheet" href="./css/select-only.css" />
+
+    <!-- <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" /> -->
+    <meta name="viewport" content="width=1024">
+
+    <style>
+        #map_16d19f0c4cb02d0360d2d91f78fb101a {
+            display: flex;
+            position: relative;
+            width: 50.0%;
+            height: 50.0%;
+            left: 0.0%;
+            top: 0.0%;
+
+        }
+
+        .profile-container {
+            padding: 30px;
+            background: rgba(0, 0, 0, 0.2);
+            text-align: center;
+            color: #fff
+        }
+
+        .resizable-left {
+            padding: 30px;
+            /* background: rgba(0,0,0,0.2); */
+
+            text-align: center;
+            color: #fff;
+            height: 100vh;
+            overflow: auto;
+        }
+
+        .resizable-left::-webkit-scrollbar {
+            display: none;
+            /* Safari and Chrome */
+        }
+
+        .resizable-right {
+            padding: 30px;
+            /* background: rgba(0,0,0,0.2); */
+
+            text-align: start;
+            background-color: #fff;
+            height: 100vh;
+            overflow: auto;
+        }
+
+        .resizable-right::-webkit-scrollbar {
+            display: none;
+            /* Safari and Chrome */
+        }
+
+        .nav-item :hover {
+            background: rgba(0, 0, 0, 0.2);
+
+        }
+
+        .profile-container .tagline {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 16px;
+            font-weight: 300;
+            margin-top: 0;
+            margin-bottom: 0
+        }
+
+        .education-container .item {
+            margin-bottom: 15px
+        }
+
+        .education-container .item:last-child {
+            margin-bottom: 0
+        }
+
+        .education-container .meta {
+            color: rgba(255, 255, 255, 0.6);
+            font-weight: 400;
+            margin-bottom: 0px;
+            margin-top: 0
+        }
+
+        .education-container .time {
+            color: rgba(255, 255, 255, 0.6);
+            font-weight: 400;
+            margin-bottom: 0px
+        }
+
+        .languages-container .lang-desc {
+            color: rgba(255, 255, 255, 0.6)
+        }
+
+        .languages-list {
+            margin-bottom: 0
+        }
+
+        .languages-list li {
+            margin-bottom: 10px
+        }
+
+        .languages-list li:last-child {
+            margin-bottom: 0
+        }
+
+        .project-title {
+            font-size: 16px;
+            font-weight: 400;
+            margin-top: 0;
+            margin-bottom: 5px;
+            color: #2d7788
+        }
+
+        .projects-section .intro {
+            margin-bottom: 30px
+        }
+
+        .projects-section .item {
+            margin-bottom: 15px
+        }
+
+        .section-title {
+            text-transform: uppercase;
+            font-size: 20px;
+            font-weight: 500;
+            color: #2d7788;
+            position: relative;
+            margin-top: 0;
+            margin-bottom: 0px
+        }
+
+        .mapbox {
+            position: relative;
+        }
+
+        .mapbox .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+
+
+        }
+
+
+
+        .asd {
+            height: 400px;
+            border: 1px solid #444;
+            background-color: rgba(0, 0, 0, 0.2);
+
+        }
+    </style>
+
+
+</head>
+
+<body>
+    <div id="main" style="max-height: 100vh; overflow-y: auto; overflow-x: hidden;">
+        <div class="resizable-left" id="win1" style="max-height: 100vh; overflow: scroll; overflow-y: scroll;">
+            <div class="d-flex flex-column flex-shrink-0 p-3 text-white "
+                style="display: flex; min-width: 200px; background: #35869A; ">
+
+                <div class="profile-container" style="border-radius: 10px 10px 10px 10px; ">
+                    <img class="avatar" src="./img/Resim1.png" alt="profile picture"
+                        style="background-position:center; border-radius: 50px 50px 50px 50px; ">
+                    <h1 class="name">Ali AKGÖZ</h1>
+                    <h5 class="tagline">Developer / Data Scientist</h5>
+                </div>
+                <hr>
+                <ul class="nav nav-pills flex-column mb-auto " style="text-align: start;">
+                    <li class="nav-item">
+                        <a href="mailto:aliakgoz@gmail.com" class="nav-link text-white ">
+                            <i class="fa-solid fa-at"></i>
+                            <sub> aliakgoz@gmail.com</sub>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="https://github.com/aliakgoz" class="nav-link text-white">
+                            <i class="fa-brands fa-github"></i>
+                            <sub> github.com/aliakgoz</sub>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="https://www.linkedin.com/in/ali-akg%C3%B6z-53370619b/" class="nav-link text-white">
+                            <i class="fa-brands fa-linkedin"></i>
+                            <sub> linkedin.com/in/ali-akgöz-53370619b</sub>
+                        </a>
+                    </li>
+
+
+
+                    <li class="nav-item">
+                        <a href="./myfiles/ALI_AKGOZ_CV_v0.7.pdf" class="nav-link text-white">
+                            <i class="fa-solid fa-file-pdf"></i>
+                            <sub> PDF Resume</sub>
+                        </a>
+                    </li>
+
+                </ul>
+
+                <hr>
+
+                <div class="education-container container-block" style="text-align: start;">
+                    <h4 class="container-block-title">
+                        Education
+                    </h4>
+                    <div class="item">
+                        <h5 class="degree">MSc in Civil Engineering</h5>
+                        <h6 class="meta">Hacettepe University</h6>
+                        <div class="time">2021 - 2023</div>
+                    </div>
+                    <div class="item">
+                        <h5 class="degree">BSc in Civil Engineering</h5>
+                        <h6 class="meta">Middle East Technical University</h6>
+                        <div class="time">2006 - 2011</div>
+                    </div>
+                </div>
+
+                <hr>
+
+                <div class="languages-container container-block" style="text-align: start;">
+                    <h4 class="container-block-title">
+                        Languages
+                    </h4>
+                    <ul class="list-unstyled interests-list">
+                        <li>
+                            Turkish
+                            <span class="lang-desc">(Native)</span>
+                        </li>
+                        <li>
+                            English
+                            <span class="lang-desc">(Professional)</span>
+                        </li>
+
+                    </ul>
+                </div>
+                <hr>
+                <div class="languages-container container-block" style="text-align: start;">
+                    <h4 class="container-block-title">
+                        Programming Languages
+                    </h4>
+                    <ul class="list-unstyled interests-list">
+                        <li>
+                            Python                            
+                        </li>
+                        <li>
+                            C++ 
+                        </li>
+                        <li>
+                            JavaScript
+                        </li>
+                        <li>
+                            Flutter (Dart)
+                        </li>
+                        <li>
+                            Angular (Typescript)
+                        </li>
+                        <li>
+                            C#
+                        </li>
+                        <li>
+                            R
+                        </li>
+                        <li>
+                            VBA
+                        </li>
+                        <li>
+                            SQL / PostgreSQL
+                        </li>
+
+                    </ul>
+                </div>
+                <hr>
+                <div class="languages-container container-block" style="text-align: start;">
+                    <h4 class="container-block-title">
+                        Software
+                    </h4>
+                    <ul class="list-unstyled interests-list">
+                        <li>
+                            Autodesk Fusion 360 (3D Design)                            
+                        </li>
+                        <li>
+                            3D Printing Softwares (Cura)
+                        </li>
+                        <li>
+                            Data Visualization Libraries
+                                <ul>
+                                    <li>Python - Matplotlib</li>
+                                    <li>Python , Javascript - Plotly</li>
+                                    <li>Javascript - Leaflet.js</li>                                    
+                                </ul>
+                        </li>
+                        <li>
+                            Autocad (2D Design)
+                        </li>
+                        <li>
+                            SAP2000 (3D Structural Design)
+                        </li>
+                        <li>
+                            SASSI (3D Soil-Structure Interaction Analysis Software)
+                        </li>
+                        <li>
+                            Office Softwares (Advanced, VBA Macro)
+                        </li>
+                        
+                    </ul>
+                </div>
+
+
+
+
+
+            </div>
+
+        </div>
+        <div class="resizable-right" id="win2">
+            
+
+            <section class="section projects-section">
+                <h2 class="section-title">
+                    Python - Developer
+                </h2>
+                <sub>Data Analysis, Data Processing, Data Visualization, Neural Networks </sub>
+                <div class="intro">
+                    <p>I started to Python with an online course about 7 years ago, and now I consider myself as an advanced level developer in Python.
+                        During this time, I had deep experience mostly in data processing, data engineering and data visualization. 
+                        I created artificial intelligence models on object detection and signal processing. 
+                        I have developed pre-processing and post-processing codes for these. 
+                        In one of my projects, I converted a very advanced scientific code (which consists statistical methods like PCA and SVD) from R to Python,
+                         and by working on this code, I made it 3 times faster than it was originally.       
+                        I can use numpy, scipy, pandas, matplotlib, plotly, hdf5 and other important libraries at an advanced level.
+                        I have experience with database systems such as SQL and PostgreSQL.
+                        For my neural network projects I mostly used Tensorflow, Keras and Pytorch.
+                        
+                        Some examples of my works in Python:
+                        <ul>
+                            <li>SIDS : a very complicated and scientific code which I converted from R to Python. 
+                                Note: Since this code has a commercial value I censored some of the lines.
+                                <a href="https://github.com/aliakgoz/python_samples/blob/main/SIDS_converted_from_R_to_Python.py">Link=></a></li>
+                            <li>
+                                Colab notebook for neural network trials: For my thesis work I tried lots of models and prepared data for them.
+                                This notebook shows only some of them. <a href="https://colab.research.google.com/drive/1rMfxWIcjUBE2Alv5KQPRuPq1b7ywdXwi?usp=sharing">Link=></a>                                
+                            </li>
+                            <li>
+                                Colab notebook which generates fractal animations: I wrote this code for fun actually, it generates images from Mandelbrot
+                                fractals and creates interesting animations.
+                                 <a href="https://colab.research.google.com/drive/1NUimSaLGYBKF3Z4kXU_FP-zP3xghkBP7?usp=sharing">Link=></a>                                 
+                            </li>
+                            <li>
+                                Kiknet data preparation code: Japanese kiknet data which contains millions of earthquake accelerogram data,
+                                I wrote this code to convert and store this data into a numpy structured array.
+                                <a href="https://github.com/aliakgoz/python_samples/blob/main/kiknet_data_preparation.py">Link=></a>                                 
+                            </li>
+                        </ul>
+                        
+                    </p>
+
+                </div>
+                <h2 class="section-title">
+                    C++ - Developer 
+                </h2>
+                <sub>Micro Processor Programming, Data Transfer</sub>
+                <div class="intro">
+                    <p>I started to C++ at my university and until now I am writing C++ occasionally.
+                        Recently, we are using micro-processors in our projects which needs to be programmed
+                        using C++.
+                        
+                    </p>
+
+                </div>
+                <h2 class="section-title">
+                    Javascript - Developer 
+                </h2>
+                <sub>Web apps, Leafletjs, Plotlyjs, Serial Connections, Database Connections, Data Visualization</sub>
+                <div class="intro">
+                    <p>This very web page itself is a reference for my Javascript experience. I wrote every working and responsive
+                        part of this page with Javascript. I used Plotlyjs for data visualizations, leafletjs for map visualization and 
+                        online3Dviewer for 3D models in this page. 
+                        
+                    </p>
+
+                </div>
+                <h2 class="section-title">
+                    Project - Radiation Detector (2019 - ...)
+                </h2>
+                <sub>R&D Engineer - Turkish Energy, Nuclear and Mineral Research Agency - Nuclear Energy Research Institute</sub>
+                <div class="intro">
+                    <p>Currently, one of my active projects is developing a prototype of a radiation detector which
+                        works with (in-house produced) ceramic scintillators. <a
+                            href="./img/dosimeter_eng.png">See the poster of the project</a>
+                        <br>
+                        In the scope of this project my works can be summarized below:
+                    </p>
+
+                </div>
+                <div class="container">
+                    <div class="row" style="margin-top: 10px;">
+                        <b>Android/IOS App for Detector</b> <br>
+                        <span class="project-tagline">Flutter (with Dart programming Language) is used to develop
+                            this mobile app
+                            for detector. <br>
+                            Briefly, measurement data from detector comes to mobile app via bluetooth connection.
+                            Data processed in
+                            the mobile app and displayed on main screen. Total, average and instantaneous dose
+                            values can be seen on the
+                            screen with a live graph. <br>
+                            Measurement data can be seen on map colored by their measurement values. <br>
+                            Mobile app archives all the data (combining them with location data (lat,lon) if wanted)
+                            and
+                            displays them in archive page. <br>
+                            User can easily share measurement data via email / Whatsapp or any other software. <br>
+                            In addition to that, all measurement data sent to an online database (which is on
+                            Firebase for prototype)
+                            and stored online for possible additional purposes.
+
+
+
+
+                        </span>
+                    </div>
+                    <div class="row" style="text-align: center;">
+                        <div class="container-fluid">
+                            <img class="avatar" src="./img/mobileapp.png" alt="profile picture"
+                                style="background-position:center; border-radius: 10px 10px 10px 10px;">
+                        </div>
+                        <sub class="project-tagline">Screenshots from mobile app, main screen and archive
+                            screen.</sub>
+                    </div>
+
+                    <div class="row" style="margin-top: 10px;">
+                        <b>3D Model of Prototype Detector</b> <br>
+                        <span class="project-tagline">I used Autodesk Fusion 360 to design the 3D model of prototype
+                            detector.
+                            After design, I used Ultimaker S5 to 3D print the prototype model.
+                        </span>
+                    </div>
+                    <div class="row" style="text-align: center;">
+                        <div class="container-fluid">
+
+                            <div class="online_3d_viewer" style="height: 600px;" model="./models/tenmak3_son_v1.obj">
+                            </div>
+                            <sub class="project-tagline">3D model of prototype (3D viewer used here <i
+                                    class="fa-brands fa-github"></i> <a
+                                    href="https://github.com/kovacsv/Online3DViewer">kovacsv/Online3DViewer</a>)</sub>
+                        </div>
+
+                    </div>
+
+
+                    <div class="row" style="margin-top: 10px;">
+                        <div class="col text-wrap">
+                            <b>Website for Database Interface</b> <br>
+                            <span class="project-tagline ">When the mobile app sends data to the database it also
+                                automatically drops to the website and live data stream that comes from detector can be
+                                watched
+                                directly from website.
+                                Radiation workers may use this website to keep track of their total absorbed dose
+                                and governmental organizations which may have responsibilities about may use it for
+                                radiation safety pusposes. <br>
+                                I used Angular to create this website, connected it to firebase database and used Plotly
+                                for live and responsive data visualizations.
+
+                            </span>
+                        </div>
+
+                    </div>
+                    <div class="row justify-content-center" style="text-align: center;">
+                        <div class="container-fluid">
+                            <!-- <img class="avatar" src="./img/webtenmakssd.PNG" alt="profile picture"
+                                style="background-position:center; border-radius: 10px 10px 10px 10px; width: 600px; "> -->
+                            <div class="container-fluid" id="plotlydaychart"></div>
+                            <div class="row justify-content-md-center">
+
+                                <label class="input-group-text" for="deviceselect"
+                                    style="font-size: 12px; width: 80px;">Device</label>
+                                <select class="form-select" id="deviceselect"
+                                    style="font-size: 12px; width: 140px; margin-right: 40px;">
+
+                                </select>
+
+
+                                <label class="input-group-text" for="dayselect"
+                                    style="font-size: 12px; width: 80px;">Day</label>
+                                <select class="form-select" id="dayselect" style="font-size: 12px; width: 140px;">
+
+                                </select>
+
+
+                            </div>
+
+                        </div>
+                        <sub class="project-tagline" style="margin-top: 20px;">Select a device and a day to see daily
+                            dose measurement data.
+                            (Link for demo website:
+                            <a href="https://tenmak-ssd.web.app/"> https://tenmak-ssd.web.app/)</a></sub>
+                    </div>
+
+                </div>
+
+                <h2 class="section-title" style="margin-top: 40px;">
+                    Project - Radiation Monitoring Using UAV (2021 - ...)
+                </h2>
+                <sub>R&D Engineer - Turkish Energy, Nuclear and Mineral Research Agency - Nuclear Energy Research Institute</sub>
+                <div class="intro">
+                    <p>My another active project is developing a prototype of an aerial radiation monitoring system.
+                        <br>
+                        <a href="./img/drone_eng.png">See the poster of the project</a>
+                        <br>
+                        In the scope of this project my works can be summarized as below:
+                    </p>
+
+                </div>
+                <div class="container">
+                    <div class="row" style="margin-top: 10px;">
+                        <b>Ground Station Software for UAV Monitoring System</b> <br>
+                        <span class="project-tagline">Ground station, which receives data from RF module on USB,
+                            processes data and overlays it on the map live. Like this very page I developed ground
+                            station
+                            software using Javascript. Ground Station Software, which I still work on, has these
+                            features:
+                            <ul>
+                                <li>
+                                    Online map using leaflet.js ( <a href="https://leafletjs.com/">leafletjs.com</a>
+                                    )
+                                </li>
+                                <li>
+                                    Direct com port (choose com port and baud rate from UI) connection ability
+                                </li>
+                                <li>
+                                    Live overlaying of incoming data, simultaneously coloring it with user preferred
+                                    colormap.
+                                    (I added all colormaps of matplotlib (thanks to <i class="fa-brands fa-github"></i>
+                                    <a
+                                        href="https://github.com/timothygebhard/js-colormaps">timothygebhard/js-colormaps</a>))
+                                </li>
+                                <li>
+                                    Save data to local log file.
+                                </li>
+                                <li>
+                                    Geospatial analysis of gathered data using Krigging method. (It works on Python
+                                    now)
+                                </li>
+
+                            </ul>
+
+                        </span>
+                    </div>
+
+                    <div class="row" style="text-align: center;">
+                        <div class="container-fluid ">
+                            <div class="row">
+                                <div class="container-fluid">
+                                    <div class="mapbox">
+                                        <div class="container-fluid overlay asd"
+                                            id="map_16d19f0c4cb02d0360d2d91f78fb101a"
+                                            style="width: 600px; height: 400px;">
+
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="container-fluid">
+                                    <div class="row justify-content-md-center">
+                                        <div class="col-sm-2">
+                                            <div class="row align-content-center">
+                                                <button type="button" class="btn btn-outline-dark" id="logacbutton"
+                                                    style=" font-size: small; padding: 4px; ">
+                                                    Open Demo Log
+                                                </button>
+                                            </div>
+                                            <div class="row">
+                                                <div>
+                                                    <sub id="coordlatlon">LatLong( --- , --- )</sub>
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-sm-2">
+                                            <label class="input-group-text" for="colormapselect"
+                                                style="font-size: 12px;">Choose colormap</label>
+                                            <select class="form-select" id="colormapselect" style="font-size: 12px;">
+                                                <option value="RdYlBu">RdYlBu</option>
+                                                <option value="hot" selected>Hot</option>
+                                                <option value="viridis">viridis</option>
+                                                <option value="gist_heat">gist_heat</option>
+                                                <option value="Accent">Accent</option>
+                                                <option value="Blues">Blues</option>
+                                                <option value="BrBG">BrBG</option>
+                                                <option value="BuGn">BuGn</option>
+                                                <option value="BuPu">BuPu</option>
+                                                <option value="CMRmap">CMRmap</option>
+                                                <option value="Dark2">Dark2</option>
+                                                <option value="GnBu">GnBu</option>
+                                                <option value="Greens">Greens</option>
+                                                <option value="Greys">Greys</option>
+                                                <option value="OrRd">OrRd</option>
+                                                <option value="Oranges">Oranges</option>
+                                                <option value="PRGn">PRGn</option>
+                                                <option value="Paired">Paired</option>
+                                                <option value="Pastel1">Pastel1</option>
+                                                <option value="Pastel2">Pastel2</option>
+                                                <option value="PiYG">PiYG</option>
+                                                <option value="PuBu">PuBu</option>
+                                                <option value="PuBuGn">PuBuGn</option>
+                                                <option value="PuOr">PuOr</option>
+                                                <option value="PuRd">PuRd</option>
+                                                <option value="Purples">Purples</option>
+                                                <option value="RdBu">RdBu</option>
+                                                <option value="RdGy">RdGy</option>
+                                                <option value="RdPu">RdPu</option>
+                                                <option value="RdYlGn">RdYlGn</option>
+                                                <option value="Reds">Reds</option>
+                                                <option value="Set1">Set1</option>
+                                                <option value="Set2">Set2</option>
+                                                <option value="Set3">Set3</option>
+                                                <option value="Spectral">Spectral</option>
+                                                <option value="Wistia">Wistia</option>
+                                                <option value="YlGn">YlGn</option>
+                                                <option value="YlGnBu">YlGnBu</option>
+                                                <option value="YlOrBr">YlOrBr</option>
+                                                <option value="YlOrRd">YlOrRd</option>
+                                                <option value="afmhot">afmhot</option>
+                                                <option value="autumn">autumn</option>
+                                                <option value="binary">binary</option>
+                                                <option value="bone">bone</option>
+                                                <option value="brg">brg</option>
+                                                <option value="bwr">bwr</option>
+                                                <option value="cividis">cividis</option>
+                                                <option value="cool">cool</option>
+                                                <option value="coolwarm">coolwarm</option>
+                                                <option value="copper">copper</option>
+                                                <option value="cubehelix">cubehelix</option>
+                                                <option value="flag">flag</option>
+                                                <option value="gist_earth">gist_earth</option>
+                                                <option value="gist_gray">gist_gray</option>
+                                                <option value="gist_ncar">gist_ncar</option>
+                                                <option value="gist_rainbow">gist_rainbow</option>
+                                                <option value="gist_stern">gist_stern</option>
+                                                <option value="gist_yarg">gist_yarg</option>
+                                                <option value="gnuplot">gnuplot</option>
+                                                <option value="gnuplot2">gnuplot2</option>
+                                                <option value="gray">gray</option>
+                                                <option value="hsv">hsv</option>
+                                                <option value="inferno">inferno</option>
+                                                <option value="jet">jet</option>
+                                                <option value="magma">magma</option>
+                                                <option value="nipy_spectral">nipy_spectral</option>
+                                                <option value="ocean">ocean</option>
+                                                <option value="pink">pink</option>
+                                                <option value="plasma">plasma</option>
+                                                <option value="prism">prism</option>
+                                                <option value="rainbow">rainbow</option>
+                                                <option value="seismic">seismic</option>
+                                                <option value="spring">spring</option>
+                                                <option value="summer">summer</option>
+                                                <option value="tab10">tab10</option>
+                                                <option value="tab20">tab20</option>
+                                                <option value="tab20b">tab20b</option>
+                                                <option value="tab20c">tab20c</option>
+                                                <option value="terrain">terrain</option>
+                                                <option value="turbo">turbo</option>
+                                                <option value="twilight">twilight</option>
+                                                <option value="twilight_shifted">twilight_shifted</option>
+                                                <option value="winter">winter</option>
+
+                                                <!-- <option value="2">Hot</option> -->
+                                                <!-- <option value="3">Three</option> -->
+                                            </select>
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <label for="opacityRange" class="form-label">Opacity</label>
+                                            <input type="range" class="form-range" min="0" max="100" id="opacityRange"
+                                                value="100">
+                                        </div>
+
+
+                                    </div>
+
+                                </div>
+                            </div>
+
+
+
+                        </div>
+                    </div>
+
+                    <div class="row" style="margin-top: 10px;">
+
+                        <b>3D Design and Printing of Prototype Model</b> <br>
+                        <span class="project-tagline">Like hand-held detector prototype, I designed the case with
+                            Autodesk Fusion
+                            360. 3D printed the case with 6 mm wall thickness and PLA flament on Ultimaker S5.
+
+                        </span>
+                    </div>
+                    <div class="row">
+                        <div class="container-fluid">
+                            <div class="online_3d_viewer" style="height: 600px;" model="./models/drone.obj">
+                            </div>
+                        </div>
+
+                    </div>
+
+
+
+
+                </div>
+                <h2 class="section-title" style="margin-top: 40px;">
+                    Master Thesis (2020 - ...)
+                </h2>
+                <sub>Hacettepe University</sub>
+                <div class="intro">
+                    <p>My master thesis title is : <b>Estimation of Seismic Wave Propagation Patterns on Different Soil
+                            Types
+                            Using Neural Network Models</b>
+                        <br>
+                        For master thesis, I downloaded 1.5 million earthquake records from
+                        Japanese <a
+                            href="https://www.kyoshin.bosai.go.jp/kyoshin/docs/overview_kyoshin_index_en.html">Kik-Net</a>
+                        database. In Kik-Net system there are two seismographs at every point, one is at the level of
+                        bedrock and the other
+                        at surface. The difference of accelerograms of these two seismographs, should contain the
+                        information of soil column
+                        between them. In my thesis, I am using neural networks to extract patterns of seismic wave
+                        propagation on different soil
+                        types.
+                        <br>
+                        My thesis requires processing of 1.5 million earthquake recordings. In addition to that
+                        I had to visualize the data in different ways for a better understanding of the data.
+                        <br>
+                        Before deciding to work on this subject I made a project (much simpler version of my thesis) for
+                        my Neural Network Class (CMP684).
+                        In this project I used Turkey's seismograph data and earthquake recordings to determine soil
+                        type (Soft Soil, Hard Soil, Rock etc.)
+                        of the seismograph site. <br> You can view this project on <i class="fa-brands fa-github"></i>
+                        <a href="https://github.com/aliakgoz/ai_vs30_prediction">aliakgoz/ai_vs30_prediction</a>.
+
+
+
+                    </p>
+
+                </div>
+                <div class="container">
+                    <div class="row" style="margin-top: 10px;">
+                        <div class="col text-wrap">
+                            <b>Kik-Net Earthquake Data Visualization</b> <br>
+                            <span class="project-tagline">As stated above, I processed 1.5 million earthquake recordings
+                                for my thesis. And I made a data visualization tool for myself, to check some properties
+                                of data and to get more insight. There are six accelerograms recorded for every
+                                earthquake
+                                at Kik-Net.
+                                <ul>
+                                    <li><b>EW1</b>: Recorded by seismograph at bedrock level, which works on East West
+                                        axis</li>
+                                    <li><b>EW2</b>: Recorded by seismograph at surface level, which works on East West
+                                        axis</li>
+                                    <li><b>NS1</b>: Recorded by seismograph at bedrock level, which works on North South
+                                        axis</li>
+                                    <li><b>NS2</b>: Recorded by seismograph at surface level, which works on North South
+                                        axis</li>
+                                    <li><b>UD1</b>: Recorded by seismograph at bedrock level, which works on Up Down
+                                        axis</li>
+                                    <li><b>UD2</b>: Recorded by seismograph at surface level, which works on Up Down
+                                        axis</li>
+                                </ul>
+                                For standardization purposes, I calculated (Fast-Fourier Transformation) the frequency
+                                domain spectra from these accelerograms.
+                                My theory is EW2 recording (surface level) is a result of interaction between EW1
+                                (bedrock level) and Soil Column.
+                                Hence, I am using EW1 and soil column values as input to the neural network models and
+                                EW2 as the output. <br>
+                                Soil column values consists of two values (Vs and Vp) for each depth value from surface
+                                to the bedrock level.
+                                <ul>
+                                    <li><b>Vs (m/s)</b>: Shear Wave Velocity of soil</li>
+                                    <li><b>Vp (m/s)</b>: Pressure Wave Velocity of soil</li>
+                                </ul>
+                            </span>
+                        </div>
+
+
+                    </div>
+
+                    <div class="row">
+                        <div class="container-fluid" id="plotlykiknet"></div>
+
+                    </div>
+                    <div class="row" style="text-align: center; margin-bottom: 20px;">
+                        <div class="col">
+                            <sub id="kiknetPlotSub"> </sub>
+                            <sub> and at the bottom soil column Vs-Vp values of the station given.</sub>
+                        </div>
+
+                    </div>
+                    <div class="row justify-content-center">
+                        <button class="btn-outline-dark" style="width: 160px;" id="showAnotherButton"> Show Another
+                        </button>
+                    </div>
+
+                </div>
+                <h2 class="section-title" style="margin-top: 40px;">
+                    Nuclear Safety Specialist / Inspector (2014 - 2019)
+                </h2>
+                <sub>Turkish Atomic Energy Authority</sub>
+                <div class="intro">
+                    <p>For 6 years I worked for Turkish regulatory body for nuclear safety. During this period I took
+                        active part
+                        in Akkuyu Nuclear Power Plant project. Within this scope some of my achievements are:
+                    <ul>
+                        <li>I worked actively in the licensing processes of Akkuyu
+                            NPP. I was a member of Civil Engineering Project Group
+                            which is responsible from review and assessment of civil engineering related
+                            parts of Preliminary Safety Analysis Report (PSAR)</li>
+                        <li>
+                            I finished my expertise thesis on "Soil-Structure Interaction Modelling and
+                            Analysis Methods of Nuclear Power Plant Structures" and it is
+                            officially accepted by Turkish Atomic Energy Authority. In
+                            the scope of thesis I prepared 3D FEM Model and Stick
+                            Model of a typical VVER type reactor building. I used
+                            SASSI software to run analyses.
+                        </li>
+                        <li>
+                            I took part in the group that prepared the "Regulation
+                            on Construction Inspections of Nuclear Power Plants" and
+                            "Regulation on Management System in Nuclear Installations".
+                        </li>
+                        <li>
+                            For 6 years I worked as an official Nuclear Safety Inspector.
+                        </li>
+                        <li>
+                            I lead several nuclear safety inspections at Akkuyu NPP
+                            site as Inspection Team Leader. I participated several nuclear safety inspections at
+                            Akkuyu NPP site as nuclear safety inspector.
+                        </li>
+                        <li>
+                            I have been participated in several manufacturer
+                            approval inspections according to "Regulation Regarding
+                            Equipment Procurement Process and Approval of
+                            Manufacturers for Nuclear Facilities".
+                        </li>
+
+                    </ul>
+
+
+
+                    </p>
+
+                </div>
+                <h2 class="section-title" style="margin-top: 40px;">
+                    List of significant publications
+                </h2>
+                <sub></sub>
+                <div class="intro">
+                    <p>
+                    <ul>
+                        <li>INVESTIGATING THE EFFECTS OF THE BASE RIGIDITY OF NUCLEAR POWER PLANT STRUCTURES THROUGH
+                            SEISMIC SOIL STRUCTURE INTERACTION ANALYSES, 10 Oct 2019, 5. International Conference On
+                            Earthquake
+                            Engineering And Seismology
+                            <a href="./myfiles/5ICEES_aakgoz.pdf">Open PDF</a> Link:
+                            http://www.5icees.com/wp-content/uploads/2019/10/Hall-F-Seismic-Performance-2-Chairman-Vesile-Hatun-Akansel-Mugla-Sitki-Kocman-Uni-1.zip
+                            (Paper: 8989.pdf)
+                        </li>
+                        <li>
+                            Expertise Thesis on "Soil-structure Interaction Modelling and Analysis Reviews at Nuclear
+                            Power Plant Structures"
+                            Link: <a
+                                href="https://kurumsalarsiv.tenmak.gov.tr/handle/20.500.12878/1194">https://kurumsalarsiv.tenmak.gov.tr/handle/20.500.12878/1194</a>
+                            Description: It is in Turkish due to the regulations. ACS SASSI used for modelling and
+                            analyses, two model created one 3-D Finite Element Model and one stick model,
+
+                        </li>
+                        <li>
+                            Master Thesis: Estimation of Seismic Wave Propagation Patterns on Different Soil
+                            Types Using Neural Network Models (continues)
+
+                        </li>
+ 
+
+                    </ul>
+
+
+
+                    </p>
+
+                </div>
+                <h2 class="section-title" style="margin-top: 40px;">
+                    List of International Workshops, Trainings and Meetings
+                </h2>
+                <sub></sub>
+                <div class="intro">
+                    <p>
+                    <ul>
+                        <li>International Atomic Energy Authority (IAEA) – “Regional Workshop on Ageing Management Programmes including Concrete, Buried Piping and Flow-Accelerated Corrosion”, 07-09 September 2014, Uppsala-Sweden
+                        </li>
+                        <li>
+                            Wakasa wan Energy Research Center (WERC) - Course of Nuclear Plant Safety, 16 November - 11 December 2015, China
+
+                        </li>
+                        <li>
+                            European Nuclear Safety Training & Tutoring Institute (ENSTTI) - Education on Oversight of Nuclear Safety and Management Systems, 18-22 April 2016
+
+                        </li>
+                        <li>
+                            IAEA - “Technical Meeting on Challenges and Opportunities in the Construction Management of Advanced Nuclear Power Plants”, 28-31 August 2018, Shanghai, China
+                        </li>
+                        <li>
+                            IAEA - "Workshop on Concepts and Designs for the Disposal of Small Volumes Radioactive Waste, Lisbon, Portugal", 14-18 October 2019, Lisbon Portugal
+                        </li>
+                        <li>
+                            IAEA - “Training Workshop on the Generic Roadmap for a Deep Geological Disposal Programme”, 25-29 Kasim 2019, Wien, Austria
+                        </li>
+
+                    </ul>
+
+
+
+                    </p>
+
+                </div>
+
+            </section>
+
+
+        </div>
+    </div>
+
+
+    <script type="module">
+        import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.9.0/firebase-app.js';
+        import { getDatabase, ref, onValue, get } from 'https://www.gstatic.com/firebasejs/9.9.0/firebase-database.js';
+
+
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
+
+        // Your web app's Firebase configuration
+        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+        const firebaseConfig = {
+            apiKey: "AIzaSyCZ5VOK0MVfAW-eptdXKxC5egvtK15QAoM",
+            authDomain: "tenmak-ssd.firebaseapp.com",
+            databaseURL: "https://tenmak-ssd-default-rtdb.firebaseio.com",
+            projectId: "tenmak-ssd",
+            storageBucket: "tenmak-ssd.appspot.com",
+            messagingSenderId: "624648233215",
+            appId: "1:624648233215:web:3b154bb1679bbc2d13acca",
+            measurementId: "G-G06PGHE21K"
+        };
+
+        const kiknetfirebaseConfig = {
+            apiKey: "AIzaSyA6yqD1Z-Rh2WlabVpYL-Hhe-ABbKs2hB0",
+            authDomain: "kik-plotter.firebaseapp.com",
+            databaseURL: "https://kik-plotter-default-rtdb.firebaseio.com",
+            projectId: "kik-plotter",
+            storageBucket: "kik-plotter.appspot.com",
+            messagingSenderId: "348685544996",
+            appId: "1:348685544996:web:88a4429436b8d8dc2eb2b1",
+            measurementId: "G-PTP4BN6WLL"
+        };
+
+        // Initialize Firebase
+        const kiknetapp = initializeApp(kiknetfirebaseConfig, "first");
+
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig, "secondary");
+
+
+        // const analytics = getAnalytics(app);
+        const database = getDatabase(app);
+        const kiknetdatabase = getDatabase(kiknetapp);
+
+        const deviceref = ref(database);
+
+        var deviceselectbox = document.getElementById("deviceselect");
+        var dayselectbox = document.getElementById("dayselect");
+
+        onValue(deviceref, (snapshot1) => {
+            //   const data = snapshot.val();
+            var i = 0;
+            var j = 0;
+            Object.keys(snapshot1.val()).forEach((key1) => {
+                if (i == 2) {
+
+
+                    // console.log(document.getElementById('deviceselect').options[document.getElementById('deviceselect').selectedIndex]);
+                    const dayref = ref(database, "/" + key1 + "/Doz/");
+                    onValue(dayref, (snapshot2) => {
+                        //   const data = snapshot.val();
+                        // console.log(snapshot.val());
+                        Object.keys(snapshot2.val()).forEach((key2) => {
+                            // console.log(key);
+                            if (j == 4) {
+                                const doseref = ref(database, "/" + key1 + "/Doz/" + key2);
+                                var dosetime = [];
+                                var dosevalue = [];
+                                onValue(doseref, (snapshot3) => {
+                                    //   const data = snapshot.val();
+                                    console.log(snapshot3.val());
+                                    Object.entries(snapshot3.val()).forEach((key3, value3) => {
+
+                                        dosetime.push(key3[0].split("_")[0].substring(8, 10) + ":" + key3[0].split("_")[0].substring(10, 12) + ":" + key3[0].split("_")[0].substring(12));
+                                        dosevalue.push(key3[1]);
+                                        // var option = document.createElement("OPTION");
+                                        //    option.innerHTML = key;
+                                        //    option.value = key;
+                                        //    dayselectbox.options.add(option);
+                                    });
+
+                                    //   console.log( Object.keys(snapshot.val()));
+                                    //   updateStarCount(postElement, data);
+                                });
+                                var trace1 = {
+                                    x: dosetime,
+                                    y: dosevalue,
+                                    type: 'scatter'
+                                };
+                                var data = [trace1];
+
+                                Plotly.newPlot('plotlydaychart', data);
+
+                            };
+
+                            var option = document.createElement("OPTION");
+                            option.innerHTML = key2;
+                            option.value = key2;
+                            dayselectbox.options.add(option);
+                            if (j == 4) {
+                                option.selected = true;
+                            }
+                            j++;
+                        });
+                    });
+                };
+
+                var option = document.createElement("OPTION");
+                option.innerHTML = key1;
+                option.value = key1;
+                if (i == 2) {
+                    option.selected = true;
+                }
+                deviceselectbox.options.add(option);
+                i++;
+            });
+
+            //   console.log( Object.keys(snapshot.val()));
+            //   updateStarCount(postElement, data);
+        });
+
+
+
+
+
+        document.getElementById('deviceselect').addEventListener('change', async (event) => {
+            dayselectbox.innerText = null;
+            const dayref = ref(database, "/" + event.target.value + "/Doz/");
+            onValue(dayref, (snapshot) => {
+                //   const data = snapshot.val();
+                console.log(snapshot.val());
+                Object.keys(snapshot.val()).forEach((key) => {
+                    // console.log(key);
+                    var option = document.createElement("OPTION");
+                    option.innerHTML = key;
+                    option.value = key;
+                    dayselectbox.options.add(option);
+                })
+
+                //   console.log( Object.keys(snapshot.val()));
+                //   updateStarCount(postElement, data);
+            });
+            dayselectbox.dispatchEvent(new Event('change'));
+            document.getElementById('showAnotherButton').dispatchEvent(new Event('click'));
+
+        });
+
+        document.getElementById('dayselect').addEventListener('change', async (event) => {
+            const doseref = ref(database, "/" + document.getElementById('deviceselect').value + "/Doz/" + event.target.value);
+            var dosetime = [];
+            var dosevalue = [];
+            onValue(doseref, (snapshot) => {
+                //   const data = snapshot.val();
+                // console.log(snapshot.val());
+                Object.entries(snapshot.val()).forEach((key, value) => {
+
+                    dosetime.push(key[0].split("_")[0].substring(8, 10) + ":" + key[0].split("_")[0].substring(10, 12) + ":" + key[0].split("_")[0].substring(12));
+                    dosevalue.push(key[1]);
+                    // var option = document.createElement("OPTION");
+                    //    option.innerHTML = key;
+                    //    option.value = key;
+                    //    dayselectbox.options.add(option);
+                });
+
+                //   console.log( Object.keys(snapshot.val()));
+                //   updateStarCount(postElement, data);
+            });
+            var trace1 = {
+                x: dosetime,
+                y: dosevalue,
+                type: 'scatter'
+            };
+
+            var deviceselectbox = document.getElementById("deviceselect");
+            var dayselectbox = document.getElementById("dayselect");
+
+
+            var data = [trace1];
+
+            Plotly.newPlot('plotlydaychart', data);
+
+        });
+
+        const accref = ref(kiknetdatabase, "/Acc_Data/");
+
+        const boreholeref = ref(kiknetdatabase, "/Kiknet Borehole Data 1m/");
+
+        const d = new Date();
+        let ms = d.getMilliseconds();
+
+        var myrandominput = ms % 100;
+        // var myrandominput = Math.floor(Math.random() * 100);
+        // console.log(myrandominput);
+        onValue(accref, (kiknetsnapshot) => {
+            var kikindex = 0;
+            var onedataonly = true;
+            var ew1, ew2, ns1, ns2, ud1, ud2;
+            var ew1ok = false;
+            var mytitle;
+            Object.entries(kiknetsnapshot.val()).forEach((kiknetkey) => {
+
+                //kiknetkey[0] : ABSH010608180020_EW1, ABSH010608180020_EW2, ABSH010608180020_NS1, ABSH010608180020_NS2...
+                //kiknetkey[1] : accdata
+                // console.log(kiknetkey[0]);
+                // console.log(kiknetkey[1]);
+                // console.log(kiknetkey[0].includes("EW1"));
+                // console.log(kikindex);
+                if (onedataonly && kikindex > myrandominput && kiknetkey[0].includes("EW1")) {
+
+                    ew1 = kiknetkey[1];
+                    // console.log(kiknetkey);
+                    ew1ok = true;
+                }
+                if (onedataonly && ew1ok && kikindex > myrandominput && kiknetkey[0].includes("EW2")) {
+
+                    ew2 = kiknetkey[1];
+                }
+                if (onedataonly && ew1ok && kikindex > myrandominput && kiknetkey[0].includes("NS1")) {
+
+                    ns1 = kiknetkey[1];
+                }
+                if (onedataonly && ew1ok && kikindex > myrandominput && kiknetkey[0].includes("NS2")) {
+
+                    ns2 = kiknetkey[1];
+                }
+                if (onedataonly && ew1ok && kikindex > myrandominput && kiknetkey[0].includes("UD1")) {
+
+                    ud1 = kiknetkey[1];
+                }
+                if (onedataonly && ew1ok && kikindex > myrandominput && kiknetkey[0].includes("UD2")) {
+
+                    ud2 = kiknetkey[1];
+                    onedataonly = false;
+                    // console.log(kikindex);
+                    mytitle = kiknetkey[0].substring(0, kiknetkey[0].length - 4);
+                    document.getElementById("kiknetPlotSub").innerHTML = "This plot shows the spectra of 6 accelerograms recorded by station " + mytitle.substring(0, 6) + " at 20" + mytitle.substring(6, 8) + "-" + mytitle.substring(8, 10) + "-" + mytitle.substring(10, 12) + " " + mytitle.substring(12, 14) + ":" + mytitle.substring(14, 16);
+
+                }
+
+                kikindex++;
+            });
+
+
+            var vs, vp, depth;
+
+
+            get(boreholeref).then((boreholesnapshot) => {
+
+                Object.entries(boreholesnapshot.val()).forEach((boreholekey) => {
+                    if (boreholekey[0] == mytitle.substring(0, 6)) {
+
+                        depth = boreholekey[1]['Depth_values'].split(',').map(Number);
+                        vs = boreholekey[1]['Vs_values'].split(',').map(Number);
+                        vp = boreholekey[1]['Vp_values'].split(',').map(Number);
+
+
+                    }
+
+
+                });
+            }).then(() => {
+
+                ew1 = ew1.split(',').map(Number);
+                ew2 = ew2.split(',').map(Number);
+                ns1 = ns1.split(',').map(Number);
+                ns2 = ns2.split(',').map(Number);
+                ud1 = ud1.split(',').map(Number);
+                ud2 = ud2.split(',').map(Number);
+                var N = 600;
+                var myxaxis = Array.apply(null, { length: N }).map(Number.call, Number)
+
+                var trace1 = {
+                    x: myxaxis,
+                    y: ew1,
+                    name: "EW1",
+                    type: 'scatter'
+                };
+                var trace2 = {
+                    x: myxaxis,
+                    y: ew2,
+                    name: "EW2",
+                    type: 'scatter'
+                };
+
+                var trace3 = {
+                    x: myxaxis,
+                    y: ns1,
+                    name: "NS1",
+                    xaxis: 'x2',
+                    yaxis: 'y2',
+                    type: 'scatter'
+                };
+
+                var trace4 = {
+                    x: myxaxis,
+                    y: ns2,
+                    name: "NS2",
+                    xaxis: 'x2',
+                    yaxis: 'y2',
+                    type: 'scatter'
+                };
+
+                var trace5 = {
+                    x: myxaxis,
+                    y: ud1,
+                    name: "UD1",
+                    xaxis: 'x3',
+                    yaxis: 'y3',
+                    type: 'scatter'
+                };
+
+                var trace6 = {
+                    x: myxaxis,
+                    y: ud2,
+                    name: "UD2",
+                    xaxis: 'x3',
+                    yaxis: 'y3',
+                    type: 'scatter'
+                };
+
+                var trace7 = {
+                    x: depth,
+                    y: vs,
+                    name: "Vs (m/s)",
+                    xaxis: 'x4',
+                    yaxis: 'y4',
+                    type: 'scatter'
+                };
+                var trace8 = {
+                    x: depth,
+                    y: vp,
+                    name: "Vp (m/s)",
+                    xaxis: 'x4',
+                    yaxis: 'y4',
+                    type: 'scatter'
+                };
+
+                // var trace4 = {
+                //     x: [4000, 5000, 6000],
+                //     y: [7000, 8000, 9000],
+                //     xaxis: 'x4',
+                //     yaxis: 'y4',
+                //     type: 'scatter'
+                // };
+
+                var kiknetdata = [trace1, trace2, trace3, trace4, trace5, trace6, trace7, trace8];
+
+                var kiknetlayout = {
+                    title: {
+                        text: mytitle,
+                    },
+                    grid: { rows: 4, columns: 1, pattern: 'independent' },
+                };
+
+                Plotly.newPlot('plotlykiknet', kiknetdata, kiknetlayout);
+
+            });
+
+
+
+
+
+
+
+
+
+        });
+
+        // document.getElementById('showAnotherButton').dispatchEvent(new Event('click'));
+
+        document.getElementById('showAnotherButton').addEventListener('click', async () => {
+            const d = new Date();
+            let ms = d.getMilliseconds();
+            var myrandominput = ms % 100;
+            // var myrandominput = Math.floor(Math.random() * 100);
+            // console.log(myrandominput);
+            onValue(accref, (kiknetsnapshot) => {
+                var kikindex = 0;
+                var onedataonly = true;
+                var ew1, ew2, ns1, ns2, ud1, ud2;
+                var ew1ok = false;
+                var mytitle;
+                Object.entries(kiknetsnapshot.val()).forEach((kiknetkey) => {
+
+                    //kiknetkey[0] : ABSH010608180020_EW1, ABSH010608180020_EW2, ABSH010608180020_NS1, ABSH010608180020_NS2...
+                    //kiknetkey[1] : accdata
+                    // console.log(kiknetkey[0]);
+                    // console.log(kiknetkey[1]);
+                    // console.log(kiknetkey[0].includes("EW1"));
+                    // console.log(kikindex);
+                    if (onedataonly && kikindex > myrandominput && kiknetkey[0].includes("EW1")) {
+
+                        ew1 = kiknetkey[1];
+                        // console.log(kiknetkey);
+                        ew1ok = true;
+                    }
+                    if (onedataonly && ew1ok && kikindex > myrandominput && kiknetkey[0].includes("EW2")) {
+
+                        ew2 = kiknetkey[1];
+                    }
+                    if (onedataonly && ew1ok && kikindex > myrandominput && kiknetkey[0].includes("NS1")) {
+
+                        ns1 = kiknetkey[1];
+                    }
+                    if (onedataonly && ew1ok && kikindex > myrandominput && kiknetkey[0].includes("NS2")) {
+
+                        ns2 = kiknetkey[1];
+                    }
+                    if (onedataonly && ew1ok && kikindex > myrandominput && kiknetkey[0].includes("UD1")) {
+
+                        ud1 = kiknetkey[1];
+                    }
+                    if (onedataonly && ew1ok && kikindex > myrandominput && kiknetkey[0].includes("UD2")) {
+
+                        ud2 = kiknetkey[1];
+                        onedataonly = false;
+                        // console.log(kikindex);
+                        mytitle = kiknetkey[0].substring(0, kiknetkey[0].length - 4);
+                        document.getElementById("kiknetPlotSub").innerHTML = "This plot shows the spectra of 6 accelerograms recorded by station " + mytitle.substring(0, 6) + " at 20" + mytitle.substring(6, 8) + "-" + mytitle.substring(8, 10) + "-" + mytitle.substring(10, 12) + " " + mytitle.substring(12, 14) + ":" + mytitle.substring(14, 16);
+
+                    }
+
+                    kikindex++;
+                });
+
+
+                var vs, vp, depth;
+                get(boreholeref).then((boreholesnapshot) => {
+
+                    Object.entries(boreholesnapshot.val()).forEach((boreholekey) => {
+                        if (boreholekey[0] == mytitle.substring(0, 6)) {
+
+                            depth = boreholekey[1]['Depth_values'].split(',').map(Number);
+                            vs = boreholekey[1]['Vs_values'].split(',').map(Number);
+                            vp = boreholekey[1]['Vp_values'].split(',').map(Number);
+
+
+                        }
+
+                    });
+                }).then(() => {
+
+                    ew1 = ew1.split(',').map(Number);
+                    ew2 = ew2.split(',').map(Number);
+                    ns1 = ns1.split(',').map(Number);
+                    ns2 = ns2.split(',').map(Number);
+                    ud1 = ud1.split(',').map(Number);
+                    ud2 = ud2.split(',').map(Number);
+                    var N = 600;
+                    var myxaxis = Array.apply(null, { length: N }).map(Number.call, Number)
+
+                    var trace1 = {
+                        x: myxaxis,
+                        y: ew1,
+                        name: "EW1",
+                        type: 'scatter'
+                    };
+                    var trace2 = {
+                        x: myxaxis,
+                        y: ew2,
+                        name: "EW2",
+                        type: 'scatter'
+                    };
+
+                    var trace3 = {
+                        x: myxaxis,
+                        y: ns1,
+                        name: "NS1",
+                        xaxis: 'x2',
+                        yaxis: 'y2',
+                        type: 'scatter'
+                    };
+
+                    var trace4 = {
+                        x: myxaxis,
+                        y: ns2,
+                        name: "NS2",
+                        xaxis: 'x2',
+                        yaxis: 'y2',
+                        type: 'scatter'
+                    };
+
+                    var trace5 = {
+                        x: myxaxis,
+                        y: ud1,
+                        name: "UD1",
+                        xaxis: 'x3',
+                        yaxis: 'y3',
+                        type: 'scatter'
+                    };
+
+                    var trace6 = {
+                        x: myxaxis,
+                        y: ud2,
+                        name: "UD2",
+                        xaxis: 'x3',
+                        yaxis: 'y3',
+                        type: 'scatter'
+                    };
+
+                    var trace7 = {
+                        x: depth,
+                        y: vs,
+                        name: "Vs (m/s)",
+                        xaxis: 'x4',
+                        yaxis: 'y4',
+                        type: 'scatter'
+                    };
+                    var trace8 = {
+                        x: depth,
+                        y: vp,
+                        name: "Vp (m/s)",
+                        xaxis: 'x4',
+                        yaxis: 'y4',
+                        type: 'scatter'
+                    };
+
+                    // var trace4 = {
+                    //     x: [4000, 5000, 6000],
+                    //     y: [7000, 8000, 9000],
+                    //     xaxis: 'x4',
+                    //     yaxis: 'y4',
+                    //     type: 'scatter'
+                    // };
+
+                    var kiknetdata = [trace1, trace2, trace3, trace4, trace5, trace6, trace7, trace8];
+
+                    var kiknetlayout = {
+                        title: {
+                            text: mytitle,
+                        },
+                        grid: { rows: 4, columns: 1, pattern: 'independent' },
+                    };
+
+                    Plotly.newPlot('plotlykiknet', kiknetdata, kiknetlayout);
+
+                });
+
+
+            });
+
+        });
+
+
+
+    </script>
+
+
+</body>
+
+<script>
+    'use strict';
+
+
+    window.addEventListener('load', function () {
+        var tablists = document.querySelectorAll('[role=tablist].automatic');
+        for (var i = 0; i < tablists.length; i++) {
+            new TabsAutomatic(tablists[i]);
+        }
+    });
+
+
+
+    document.addEventListener("DOMContentLoaded", () => {
+        //...
+        document.getElementById("main").style.width = window.innerWidth + "px";
+        document.getElementById("main").style.height = window.innerHeight + "px";
+        document.getElementById("win1").style.height = "100 vh";
+        document.getElementById("win1").style.maxHeight = "100 vh";
+
+
+        var sizes = {
+            "win1": 0.25,
+            "win3": 0.75,
+            "win4": 0.5,
+            "win6": 0.4,
+            "win11": 0.8,
+            "win9": 0.5,
+            "win13": 0.4
+        };
+
+        Resizable.initialise("main", sizes);
+        // Resizable.initialise("main", {});
+
+    });
+
+    window.addEventListener("resize", () => {
+        Resizable.activeContentWindows[0].changeSize(window.innerWidth, window.innerHeight);
+        Resizable.activeContentWindows[0].childrenResize();
+    });
+
+
+
+
+    var myColormap = partial(document.getElementById('colormapselect').value);
+
+    var map_16d19f0c4cb02d0360d2d91f78fb101a = L.map(
+        "map_16d19f0c4cb02d0360d2d91f78fb101a", {
+        center: [40.059774, 32.60246],
+        crs: L.CRS.EPSG3857,
+        zoom: 18,
+        zoomControl: true,
+        preferCanvas: false,
+    }
+    );
+
+
+
+    // const url = 'http://127.0.0.1:3000/';
+    $(document).ready(function () {
+
+        $('#sidebarCollapse').on('click', function () {
+            $('#sidebar').toggleClass('active');
+        });
+
+    });
+
+    var mymarkers = [];
+    var xycount = [];
+    var gelenveri = "";
+    var carpan = 0.5;
+    var myexp = 2;
+    var max_count = {
+        value: 1,
+        set: function (value) {
+            this.value = value;
+            this.getOnChange();
+        }
+    };
+
+
+
+
+
+
+    var markerGroup = L.layerGroup().addTo(map_16d19f0c4cb02d0360d2d91f78fb101a);
+
+
+
+
+
+
+    document.getElementById('opacityRange').addEventListener('input', async () => {
+
+        mymarkers.forEach(mymarker => {
+            try {
+                let obj = {};
+                obj['opacity'] = (document.getElementById('opacityRange').value / 100).toString();
+                obj['fillOpacity'] = (document.getElementById('opacityRange').value / 100)
+                    .toString();
+                mymarker.setStyle(obj);
+            } catch (error) {
+                console.log(error);
+                return;
+            }
+        });
+
+    });
+
+
+
+    document.getElementById('colormapselect').addEventListener('change', async (event) => {
+        myColormap = partial(event.target.value);
+
+        mymarkers.forEach(mymarker => {
+            try {
+                let obj = {};
+                let value = mymarker.options.className;
+                let cm_lantan_count = parseFloat(value.split(" ")[0]);
+                let cm_plastik_count = parseFloat(value.split(" ")[1]);
+                let cm_total_count = carpan * (cm_lantan_count * 2) + (1 - carpan) * (
+                    cm_plastik_count *
+                    2);
+                let cm_carpim_count = Math.max(cm_lantan_count, 1.0) * cm_plastik_count;
+                let cm_expcarpim_count = (Math.max(cm_lantan_count, 1.0) ** myexp) * (
+                    cm_plastik_count **
+                    myexp);
+
+                obj['color'] = 'rgb(' + myColormap(cm_total_count / max_count.value)[0] + ',' +
+                    myColormap(cm_total_count / max_count.value)[1] + ',' + myColormap(
+                        cm_total_count /
+                        max_count.value)[2] + ')';
+
+                mymarker.setStyle(obj);
+            } catch (error) {
+                console.log(error);
+                return;
+            }
+
+        });
+
+    });
+
+
+
+    max_count.getOnChange = function () {
+
+        myColormap = partial(document.getElementById('colormapselect').value);
+
+        mymarkers.forEach(mymarker => {
+            try {
+
+                let obj = {};
+                let value = mymarker.options.className;
+                let cm_lantan_count = parseFloat(value.split(" ")[0]);
+                let cm_plastik_count = parseFloat(value.split(" ")[1]);
+                let cm_total_count = carpan * (cm_lantan_count * 2) + (1 - carpan) * (cm_plastik_count *
+                    2);
+
+
+                obj['color'] = 'rgb(' + myColormap(cm_total_count / max_count.value)[0] + ',' +
+                    myColormap(cm_total_count / max_count.value)[1] + ',' + myColormap(cm_total_count /
+                        max_count.value)[2] + ')';
+
+
+                mymarker.setStyle(obj);
+
+
+            } catch (error) {
+                console.log(error);
+                return;
+            }
+        });
+
+
+
+    };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    var popup = L.popup();
+
+    function onMapClick(e) {
+
+        try {
+            e.layer.openPopup();
+
+        } catch (error) {
+            // console.log(error);
+        }
+
+    };
+
+
+
+    function onMouseMove(e) {
+        document.getElementById("coordlatlon").innerHTML = e.latlng.toString();
+
+
+    }
+
+    map_16d19f0c4cb02d0360d2d91f78fb101a.on('click', onMapClick);
+    map_16d19f0c4cb02d0360d2d91f78fb101a.on('mousemove', onMouseMove);
+
+
+    var tile_layer_ec0c677b6367df196a132fd6fb0127a1 = L.tileLayer(
+        "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}", {
+        "attribution": "Tiles \u0026copy; Esri \u0026mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community - TENMAK NÜKEN 2022",
+        "detectRetina": false,
+        "maxNativeZoom": 18,
+        "maxZoom": 22,
+        "minZoom": 0,
+        "noWrap": false,
+        "opacity": 1,
+        "subdomains": "abc",
+        "tms": false
+    }
+    ).addTo(map_16d19f0c4cb02d0360d2d91f78fb101a);
+
+    let fileHandle_log;
+
+
+
+    document.getElementById('logacbutton').addEventListener('click', async () => {
+
+        let response = await fetch("./logs/logdemo.txt");
+
+        const contents = await response.text();
+        let logarray = contents.split('\n');
+
+        let alltext = "";
+        let lantan_geldi = false;
+        let plastik_geldi = false;
+        let lantan_count = 0;
+        let plastik_count = 0;
+        let lastlat = 40.05;
+        let lastlon = 32.60;
+        let total_count = 5.0;
+        let ilksefer = true;
+
+        logarray.forEach(value => {
+
+            try {
+
+
+                value = value.split(" ").slice(1,).join(" ");
+                console.log(value);
+
+
+                let cihaz = value.split(" ")[0];
+                if (cihaz == "g") {
+                    if (((1 - Math.abs(lastlat / parseFloat(value.split(" ")[5]))) > 0.1) ||
+                        ilksefer) {
+                        map_16d19f0c4cb02d0360d2d91f78fb101a.panTo(new L.LatLng(parseFloat(value
+                            .split(" ")[5]), parseFloat(value.split(" ")[6])));
+                        ilksefer = false;
+                    }
+                    lastlat = parseFloat(value.split(" ")[5]);
+                    lastlon = parseFloat(value.split(" ")[6]);
+
+                } else if (cihaz == "l") {
+                    lantan_count = parseFloat(value.split(" ")[3]);
+                    lantan_geldi = true;
+                } else if (cihaz == "p") {
+                    plastik_count = parseFloat(value.split(" ")[3]);
+                    plastik_geldi = true;
+                };
+
+                if (lantan_geldi && plastik_geldi) {
+
+                    total_count = carpan * (lantan_count * 2) + (1 - carpan) * (
+                        plastik_count * 2);
+                    if (lastlat > 0.1) {
+                        xycount.push([lastlat, lastlon, total_count]);
+                    }
+                    let carpim_count = Math.max(lantan_count, 1.0) * plastik_count;
+                    let expcarpim_count = (Math.max(lantan_count, 1.0) ** myexp) * (plastik_count **
+                        myexp);
+
+                    let obj = {};
+
+                    if (total_count > max_count.value) {
+                        max_count.set(total_count);
+                    };
+
+                    let mymaxcount = 0;
+                    let mycount = 0;
+
+                    mymaxcount = max_count.value;
+                    mycount = total_count;
+
+
+                    let mypopup = "total: " + total_count.toString() + " l: " + lantan_count
+                        .toString() + " p: " + plastik_count.toString() + " max: " + max_count
+                            .value + " id: " + mymarkers.length;
+                    lantan_geldi = false;
+                    plastik_geldi = false;
+                    obj['className'] = lantan_count.toString() + " " + plastik_count.toString();
+                    lantan_count = 0;
+                    plastik_count = 0;
+                    // console.log(max_count.value);
+                    obj['radius'] = '5';
+                    obj['stroke'] = 'false';
+
+                    obj['opacity'] = (document.getElementById('opacityRange').value / 100)
+                        .toString();
+                    obj['fillOpacity'] = (document.getElementById('opacityRange').value / 100)
+                        .toString();
+                    obj['color'] = 'rgb(' + myColormap(mycount / mymaxcount)[0] + ',' +
+                        myColormap(mycount / mymaxcount)[1] + ',' + myColormap(
+                            mycount / mymaxcount)[2] + ')';
+                    obj['weight'] = '0';
+
+
+                    // L.circleMarker([parseFloat(value.split(",")[0].split("-")[0]), parseFloat(value.split(",")[0].split("-")[1])], { 'radius': '5', 'stroke': 'false', 'color': 'rgb(RdYlBu(parseFloat(value.split(",")[1])/101)[0],RdYlBu(parseFloat(value.split(",")[1])/101)[1],RdYlBu(parseFloat(value.split(",")[1])/101)[2])', 'weight': '0' }).addTo(map_16d19f0c4cb02d0360d2d91f78fb101a);
+                    let mycirclemarker = L.circleMarker([lastlat, lastlon], obj).addTo(markerGroup);
+
+                    mycirclemarker.bindPopup(mypopup);
+                    mymarkers.push(mycirclemarker);
+
+                }
+
+
+            } catch (error) {
+                console.log(error);
+                return;
+            };
+
+
+        });
+
+    });
+</script>
